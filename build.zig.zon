@@ -1,0 +1,17 @@
+.{
+    .name = .unimap,
+    .version = "0.0.0",
+    .fingerprint = 0xe6ed3fdddca8b5f6, // Changing this has security and trust implications.
+    .minimum_zig_version = "0.15.2",
+    .dependencies = .{
+        .dvui = .{
+            .url = "git+https://github.com/david-vanderson/dvui?ref=main#c340b88053280e1cf19890e56c797664f9bf7ca2",
+            .hash = "dvui-0.4.0-dev-AQFJmTXU3wBJ2wCYyH4UeUWkMBSJbY7y6Ouc11_Gkls1",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}

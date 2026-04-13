@@ -1,0 +1,2425 @@
+// https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt
+.{
+    .{
+        .range = .{
+            .start = 0x000000,
+            .end = 0x00007F,
+        },
+        .name = "Basic Latin",
+    },
+    .{
+        .range = .{
+            .start = 0x000080,
+            .end = 0x0000FF,
+        },
+        .name = "Latin-1 Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x000100,
+            .end = 0x00017F,
+        },
+        .name = "Latin Extended-A",
+    },
+    .{
+        .range = .{
+            .start = 0x000180,
+            .end = 0x00024F,
+        },
+        .name = "Latin Extended-B",
+    },
+    .{
+        .range = .{
+            .start = 0x000250,
+            .end = 0x0002AF,
+        },
+        .name = "IPA Extensions",
+    },
+    .{
+        .range = .{
+            .start = 0x0002B0,
+            .end = 0x0002FF,
+        },
+        .name = "Spacing Modifier Letters",
+    },
+    .{
+        .range = .{
+            .start = 0x000300,
+            .end = 0x00036F,
+        },
+        .name = "Combining Diacritical Marks",
+    },
+    .{
+        .range = .{
+            .start = 0x000370,
+            .end = 0x0003FF,
+        },
+        .name = "Greek and Coptic",
+    },
+    .{
+        .range = .{
+            .start = 0x000400,
+            .end = 0x0004FF,
+        },
+        .name = "Cyrillic",
+    },
+    .{
+        .range = .{
+            .start = 0x000500,
+            .end = 0x00052F,
+        },
+        .name = "Cyrillic Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x000530,
+            .end = 0x00058F,
+        },
+        .name = "Armenian",
+    },
+    .{
+        .range = .{
+            .start = 0x000590,
+            .end = 0x0005FF,
+        },
+        .name = "Hebrew",
+    },
+    .{
+        .range = .{
+            .start = 0x000600,
+            .end = 0x0006FF,
+        },
+        .name = "Arabic",
+    },
+    .{
+        .range = .{
+            .start = 0x000700,
+            .end = 0x00074F,
+        },
+        .name = "Syriac",
+    },
+    .{
+        .range = .{
+            .start = 0x000750,
+            .end = 0x00077F,
+        },
+        .name = "Arabic Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x000780,
+            .end = 0x0007BF,
+        },
+        .name = "Thaana",
+    },
+    .{
+        .range = .{
+            .start = 0x0007C0,
+            .end = 0x0007FF,
+        },
+        .name = "NKo",
+    },
+    .{
+        .range = .{
+            .start = 0x000800,
+            .end = 0x00083F,
+        },
+        .name = "Samaritan",
+    },
+    .{
+        .range = .{
+            .start = 0x000840,
+            .end = 0x00085F,
+        },
+        .name = "Mandaic",
+    },
+    .{
+        .range = .{
+            .start = 0x000860,
+            .end = 0x00086F,
+        },
+        .name = "Syriac Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x000870,
+            .end = 0x00089F,
+        },
+        .name = "Arabic Extended-B",
+    },
+    .{
+        .range = .{
+            .start = 0x0008A0,
+            .end = 0x0008FF,
+        },
+        .name = "Arabic Extended-A",
+    },
+    .{
+        .range = .{
+            .start = 0x000900,
+            .end = 0x00097F,
+        },
+        .name = "Devanagari",
+    },
+    .{
+        .range = .{
+            .start = 0x000980,
+            .end = 0x0009FF,
+        },
+        .name = "Bengali",
+    },
+    .{
+        .range = .{
+            .start = 0x000A00,
+            .end = 0x000A7F,
+        },
+        .name = "Gurmukhi",
+    },
+    .{
+        .range = .{
+            .start = 0x000A80,
+            .end = 0x000AFF,
+        },
+        .name = "Gujarati",
+    },
+    .{
+        .range = .{
+            .start = 0x000B00,
+            .end = 0x000B7F,
+        },
+        .name = "Oriya",
+    },
+    .{
+        .range = .{
+            .start = 0x000B80,
+            .end = 0x000BFF,
+        },
+        .name = "Tamil",
+    },
+    .{
+        .range = .{
+            .start = 0x000C00,
+            .end = 0x000C7F,
+        },
+        .name = "Telugu",
+    },
+    .{
+        .range = .{
+            .start = 0x000C80,
+            .end = 0x000CFF,
+        },
+        .name = "Kannada",
+    },
+    .{
+        .range = .{
+            .start = 0x000D00,
+            .end = 0x000D7F,
+        },
+        .name = "Malayalam",
+    },
+    .{
+        .range = .{
+            .start = 0x000D80,
+            .end = 0x000DFF,
+        },
+        .name = "Sinhala",
+    },
+    .{
+        .range = .{
+            .start = 0x000E00,
+            .end = 0x000E7F,
+        },
+        .name = "Thai",
+    },
+    .{
+        .range = .{
+            .start = 0x000E80,
+            .end = 0x000EFF,
+        },
+        .name = "Lao",
+    },
+    .{
+        .range = .{
+            .start = 0x000F00,
+            .end = 0x000FFF,
+        },
+        .name = "Tibetan",
+    },
+    .{
+        .range = .{
+            .start = 0x001000,
+            .end = 0x00109F,
+        },
+        .name = "Myanmar",
+    },
+    .{
+        .range = .{
+            .start = 0x0010A0,
+            .end = 0x0010FF,
+        },
+        .name = "Georgian",
+    },
+    .{
+        .range = .{
+            .start = 0x001100,
+            .end = 0x0011FF,
+        },
+        .name = "Hangul Jamo",
+    },
+    .{
+        .range = .{
+            .start = 0x001200,
+            .end = 0x00137F,
+        },
+        .name = "Ethiopic",
+    },
+    .{
+        .range = .{
+            .start = 0x001380,
+            .end = 0x00139F,
+        },
+        .name = "Ethiopic Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x0013A0,
+            .end = 0x0013FF,
+        },
+        .name = "Cherokee | GNU FreeFont",
+    },
+    .{
+        .range = .{
+            .start = 0x001400,
+            .end = 0x00167F,
+        },
+        .name = "Unified Canadian Aboriginal Syllabics",
+    },
+    .{
+        .range = .{
+            .start = 0x001680,
+            .end = 0x00169F,
+        },
+        .name = "Ogham",
+    },
+    .{
+        .range = .{
+            .start = 0x0016A0,
+            .end = 0x0016FF,
+        },
+        .name = "Runic",
+    },
+    .{
+        .range = .{
+            .start = 0x001700,
+            .end = 0x00171F,
+        },
+        .name = "Tagalog",
+    },
+    .{
+        .range = .{
+            .start = 0x001720,
+            .end = 0x00173F,
+        },
+        .name = "Hanunoo | GNU FreeFont",
+    },
+    .{
+        .range = .{
+            .start = 0x001740,
+            .end = 0x00175F,
+        },
+        .name = "Buhid",
+    },
+    .{
+        .range = .{
+            .start = 0x001760,
+            .end = 0x00177F,
+        },
+        .name = "Tagbanwa",
+    },
+    .{
+        .range = .{
+            .start = 0x001780,
+            .end = 0x0017FF,
+        },
+        .name = "Khmer",
+    },
+    .{
+        .range = .{
+            .start = 0x001800,
+            .end = 0x0018AF,
+        },
+        .name = "Mongolian",
+    },
+    .{
+        .range = .{
+            .start = 0x0018B0,
+            .end = 0x0018FF,
+        },
+        .name = "Unified Canadian Aboriginal Syllabics Extended | GNU FreeFont",
+    },
+    .{
+        .range = .{
+            .start = 0x001900,
+            .end = 0x00194F,
+        },
+        .name = "Limbu",
+    },
+    .{
+        .range = .{
+            .start = 0x001950,
+            .end = 0x00197F,
+        },
+        .name = "Tai Le | GNU FreeFont",
+    },
+    .{
+        .range = .{
+            .start = 0x001980,
+            .end = 0x0019DF,
+        },
+        .name = "New Tai Lue",
+    },
+    .{
+        .range = .{
+            .start = 0x0019E0,
+            .end = 0x0019FF,
+        },
+        .name = "Khmer Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x001A00,
+            .end = 0x001A1F,
+        },
+        .name = "Buginese",
+    },
+    .{
+        .range = .{
+            .start = 0x001A20,
+            .end = 0x001AAF,
+        },
+        .name = "Tai Tham",
+    },
+    .{
+        .range = .{
+            .start = 0x001AB0,
+            .end = 0x001AFF,
+        },
+        .name = "Combining Diacritical Marks Extended",
+    },
+    .{
+        .range = .{
+            .start = 0x001B00,
+            .end = 0x001B7F,
+        },
+        .name = "Balinese",
+    },
+    .{
+        .range = .{
+            .start = 0x001B80,
+            .end = 0x001BBF,
+        },
+        .name = "Sundanese",
+    },
+    .{
+        .range = .{
+            .start = 0x001BC0,
+            .end = 0x001BFF,
+        },
+        .name = "Batak",
+    },
+    .{
+        .range = .{
+            .start = 0x001C00,
+            .end = 0x001C4F,
+        },
+        .name = "Lepcha",
+    },
+    .{
+        .range = .{
+            .start = 0x001C50,
+            .end = 0x001C7F,
+        },
+        .name = "Ol Chiki",
+    },
+    .{
+        .range = .{
+            .start = 0x001C80,
+            .end = 0x001C8F,
+        },
+        .name = "Cyrillic Extended-C",
+    },
+    .{
+        .range = .{
+            .start = 0x001C90,
+            .end = 0x001CBF,
+        },
+        .name = "Georgian Extended",
+    },
+    .{
+        .range = .{
+            .start = 0x001CC0,
+            .end = 0x001CCF,
+        },
+        .name = "Sundanese Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x001CD0,
+            .end = 0x001CFF,
+        },
+        .name = "Vedic Extensions",
+    },
+    .{
+        .range = .{
+            .start = 0x001D00,
+            .end = 0x001D7F,
+        },
+        .name = "Phonetic Extensions",
+    },
+    .{
+        .range = .{
+            .start = 0x001D80,
+            .end = 0x001DBF,
+        },
+        .name = "Phonetic Extensions Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x001DC0,
+            .end = 0x001DFF,
+        },
+        .name = "Combining Diacritical Marks Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x001E00,
+            .end = 0x001EFF,
+        },
+        .name = "Latin Extended Additional",
+    },
+    .{
+        .range = .{
+            .start = 0x001F00,
+            .end = 0x001FFF,
+        },
+        .name = "Greek Extended",
+    },
+    .{
+        .range = .{
+            .start = 0x002000,
+            .end = 0x00206F,
+        },
+        .name = "General Punctuation",
+    },
+    .{
+        .range = .{
+            .start = 0x002070,
+            .end = 0x00209F,
+        },
+        .name = "Superscripts and Subscripts",
+    },
+    .{
+        .range = .{
+            .start = 0x0020A0,
+            .end = 0x0020CF,
+        },
+        .name = "Currency Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x0020D0,
+            .end = 0x0020FF,
+        },
+        .name = "Combining Diacritical Marks for Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x002100,
+            .end = 0x00214F,
+        },
+        .name = "Letterlike Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x002150,
+            .end = 0x00218F,
+        },
+        .name = "Number Forms",
+    },
+    .{
+        .range = .{
+            .start = 0x002190,
+            .end = 0x0021FF,
+        },
+        .name = "Arrows",
+    },
+    .{
+        .range = .{
+            .start = 0x002200,
+            .end = 0x0022FF,
+        },
+        .name = "Mathematical Operators",
+    },
+    .{
+        .range = .{
+            .start = 0x002300,
+            .end = 0x0023FF,
+        },
+        .name = "Miscellaneous Technical",
+    },
+    .{
+        .range = .{
+            .start = 0x002400,
+            .end = 0x00243F,
+        },
+        .name = "Control Pictures",
+    },
+    .{
+        .range = .{
+            .start = 0x002440,
+            .end = 0x00245F,
+        },
+        .name = "Optical Character Recognition",
+    },
+    .{
+        .range = .{
+            .start = 0x002460,
+            .end = 0x0024FF,
+        },
+        .name = "Enclosed Alphanumerics",
+    },
+    .{
+        .range = .{
+            .start = 0x002500,
+            .end = 0x00257F,
+        },
+        .name = "Box Drawing",
+    },
+    .{
+        .range = .{
+            .start = 0x002580,
+            .end = 0x00259F,
+        },
+        .name = "Block Elements",
+    },
+    .{
+        .range = .{
+            .start = 0x0025A0,
+            .end = 0x0025FF,
+        },
+        .name = "Geometric Shapes",
+    },
+    .{
+        .range = .{
+            .start = 0x002600,
+            .end = 0x0026FF,
+        },
+        .name = "Miscellaneous Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x002700,
+            .end = 0x0027BF,
+        },
+        .name = "Dingbats",
+    },
+    .{
+        .range = .{
+            .start = 0x0027C0,
+            .end = 0x0027EF,
+        },
+        .name = "Miscellaneous Mathematical Symbols-A",
+    },
+    .{
+        .range = .{
+            .start = 0x0027F0,
+            .end = 0x0027FF,
+        },
+        .name = "Supplemental Arrows-A",
+    },
+    .{
+        .range = .{
+            .start = 0x002800,
+            .end = 0x0028FF,
+        },
+        .name = "Braille Patterns | GNU FreeFont",
+    },
+    .{
+        .range = .{
+            .start = 0x002900,
+            .end = 0x00297F,
+        },
+        .name = "Supplemental Arrows-B",
+    },
+    .{
+        .range = .{
+            .start = 0x002980,
+            .end = 0x0029FF,
+        },
+        .name = "Miscellaneous Mathematical Symbols-B",
+    },
+    .{
+        .range = .{
+            .start = 0x002A00,
+            .end = 0x002AFF,
+        },
+        .name = "Supplemental Mathematical Operators",
+    },
+    .{
+        .range = .{
+            .start = 0x002B00,
+            .end = 0x002BFF,
+        },
+        .name = "Miscellaneous Symbols and Arrows",
+    },
+    .{
+        .range = .{
+            .start = 0x002C00,
+            .end = 0x002C5F,
+        },
+        .name = "Glagolitic",
+    },
+    .{
+        .range = .{
+            .start = 0x002C60,
+            .end = 0x002C7F,
+        },
+        .name = "Latin Extended-C",
+    },
+    .{
+        .range = .{
+            .start = 0x002C80,
+            .end = 0x002CFF,
+        },
+        .name = "Coptic",
+    },
+    .{
+        .range = .{
+            .start = 0x002D00,
+            .end = 0x002D2F,
+        },
+        .name = "Georgian Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x002D30,
+            .end = 0x002D7F,
+        },
+        .name = "Tifinagh",
+    },
+    .{
+        .range = .{
+            .start = 0x002D80,
+            .end = 0x002DDF,
+        },
+        .name = "Ethiopic Extended",
+    },
+    .{
+        .range = .{
+            .start = 0x002DE0,
+            .end = 0x002DFF,
+        },
+        .name = "Cyrillic Extended-A",
+    },
+    .{
+        .range = .{
+            .start = 0x002E00,
+            .end = 0x002E7F,
+        },
+        .name = "Supplemental Punctuation",
+    },
+    .{
+        .range = .{
+            .start = 0x002E80,
+            .end = 0x002EFF,
+        },
+        .name = "CJK Radicals Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x002F00,
+            .end = 0x002FDF,
+        },
+        .name = "Kangxi Radicals",
+    },
+    .{
+        .range = .{
+            .start = 0x002FF0,
+            .end = 0x002FFF,
+        },
+        .name = "Ideographic Description Characters",
+    },
+    .{
+        .range = .{
+            .start = 0x003000,
+            .end = 0x00303F,
+        },
+        .name = "CJK Symbols and Punctuation",
+    },
+    .{
+        .range = .{
+            .start = 0x003040,
+            .end = 0x00309F,
+        },
+        .name = "Hiragana",
+    },
+    .{
+        .range = .{
+            .start = 0x0030A0,
+            .end = 0x0030FF,
+        },
+        .name = "Katakana",
+    },
+    .{
+        .range = .{
+            .start = 0x003100,
+            .end = 0x00312F,
+        },
+        .name = "Bopomofo",
+    },
+    .{
+        .range = .{
+            .start = 0x003130,
+            .end = 0x00318F,
+        },
+        .name = "Hangul Compatibility Jamo",
+    },
+    .{
+        .range = .{
+            .start = 0x003190,
+            .end = 0x00319F,
+        },
+        .name = "Kanbun",
+    },
+    .{
+        .range = .{
+            .start = 0x0031A0,
+            .end = 0x0031BF,
+        },
+        .name = "Bopomofo Extended",
+    },
+    .{
+        .range = .{
+            .start = 0x0031C0,
+            .end = 0x0031EF,
+        },
+        .name = "CJK Strokes",
+    },
+    .{
+        .range = .{
+            .start = 0x0031F0,
+            .end = 0x0031FF,
+        },
+        .name = "Katakana Phonetic Extensions",
+    },
+    .{
+        .range = .{
+            .start = 0x003200,
+            .end = 0x0032FF,
+        },
+        .name = "Enclosed CJK Letters and Months",
+    },
+    .{
+        .range = .{
+            .start = 0x003300,
+            .end = 0x0033FF,
+        },
+        .name = "CJK Compatibility",
+    },
+    .{
+        .range = .{
+            .start = 0x003400,
+            .end = 0x004DBF,
+        },
+        .name = "CJK Unified Ideographs Extension A",
+    },
+    .{
+        .range = .{
+            .start = 0x004DC0,
+            .end = 0x004DFF,
+        },
+        .name = "Yijing Hexagram Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x004E00,
+            .end = 0x009FFF,
+        },
+        .name = "CJK Unified Ideographs",
+    },
+    .{
+        .range = .{
+            .start = 0x00A000,
+            .end = 0x00A48F,
+        },
+        .name = "Yi Syllables",
+    },
+    .{
+        .range = .{
+            .start = 0x00A490,
+            .end = 0x00A4CF,
+        },
+        .name = "Yi Radicals",
+    },
+    .{
+        .range = .{
+            .start = 0x00A4D0,
+            .end = 0x00A4FF,
+        },
+        .name = "Lisu",
+    },
+    .{
+        .range = .{
+            .start = 0x00A500,
+            .end = 0x00A63F,
+        },
+        .name = "Vai",
+    },
+    .{
+        .range = .{
+            .start = 0x00A640,
+            .end = 0x00A69F,
+        },
+        .name = "Cyrillic Extended-B",
+    },
+    .{
+        .range = .{
+            .start = 0x00A6A0,
+            .end = 0x00A6FF,
+        },
+        .name = "Bamum",
+    },
+    .{
+        .range = .{
+            .start = 0x00A700,
+            .end = 0x00A71F,
+        },
+        .name = "Modifier Tone Letters",
+    },
+    .{
+        .range = .{
+            .start = 0x00A720,
+            .end = 0x00A7FF,
+        },
+        .name = "Latin Extended-D",
+    },
+    .{
+        .range = .{
+            .start = 0x00A800,
+            .end = 0x00A82F,
+        },
+        .name = "Syloti Nagri",
+    },
+    .{
+        .range = .{
+            .start = 0x00A830,
+            .end = 0x00A83F,
+        },
+        .name = "Common Indic Number Forms",
+    },
+    .{
+        .range = .{
+            .start = 0x00A840,
+            .end = 0x00A87F,
+        },
+        .name = "Phags-pa",
+    },
+    .{
+        .range = .{
+            .start = 0x00A880,
+            .end = 0x00A8DF,
+        },
+        .name = "Saurashtra",
+    },
+    .{
+        .range = .{
+            .start = 0x00A8E0,
+            .end = 0x00A8FF,
+        },
+        .name = "Devanagari Extended",
+    },
+    .{
+        .range = .{
+            .start = 0x00A900,
+            .end = 0x00A92F,
+        },
+        .name = "Kayah Li",
+    },
+    .{
+        .range = .{
+            .start = 0x00A930,
+            .end = 0x00A95F,
+        },
+        .name = "Rejang",
+    },
+    .{
+        .range = .{
+            .start = 0x00A960,
+            .end = 0x00A97F,
+        },
+        .name = "Hangul Jamo Extended-A",
+    },
+    .{
+        .range = .{
+            .start = 0x00A980,
+            .end = 0x00A9DF,
+        },
+        .name = "Javanese",
+    },
+    .{
+        .range = .{
+            .start = 0x00A9E0,
+            .end = 0x00A9FF,
+        },
+        .name = "Myanmar Extended-B",
+    },
+    .{
+        .range = .{
+            .start = 0x00AA00,
+            .end = 0x00AA5F,
+        },
+        .name = "Cham",
+    },
+    .{
+        .range = .{
+            .start = 0x00AA60,
+            .end = 0x00AA7F,
+        },
+        .name = "Myanmar Extended-A",
+    },
+    .{
+        .range = .{
+            .start = 0x00AA80,
+            .end = 0x00AADF,
+        },
+        .name = "Tai Viet",
+    },
+    .{
+        .range = .{
+            .start = 0x00AAE0,
+            .end = 0x00AAFF,
+        },
+        .name = "Meetei Mayek Extensions",
+    },
+    .{
+        .range = .{
+            .start = 0x00AB00,
+            .end = 0x00AB2F,
+        },
+        .name = "Ethiopic Extended-A",
+    },
+    .{
+        .range = .{
+            .start = 0x00AB30,
+            .end = 0x00AB6F,
+        },
+        .name = "Latin Extended-E",
+    },
+    .{
+        .range = .{
+            .start = 0x00AB70,
+            .end = 0x00ABBF,
+        },
+        .name = "Cherokee Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x00ABC0,
+            .end = 0x00ABFF,
+        },
+        .name = "Meetei Mayek",
+    },
+    .{
+        .range = .{
+            .start = 0x00AC00,
+            .end = 0x00D7AF,
+        },
+        .name = "Hangul Syllables",
+    },
+    .{
+        .range = .{
+            .start = 0x00D7B0,
+            .end = 0x00D7FF,
+        },
+        .name = "Hangul Jamo Extended-B",
+    },
+    .{
+        .range = .{
+            .start = 0x00D800,
+            .end = 0x00DB7F,
+        },
+        .name = "High Surrogates",
+    },
+    .{
+        .range = .{
+            .start = 0x00DB80,
+            .end = 0x00DBFF,
+        },
+        .name = "High Private Use Surrogates",
+    },
+    .{
+        .range = .{
+            .start = 0x00DC00,
+            .end = 0x00DFFF,
+        },
+        .name = "Low Surrogates",
+    },
+    .{
+        .range = .{
+            .start = 0x00E000,
+            .end = 0x00F8FF,
+        },
+        .name = "Private Use Area",
+    },
+    .{
+        .range = .{
+            .start = 0x00F900,
+            .end = 0x00FAFF,
+        },
+        .name = "CJK Compatibility Ideographs",
+    },
+    .{
+        .range = .{
+            .start = 0x00FB00,
+            .end = 0x00FB4F,
+        },
+        .name = "Alphabetic Presentation Forms",
+    },
+    .{
+        .range = .{
+            .start = 0x00FB50,
+            .end = 0x00FDFF,
+        },
+        .name = "Arabic Presentation Forms-A",
+    },
+    .{
+        .range = .{
+            .start = 0x00FE00,
+            .end = 0x00FE0F,
+        },
+        .name = "Variation Selectors",
+    },
+    .{
+        .range = .{
+            .start = 0x00FE10,
+            .end = 0x00FE1F,
+        },
+        .name = "Vertical Forms",
+    },
+    .{
+        .range = .{
+            .start = 0x00FE20,
+            .end = 0x00FE2F,
+        },
+        .name = "Combining Half Marks",
+    },
+    .{
+        .range = .{
+            .start = 0x00FE30,
+            .end = 0x00FE4F,
+        },
+        .name = "CJK Compatibility Forms",
+    },
+    .{
+        .range = .{
+            .start = 0x00FE50,
+            .end = 0x00FE6F,
+        },
+        .name = "Small Form Variants",
+    },
+    .{
+        .range = .{
+            .start = 0x00FE70,
+            .end = 0x00FEFF,
+        },
+        .name = "Arabic Presentation Forms-B",
+    },
+    .{
+        .range = .{
+            .start = 0x00FF00,
+            .end = 0x00FFEF,
+        },
+        .name = "Halfwidth and Fullwidth Forms",
+    },
+    .{
+        .range = .{
+            .start = 0x00FFF0,
+            .end = 0x00FFFF,
+        },
+        .name = "Specials",
+    },
+    .{
+        .range = .{
+            .start = 0x010000,
+            .end = 0x01007F,
+        },
+        .name = "Linear B Syllabary",
+    },
+    .{
+        .range = .{
+            .start = 0x010080,
+            .end = 0x0100FF,
+        },
+        .name = "Linear B Ideograms",
+    },
+    .{
+        .range = .{
+            .start = 0x010100,
+            .end = 0x01013F,
+        },
+        .name = "Aegean Numbers",
+    },
+    .{
+        .range = .{
+            .start = 0x010140,
+            .end = 0x01018F,
+        },
+        .name = "Ancient Greek Numbers",
+    },
+    .{
+        .range = .{
+            .start = 0x010190,
+            .end = 0x0101CF,
+        },
+        .name = "Ancient Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x0101D0,
+            .end = 0x0101FF,
+        },
+        .name = "Phaistos Disc",
+    },
+    .{
+        .range = .{
+            .start = 0x010280,
+            .end = 0x01029F,
+        },
+        .name = "Lycian",
+    },
+    .{
+        .range = .{
+            .start = 0x0102A0,
+            .end = 0x0102DF,
+        },
+        .name = "Carian",
+    },
+    .{
+        .range = .{
+            .start = 0x0102E0,
+            .end = 0x0102FF,
+        },
+        .name = "Coptic Epact Numbers",
+    },
+    .{
+        .range = .{
+            .start = 0x010300,
+            .end = 0x01032F,
+        },
+        .name = "Old Italic | GNU FreeFont",
+    },
+    .{
+        .range = .{
+            .start = 0x010330,
+            .end = 0x01034F,
+        },
+        .name = "Gothic",
+    },
+    .{
+        .range = .{
+            .start = 0x010350,
+            .end = 0x01037F,
+        },
+        .name = "Old Permic",
+    },
+    .{
+        .range = .{
+            .start = 0x010380,
+            .end = 0x01039F,
+        },
+        .name = "Ugaritic",
+    },
+    .{
+        .range = .{
+            .start = 0x0103A0,
+            .end = 0x0103DF,
+        },
+        .name = "Old Persian",
+    },
+    .{
+        .range = .{
+            .start = 0x010400,
+            .end = 0x01044F,
+        },
+        .name = "Deseret",
+    },
+    .{
+        .range = .{
+            .start = 0x010450,
+            .end = 0x01047F,
+        },
+        .name = "Shavian",
+    },
+    .{
+        .range = .{
+            .start = 0x010480,
+            .end = 0x0104AF,
+        },
+        .name = "Osmanya",
+    },
+    .{
+        .range = .{
+            .start = 0x0104B0,
+            .end = 0x0104FF,
+        },
+        .name = "Osage",
+    },
+    .{
+        .range = .{
+            .start = 0x010500,
+            .end = 0x01052F,
+        },
+        .name = "Elbasan",
+    },
+    .{
+        .range = .{
+            .start = 0x010530,
+            .end = 0x01056F,
+        },
+        .name = "Caucasian Albanian",
+    },
+    .{
+        .range = .{
+            .start = 0x010570,
+            .end = 0x0105BF,
+        },
+        .name = "Vithkuqi",
+    },
+    .{
+        .range = .{
+            .start = 0x0105C0,
+            .end = 0x0105FF,
+        },
+        .name = "Todhri",
+    },
+    .{
+        .range = .{
+            .start = 0x010600,
+            .end = 0x01077F,
+        },
+        .name = "Linear A",
+    },
+    .{
+        .range = .{
+            .start = 0x010780,
+            .end = 0x0107BF,
+        },
+        .name = "Latin Extended-F",
+    },
+    .{
+        .range = .{
+            .start = 0x010800,
+            .end = 0x01083F,
+        },
+        .name = "Cypriot Syllabary",
+    },
+    .{
+        .range = .{
+            .start = 0x010840,
+            .end = 0x01085F,
+        },
+        .name = "Imperial Aramaic",
+    },
+    .{
+        .range = .{
+            .start = 0x010860,
+            .end = 0x01087F,
+        },
+        .name = "Palmyrene",
+    },
+    .{
+        .range = .{
+            .start = 0x010880,
+            .end = 0x0108AF,
+        },
+        .name = "Nabataean",
+    },
+    .{
+        .range = .{
+            .start = 0x0108E0,
+            .end = 0x0108FF,
+        },
+        .name = "Hatran",
+    },
+    .{
+        .range = .{
+            .start = 0x010900,
+            .end = 0x01091F,
+        },
+        .name = "Phoenician | GNU FreeFont",
+    },
+    .{
+        .range = .{
+            .start = 0x010920,
+            .end = 0x01093F,
+        },
+        .name = "Lydian",
+    },
+    .{
+        .range = .{
+            .start = 0x010940,
+            .end = 0x01095F,
+        },
+        .name = "Sidetic",
+    },
+    .{
+        .range = .{
+            .start = 0x010980,
+            .end = 0x01099F,
+        },
+        .name = "Meroitic Hieroglyphs",
+    },
+    .{
+        .range = .{
+            .start = 0x0109A0,
+            .end = 0x0109FF,
+        },
+        .name = "Meroitic Cursive",
+    },
+    .{
+        .range = .{
+            .start = 0x010A00,
+            .end = 0x010A5F,
+        },
+        .name = "Kharoshthi",
+    },
+    .{
+        .range = .{
+            .start = 0x010A60,
+            .end = 0x010A7F,
+        },
+        .name = "Old South Arabian",
+    },
+    .{
+        .range = .{
+            .start = 0x010A80,
+            .end = 0x010A9F,
+        },
+        .name = "Old North Arabian",
+    },
+    .{
+        .range = .{
+            .start = 0x010AC0,
+            .end = 0x010AFF,
+        },
+        .name = "Manichaean",
+    },
+    .{
+        .range = .{
+            .start = 0x010B00,
+            .end = 0x010B3F,
+        },
+        .name = "Avestan",
+    },
+    .{
+        .range = .{
+            .start = 0x010B40,
+            .end = 0x010B5F,
+        },
+        .name = "Inscriptional Parthian",
+    },
+    .{
+        .range = .{
+            .start = 0x010B60,
+            .end = 0x010B7F,
+        },
+        .name = "Inscriptional Pahlavi",
+    },
+    .{
+        .range = .{
+            .start = 0x010B80,
+            .end = 0x010BAF,
+        },
+        .name = "Psalter Pahlavi",
+    },
+    .{
+        .range = .{
+            .start = 0x010C00,
+            .end = 0x010C4F,
+        },
+        .name = "Old Turkic",
+    },
+    .{
+        .range = .{
+            .start = 0x010C80,
+            .end = 0x010CFF,
+        },
+        .name = "Old Hungarian",
+    },
+    .{
+        .range = .{
+            .start = 0x010D00,
+            .end = 0x010D3F,
+        },
+        .name = "Hanifi Rohingya",
+    },
+    .{
+        .range = .{
+            .start = 0x010D40,
+            .end = 0x010D8F,
+        },
+        .name = "Garay",
+    },
+    .{
+        .range = .{
+            .start = 0x010E60,
+            .end = 0x010E7F,
+        },
+        .name = "Rumi Numeral Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x010E80,
+            .end = 0x010EBF,
+        },
+        .name = "Yezidi",
+    },
+    .{
+        .range = .{
+            .start = 0x010EC0,
+            .end = 0x010EFF,
+        },
+        .name = "Arabic Extended-C",
+    },
+    .{
+        .range = .{
+            .start = 0x010F00,
+            .end = 0x010F2F,
+        },
+        .name = "Old Sogdian",
+    },
+    .{
+        .range = .{
+            .start = 0x010F30,
+            .end = 0x010F6F,
+        },
+        .name = "Sogdian",
+    },
+    .{
+        .range = .{
+            .start = 0x010F70,
+            .end = 0x010FAF,
+        },
+        .name = "Old Uyghur",
+    },
+    .{
+        .range = .{
+            .start = 0x010FB0,
+            .end = 0x010FDF,
+        },
+        .name = "Chorasmian",
+    },
+    .{
+        .range = .{
+            .start = 0x010FE0,
+            .end = 0x010FFF,
+        },
+        .name = "Elymaic",
+    },
+    .{
+        .range = .{
+            .start = 0x011000,
+            .end = 0x01107F,
+        },
+        .name = "Brahmi",
+    },
+    .{
+        .range = .{
+            .start = 0x011080,
+            .end = 0x0110CF,
+        },
+        .name = "Kaithi",
+    },
+    .{
+        .range = .{
+            .start = 0x0110D0,
+            .end = 0x0110FF,
+        },
+        .name = "Sora Sompeng",
+    },
+    .{
+        .range = .{
+            .start = 0x011100,
+            .end = 0x01114F,
+        },
+        .name = "Chakma",
+    },
+    .{
+        .range = .{
+            .start = 0x011150,
+            .end = 0x01117F,
+        },
+        .name = "Mahajani",
+    },
+    .{
+        .range = .{
+            .start = 0x011180,
+            .end = 0x0111DF,
+        },
+        .name = "Sharada",
+    },
+    .{
+        .range = .{
+            .start = 0x0111E0,
+            .end = 0x0111FF,
+        },
+        .name = "Sinhala Archaic Numbers",
+    },
+    .{
+        .range = .{
+            .start = 0x011200,
+            .end = 0x01124F,
+        },
+        .name = "Khojki",
+    },
+    .{
+        .range = .{
+            .start = 0x011280,
+            .end = 0x0112AF,
+        },
+        .name = "Multani",
+    },
+    .{
+        .range = .{
+            .start = 0x0112B0,
+            .end = 0x0112FF,
+        },
+        .name = "Khudawadi",
+    },
+    .{
+        .range = .{
+            .start = 0x011300,
+            .end = 0x01137F,
+        },
+        .name = "Grantha",
+    },
+    .{
+        .range = .{
+            .start = 0x011380,
+            .end = 0x0113FF,
+        },
+        .name = "Tulu-Tigalari",
+    },
+    .{
+        .range = .{
+            .start = 0x011400,
+            .end = 0x01147F,
+        },
+        .name = "Newa",
+    },
+    .{
+        .range = .{
+            .start = 0x011480,
+            .end = 0x0114DF,
+        },
+        .name = "Tirhuta",
+    },
+    .{
+        .range = .{
+            .start = 0x011580,
+            .end = 0x0115FF,
+        },
+        .name = "Siddham",
+    },
+    .{
+        .range = .{
+            .start = 0x011600,
+            .end = 0x01165F,
+        },
+        .name = "Modi",
+    },
+    .{
+        .range = .{
+            .start = 0x011660,
+            .end = 0x01167F,
+        },
+        .name = "Mongolian Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x011680,
+            .end = 0x0116CF,
+        },
+        .name = "Takri",
+    },
+    .{
+        .range = .{
+            .start = 0x0116D0,
+            .end = 0x0116FF,
+        },
+        .name = "Myanmar Extended-C",
+    },
+    .{
+        .range = .{
+            .start = 0x011700,
+            .end = 0x01174F,
+        },
+        .name = "Ahom",
+    },
+    .{
+        .range = .{
+            .start = 0x011800,
+            .end = 0x01184F,
+        },
+        .name = "Dogra",
+    },
+    .{
+        .range = .{
+            .start = 0x0118A0,
+            .end = 0x0118FF,
+        },
+        .name = "Warang Citi",
+    },
+    .{
+        .range = .{
+            .start = 0x011900,
+            .end = 0x01195F,
+        },
+        .name = "Dives Akuru",
+    },
+    .{
+        .range = .{
+            .start = 0x0119A0,
+            .end = 0x0119FF,
+        },
+        .name = "Nandinagari",
+    },
+    .{
+        .range = .{
+            .start = 0x011A00,
+            .end = 0x011A4F,
+        },
+        .name = "Zanabazar Square",
+    },
+    .{
+        .range = .{
+            .start = 0x011A50,
+            .end = 0x011AAF,
+        },
+        .name = "Soyombo",
+    },
+    .{
+        .range = .{
+            .start = 0x011AB0,
+            .end = 0x011ABF,
+        },
+        .name = "Unified Canadian Aboriginal Syllabics Extended-A | GNU FreeFont",
+    },
+    .{
+        .range = .{
+            .start = 0x011AC0,
+            .end = 0x011AFF,
+        },
+        .name = "Pau Cin Hau",
+    },
+    .{
+        .range = .{
+            .start = 0x011B00,
+            .end = 0x011B5F,
+        },
+        .name = "Devanagari Extended-A",
+    },
+    .{
+        .range = .{
+            .start = 0x011B60,
+            .end = 0x011B7F,
+        },
+        .name = "Sharada Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x011BC0,
+            .end = 0x011BFF,
+        },
+        .name = "Sunuwar",
+    },
+    .{
+        .range = .{
+            .start = 0x011C00,
+            .end = 0x011C6F,
+        },
+        .name = "Bhaiksuki",
+    },
+    .{
+        .range = .{
+            .start = 0x011C70,
+            .end = 0x011CBF,
+        },
+        .name = "Marchen",
+    },
+    .{
+        .range = .{
+            .start = 0x011D00,
+            .end = 0x011D5F,
+        },
+        .name = "Masaram Gondi",
+    },
+    .{
+        .range = .{
+            .start = 0x011D60,
+            .end = 0x011DAF,
+        },
+        .name = "Gunjala Gondi",
+    },
+    .{
+        .range = .{
+            .start = 0x011DB0,
+            .end = 0x011DEF,
+        },
+        .name = "Tolong Siki",
+    },
+    .{
+        .range = .{
+            .start = 0x011EE0,
+            .end = 0x011EFF,
+        },
+        .name = "Makasar",
+    },
+    .{
+        .range = .{
+            .start = 0x011F00,
+            .end = 0x011F5F,
+        },
+        .name = "Kawi",
+    },
+    .{
+        .range = .{
+            .start = 0x011FB0,
+            .end = 0x011FBF,
+        },
+        .name = "Lisu Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x011FC0,
+            .end = 0x011FFF,
+        },
+        .name = "Tamil Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x012000,
+            .end = 0x0123FF,
+        },
+        .name = "Cuneiform",
+    },
+    .{
+        .range = .{
+            .start = 0x012400,
+            .end = 0x01247F,
+        },
+        .name = "Cuneiform Numbers and Punctuation",
+    },
+    .{
+        .range = .{
+            .start = 0x012480,
+            .end = 0x01254F,
+        },
+        .name = "Early Dynastic Cuneiform",
+    },
+    .{
+        .range = .{
+            .start = 0x012F90,
+            .end = 0x012FFF,
+        },
+        .name = "Cypro-Minoan",
+    },
+    .{
+        .range = .{
+            .start = 0x013000,
+            .end = 0x01342F,
+        },
+        .name = "Egyptian Hieroglyphs",
+    },
+    .{
+        .range = .{
+            .start = 0x013430,
+            .end = 0x01345F,
+        },
+        .name = "Egyptian Hieroglyph Format Controls",
+    },
+    .{
+        .range = .{
+            .start = 0x013460,
+            .end = 0x0143FF,
+        },
+        .name = "Egyptian Hieroglyphs Extended-A",
+    },
+    .{
+        .range = .{
+            .start = 0x014400,
+            .end = 0x01467F,
+        },
+        .name = "Anatolian Hieroglyphs",
+    },
+    .{
+        .range = .{
+            .start = 0x016100,
+            .end = 0x01613F,
+        },
+        .name = "Gurung Khema",
+    },
+    .{
+        .range = .{
+            .start = 0x016800,
+            .end = 0x016A3F,
+        },
+        .name = "Bamum Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x016A40,
+            .end = 0x016A6F,
+        },
+        .name = "Mro",
+    },
+    .{
+        .range = .{
+            .start = 0x016A70,
+            .end = 0x016ACF,
+        },
+        .name = "Tangsa",
+    },
+    .{
+        .range = .{
+            .start = 0x016AD0,
+            .end = 0x016AFF,
+        },
+        .name = "Bassa Vah",
+    },
+    .{
+        .range = .{
+            .start = 0x016B00,
+            .end = 0x016B8F,
+        },
+        .name = "Pahawh Hmong",
+    },
+    .{
+        .range = .{
+            .start = 0x016D40,
+            .end = 0x016D7F,
+        },
+        .name = "Kirat Rai",
+    },
+    .{
+        .range = .{
+            .start = 0x016E40,
+            .end = 0x016E9F,
+        },
+        .name = "Medefaidrin",
+    },
+    .{
+        .range = .{
+            .start = 0x016EA0,
+            .end = 0x016EDF,
+        },
+        .name = "Beria Erfe",
+    },
+    .{
+        .range = .{
+            .start = 0x016F00,
+            .end = 0x016F9F,
+        },
+        .name = "Miao",
+    },
+    .{
+        .range = .{
+            .start = 0x016FE0,
+            .end = 0x016FFF,
+        },
+        .name = "Ideographic Symbols and Punctuation",
+    },
+    .{
+        .range = .{
+            .start = 0x017000,
+            .end = 0x0187FF,
+        },
+        .name = "Tangut",
+    },
+    .{
+        .range = .{
+            .start = 0x018800,
+            .end = 0x018AFF,
+        },
+        .name = "Tangut Components",
+    },
+    .{
+        .range = .{
+            .start = 0x018B00,
+            .end = 0x018CFF,
+        },
+        .name = "Khitan Small Script",
+    },
+    .{
+        .range = .{
+            .start = 0x018D00,
+            .end = 0x018D7F,
+        },
+        .name = "Tangut Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x018D80,
+            .end = 0x018DFF,
+        },
+        .name = "Tangut Components Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x01AFF0,
+            .end = 0x01AFFF,
+        },
+        .name = "Kana Extended-B",
+    },
+    .{
+        .range = .{
+            .start = 0x01B000,
+            .end = 0x01B0FF,
+        },
+        .name = "Kana Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x01B100,
+            .end = 0x01B12F,
+        },
+        .name = "Kana Extended-A",
+    },
+    .{
+        .range = .{
+            .start = 0x01B130,
+            .end = 0x01B16F,
+        },
+        .name = "Small Kana Extension",
+    },
+    .{
+        .range = .{
+            .start = 0x01B170,
+            .end = 0x01B2FF,
+        },
+        .name = "Nushu",
+    },
+    .{
+        .range = .{
+            .start = 0x01BC00,
+            .end = 0x01BC9F,
+        },
+        .name = "Duployan",
+    },
+    .{
+        .range = .{
+            .start = 0x01BCA0,
+            .end = 0x01BCAF,
+        },
+        .name = "Shorthand Format Controls",
+    },
+    .{
+        .range = .{
+            .start = 0x01CC00,
+            .end = 0x01CEBF,
+        },
+        .name = "Symbols for Legacy Computing Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x01CEC0,
+            .end = 0x01CEFF,
+        },
+        .name = "Miscellaneous Symbols Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x01CF00,
+            .end = 0x01CFCF,
+        },
+        .name = "Znamenny Musical Notation",
+    },
+    .{
+        .range = .{
+            .start = 0x01D000,
+            .end = 0x01D0FF,
+        },
+        .name = "Byzantine Musical Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x01D100,
+            .end = 0x01D1FF,
+        },
+        .name = "Musical Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x01D200,
+            .end = 0x01D24F,
+        },
+        .name = "Ancient Greek Musical Notation",
+    },
+    .{
+        .range = .{
+            .start = 0x01D2C0,
+            .end = 0x01D2DF,
+        },
+        .name = "Kaktovik Numerals",
+    },
+    .{
+        .range = .{
+            .start = 0x01D2E0,
+            .end = 0x01D2FF,
+        },
+        .name = "Mayan Numerals",
+    },
+    .{
+        .range = .{
+            .start = 0x01D300,
+            .end = 0x01D35F,
+        },
+        .name = "Tai Xuan Jing Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x01D360,
+            .end = 0x01D37F,
+        },
+        .name = "Counting Rod Numerals",
+    },
+    .{
+        .range = .{
+            .start = 0x01D400,
+            .end = 0x01D7FF,
+        },
+        .name = "Mathematical Alphanumeric Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x01D800,
+            .end = 0x01DAAF,
+        },
+        .name = "Sutton SignWriting",
+    },
+    .{
+        .range = .{
+            .start = 0x01DF00,
+            .end = 0x01DFFF,
+        },
+        .name = "Latin Extended-G",
+    },
+    .{
+        .range = .{
+            .start = 0x01E000,
+            .end = 0x01E02F,
+        },
+        .name = "Glagolitic Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x01E030,
+            .end = 0x01E08F,
+        },
+        .name = "Cyrillic Extended-D",
+    },
+    .{
+        .range = .{
+            .start = 0x01E100,
+            .end = 0x01E14F,
+        },
+        .name = "Nyiakeng Puachue Hmong",
+    },
+    .{
+        .range = .{
+            .start = 0x01E290,
+            .end = 0x01E2BF,
+        },
+        .name = "Toto",
+    },
+    .{
+        .range = .{
+            .start = 0x01E2C0,
+            .end = 0x01E2FF,
+        },
+        .name = "Wancho",
+    },
+    .{
+        .range = .{
+            .start = 0x01E4D0,
+            .end = 0x01E4FF,
+        },
+        .name = "Nag Mundari",
+    },
+    .{
+        .range = .{
+            .start = 0x01E5D0,
+            .end = 0x01E5FF,
+        },
+        .name = "Ol Onal",
+    },
+    .{
+        .range = .{
+            .start = 0x01E6C0,
+            .end = 0x01E6FF,
+        },
+        .name = "Tai Yo",
+    },
+    .{
+        .range = .{
+            .start = 0x01E7E0,
+            .end = 0x01E7FF,
+        },
+        .name = "Ethiopic Extended-B",
+    },
+    .{
+        .range = .{
+            .start = 0x01E800,
+            .end = 0x01E8DF,
+        },
+        .name = "Mende Kikakui",
+    },
+    .{
+        .range = .{
+            .start = 0x01E900,
+            .end = 0x01E95F,
+        },
+        .name = "Adlam",
+    },
+    .{
+        .range = .{
+            .start = 0x01EC70,
+            .end = 0x01ECBF,
+        },
+        .name = "Indic Siyaq Numbers",
+    },
+    .{
+        .range = .{
+            .start = 0x01ED00,
+            .end = 0x01ED4F,
+        },
+        .name = "Ottoman Siyaq Numbers",
+    },
+    .{
+        .range = .{
+            .start = 0x01EE00,
+            .end = 0x01EEFF,
+        },
+        .name = "Arabic Mathematical Alphabetic Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x01F000,
+            .end = 0x01F02F,
+        },
+        .name = "Mahjong Tiles",
+    },
+    .{
+        .range = .{
+            .start = 0x01F030,
+            .end = 0x01F09F,
+        },
+        .name = "Domino Tiles",
+    },
+    .{
+        .range = .{
+            .start = 0x01F0A0,
+            .end = 0x01F0FF,
+        },
+        .name = "Playing Cards",
+    },
+    .{
+        .range = .{
+            .start = 0x01F100,
+            .end = 0x01F1FF,
+        },
+        .name = "Enclosed Alphanumeric Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x01F200,
+            .end = 0x01F2FF,
+        },
+        .name = "Enclosed Ideographic Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x01F300,
+            .end = 0x01F5FF,
+        },
+        .name = "Miscellaneous Symbols and Pictographs",
+    },
+    .{
+        .range = .{
+            .start = 0x01F600,
+            .end = 0x01F64F,
+        },
+        .name = "Emoticons",
+    },
+    .{
+        .range = .{
+            .start = 0x01F650,
+            .end = 0x01F67F,
+        },
+        .name = "Ornamental Dingbats",
+    },
+    .{
+        .range = .{
+            .start = 0x01F680,
+            .end = 0x01F6FF,
+        },
+        .name = "Transport and Map Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x01F700,
+            .end = 0x01F77F,
+        },
+        .name = "Alchemical Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x01F780,
+            .end = 0x01F7FF,
+        },
+        .name = "Geometric Shapes Extended",
+    },
+    .{
+        .range = .{
+            .start = 0x01F800,
+            .end = 0x01F8FF,
+        },
+        .name = "Supplemental Arrows-C",
+    },
+    .{
+        .range = .{
+            .start = 0x01F900,
+            .end = 0x01F9FF,
+        },
+        .name = "Supplemental Symbols and Pictographs",
+    },
+    .{
+        .range = .{
+            .start = 0x01FA00,
+            .end = 0x01FA6F,
+        },
+        .name = "Chess Symbols",
+    },
+    .{
+        .range = .{
+            .start = 0x01FA70,
+            .end = 0x01FAFF,
+        },
+        .name = "Symbols and Pictographs Extended-A",
+    },
+    .{
+        .range = .{
+            .start = 0x01FB00,
+            .end = 0x01FBFF,
+        },
+        .name = "Symbols for Legacy Computing",
+    },
+    .{
+        .range = .{
+            .start = 0x020000,
+            .end = 0x02A6DF,
+        },
+        .name = "CJK Unified Ideographs Extension B",
+    },
+    .{
+        .range = .{
+            .start = 0x02A700,
+            .end = 0x02B73F,
+        },
+        .name = "CJK Unified Ideographs Extension C",
+    },
+    .{
+        .range = .{
+            .start = 0x02B740,
+            .end = 0x02B81F,
+        },
+        .name = "CJK Unified Ideographs Extension D",
+    },
+    .{
+        .range = .{
+            .start = 0x02B820,
+            .end = 0x02CEAF,
+        },
+        .name = "CJK Unified Ideographs Extension E",
+    },
+    .{
+        .range = .{
+            .start = 0x02CEB0,
+            .end = 0x02EBEF,
+        },
+        .name = "CJK Unified Ideographs Extension F",
+    },
+    .{
+        .range = .{
+            .start = 0x02EBF0,
+            .end = 0x02EE5F,
+        },
+        .name = "CJK Unified Ideographs Extension I",
+    },
+    .{
+        .range = .{
+            .start = 0x02F800,
+            .end = 0x02FA1F,
+        },
+        .name = "CJK Compatibility Ideographs Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x030000,
+            .end = 0x03134F,
+        },
+        .name = "CJK Unified Ideographs Extension G",
+    },
+    .{
+        .range = .{
+            .start = 0x031350,
+            .end = 0x0323AF,
+        },
+        .name = "CJK Unified Ideographs Extension H",
+    },
+    .{
+        .range = .{
+            .start = 0x0323B0,
+            .end = 0x03347F,
+        },
+        .name = "CJK Unified Ideographs Extension J",
+    },
+    .{
+        .range = .{
+            .start = 0x0E0000,
+            .end = 0x0E007F,
+        },
+        .name = "Tags",
+    },
+    .{
+        .range = .{
+            .start = 0x0E0100,
+            .end = 0x0E01EF,
+        },
+        .name = "Variation Selectors Supplement",
+    },
+    .{
+        .range = .{
+            .start = 0x0F0000,
+            .end = 0x0FFFFF,
+        },
+        .name = "Supplementary Private Use Area-A",
+    },
+    .{
+        .range = .{
+            .start = 0x100000,
+            .end = 0x10FFFF,
+        },
+        .name = "Supplementary Private Use Area-B",
+    },
+}

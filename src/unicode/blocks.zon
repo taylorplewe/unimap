@@ -285,7 +285,7 @@
             .start = 0x0013A0,
             .end = 0x0013FF,
         },
-        .name = "Cherokee | GNU FreeFont",
+        .name = "Cherokee",
     },
     .{
         .range = .{
@@ -320,7 +320,7 @@
             .start = 0x001720,
             .end = 0x00173F,
         },
-        .name = "Hanunoo | GNU FreeFont",
+        .name = "Hanunoo",
     },
     .{
         .range = .{
@@ -355,7 +355,7 @@
             .start = 0x0018B0,
             .end = 0x0018FF,
         },
-        .name = "Unified Canadian Aboriginal Syllabics Extended | GNU FreeFont",
+        .name = "Unified Canadian Aboriginal Syllabics Extended",
     },
     .{
         .range = .{
@@ -369,7 +369,7 @@
             .start = 0x001950,
             .end = 0x00197F,
         },
-        .name = "Tai Le | GNU FreeFont",
+        .name = "Tai Le",
     },
     .{
         .range = .{
@@ -642,7 +642,7 @@
             .start = 0x002800,
             .end = 0x0028FF,
         },
-        .name = "Braille Patterns | GNU FreeFont",
+        .name = "Braille Patterns",
     },
     .{
         .range = .{
@@ -1216,7 +1216,7 @@
             .start = 0x010300,
             .end = 0x01032F,
         },
-        .name = "Old Italic | GNU FreeFont",
+        .name = "Old Italic",
     },
     .{
         .range = .{
@@ -1356,7 +1356,7 @@
             .start = 0x010900,
             .end = 0x01091F,
         },
-        .name = "Phoenician | GNU FreeFont",
+        .name = "Phoenician",
     },
     .{
         .range = .{
@@ -1713,7 +1713,7 @@
             .start = 0x011AB0,
             .end = 0x011ABF,
         },
-        .name = "Unified Canadian Aboriginal Syllabics Extended-A | GNU FreeFont",
+        .name = "Unified Canadian Aboriginal Syllabics Extended-A",
     },
     .{
         .range = .{

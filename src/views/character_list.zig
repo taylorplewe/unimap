@@ -10,7 +10,12 @@ pub fn frame(app: *App) void {
     );
     defer scroll.deinit();
 
-    _ = app;
+    if (dvui.button(@src(), "Back to blocks", .{}, .{})) {
+        app.state = .BlockSelect;
+        return;
+    }
+
+    // _ = app;
     // TODO: this is crashing the app
-    // dvui.labelNoFmt(@src(), app.state.CharacterList.name, .{}, .{});
+    dvui.labelNoFmt(@src(), app.state.CharacterList.name, .{}, .{});
 }

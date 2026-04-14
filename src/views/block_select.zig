@@ -11,7 +11,7 @@ pub fn frame(app: *App) void {
     );
     defer scroll.deinit();
 
-    for (App.blocks) |block| {
+    for (App.blocks) |*block| {
         var clicked = false;
         {
             var block_btn: dvui.ButtonWidget = undefined;
@@ -28,7 +28,7 @@ pub fn frame(app: *App) void {
                 .{},
                 .{
                     .expand = .horizontal,
-                    .font = dvui.Font.theme(.body).withSize(8),
+                    .font = dvui.Font.theme(.body).withSize(10),
                 },
             );
             dvui.label(
@@ -37,7 +37,7 @@ pub fn frame(app: *App) void {
                 .{ block.range.start, block.range.end },
                 .{
                     .color_text = .fromHex("#aaa"),
-                    .font = dvui.Font.theme(.body).withSize(6),
+                    .font = dvui.Font.theme(.body).withSize(8),
                     .gravity_y = 0.5,
                 },
             );
@@ -46,7 +46,7 @@ pub fn frame(app: *App) void {
             block_btn.drawFocus();
         }
         if (clicked) {
-            app.state = .{ .CharacterList = &block };
+            app.state = .{ .CharacterList = block };
         }
     }
 }

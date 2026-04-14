@@ -11,7 +11,7 @@ pub fn frame(app: *App) void {
     );
     defer scroll.deinit();
 
-    for (App.blocks) |*block| {
+    for (App.blocks, 0..) |*block, i| {
         var clicked = false;
         {
             var block_btn: dvui.ButtonWidget = undefined;
@@ -46,7 +46,12 @@ pub fn frame(app: *App) void {
             block_btn.drawFocus();
         }
         if (clicked) {
-            app.state = .{ .CharacterList = block };
+            app.state = .{
+                .CharacterList = .{
+                    .selected_block = block,
+                    .selected_block_index = i,
+                },
+            };
         }
     }
 }

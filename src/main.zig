@@ -7,6 +7,10 @@ pub const panic = dvui.App.panic;
 const unicode = @import("unicode/unicode.zig");
 const App = @import("App.zig");
 
+// DEBUG
+const gnu_unifont = @embedFile("assets/gnu-unifont.otf");
+const segoe_ui_symbol = @embedFile("assets/seguisym.ttf");
+
 pub const dvui_app: dvui.App = .{
     .config = .{
         .options = .{
@@ -24,7 +28,10 @@ var app: App = .{
     .state = .BlockSelect,
 };
 
-fn init(_: *dvui.Window) !void {}
+fn init(_: *dvui.Window) !void {
+    try dvui.addFont("gnu unifont", gnu_unifont, null);
+    try dvui.addFont("segoe ui symbol", segoe_ui_symbol, null);
+}
 fn deinit() void {}
 fn frame() !dvui.App.Result {
     {

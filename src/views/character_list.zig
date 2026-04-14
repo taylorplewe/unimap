@@ -7,6 +7,20 @@ const unicode = @import("../unicode/unicode.zig");
 var character_font: dvui.Font = undefined;
 
 pub fn frame(app: *App) void {
+    {
+        var upper_sticky = dvui.box(
+            @src(),
+            .{ .dir = .horizontal },
+            .{ .expand = .horizontal, .background = true },
+        );
+        defer upper_sticky.deinit();
+
+        if (dvui.button(@src(), "Back to blocks", .{}, .{})) {
+            app.state = .BlockSelect;
+            return;
+        }
+    }
+
     var scroll = dvui.scrollArea(
         @src(),
         .{},
@@ -17,11 +31,6 @@ pub fn frame(app: *App) void {
     character_font = dvui.Font.theme(.body)
         .withSize(18)
         .withFamily(App.supported_fonts[app.state.CharacterList.selected_block_index]);
-
-    if (dvui.button(@src(), "Back to blocks", .{}, .{})) {
-        app.state = .BlockSelect;
-        return;
-    }
 
     dvui.labelNoFmt(@src(), app.state.CharacterList.selected_block.name, .{}, .{});
 

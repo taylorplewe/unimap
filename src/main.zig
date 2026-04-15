@@ -10,6 +10,7 @@ const App = @import("App.zig");
 // DEBUG
 const gnu_unifont = @embedFile("assets/gnu-unifont.otf");
 const segoe_ui_symbol = @embedFile("assets/seguisym.ttf");
+const segoe_ui_historic = @embedFile("assets/seguihis.ttf");
 
 pub const dvui_app: dvui.App = .{
     .config = .{
@@ -31,6 +32,7 @@ var app: App = .{
 fn init(_: *dvui.Window) !void {
     try dvui.addFont("gnu unifont", gnu_unifont, null);
     try dvui.addFont("segoe ui symbol", segoe_ui_symbol, null);
+    try dvui.addFont("segoe ui historic", segoe_ui_historic, null);
 }
 fn deinit() void {}
 fn frame() !dvui.App.Result {

@@ -27,22 +27,61 @@ pub fn frame(app: *App) void {
         var physical: [unicode.PHYSICAL_CHAR_VALUE_ALLOC_SIZE]u8 = undefined;
         for (app.state.CharacterList.selected_block.range.start..app.state.CharacterList.selected_block.range.end + 1) |i| {
             const num_bytes = std.unicode.utf8Encode(@intCast(i), &physical) catch unreachable;
-            if (dvui.button(
-                @src(),
-                physical[0..num_bytes],
-                .{},
-                .{
-                    .min_size_content = .{ .w = 64, .h = 64 },
-                    .id_extra = i,
-                    .font = character_font,
-                },
-            )) {
-                std.debug.print("pressed: {}\n", .{i});
-                // copy to Windows clipboard
-                // https://learn.microsoft.com/en-us/windows/win32/dataxchg/using-the-clipboard#copy-information-to-the-clipboard
-                // TODO: link to user32.lib, include either winuser.h or just the whole windows.h
 
-                // const num_utf16_bytes = std.unicode.utf8ToUtf16Le(App.clipboard_buf, &physical) catch unreachable;
+            var clicked = false;
+            {
+                var btn: dvui.ButtonWidget = undefined;
+                defer btn.deinit();
+                btn.init(
+                    @src(),
+                    .{ .draw_focus = false },
+                    .{
+                        .id_extra = i,
+                        .padding = .all(2),
+                        .min_size_content = .{ .w = 64, .h = 64 },
+                        .max_size_content = .{ .w = 64, .h = 64 },
+                    },
+                );
+                btn.processEvents();
+                btn.drawBackground();
+                clicked = btn.clicked();
+
+                // main character
+                dvui.labelNoFmt(
+                    @src(),
+                    physical[0..num_bytes],
+                    .{ .ellipsize = false },
+                    .{
+                        .font = character_font,
+                        .gravity_x = 0.5,
+                        .gravity_y = 0.5,
+                    },
+                );
+
+                // Unicode code point ("U+0000")
+                dvui.label(
+                    @src(),
+                    "U+{X:0>4}",
+                    .{i},
+                    .{
+                        .font = dvui.Font.theme(.body).withSize(8),
+                        .gravity_x = 0.5,
+                        .gravity_y = 1.0,
+                        .padding = .all(0),
+                        .color_text = dvui.currentWindow().theme.text.opacity(0.4),
+                    },
+                );
+                btn.drawFocus();
+            }
+            if (clicked) {
+                dvui.clipboardTextSet(physical[0..num_bytes]);
+                dvui.toast(
+                    @src(),
+                    .{
+                        .timeout = 1_000_000,
+                        .message = "Copied!",
+                    },
+                );
             }
         }
     }

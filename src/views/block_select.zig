@@ -33,7 +33,7 @@ pub fn frame(app: *App) void {
             );
             dvui.label(
                 @src(),
-                "U+{X} - U+{X}",
+                "U+{X:0>4} - U+{X:0>4}",
                 .{ block.range.start, block.range.end },
                 .{
                     .color_text = .fromHex("#aaa"),

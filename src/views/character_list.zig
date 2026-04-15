@@ -47,21 +47,57 @@ pub fn frame(app: *App) void {
                 clicked = btn.clicked();
 
                 // tooltip showing HTML, decimal and hex values
-                // TODO: show a grid inside the tooltip (can't use `tooltip` shortcut)
-                dvui.tooltip(
-                    @src(),
-                    .{
-                        .active_rect = btn.wd.borderRectScale().r,
-                        .delay = 1_000_000,
-                        .interactive = true,
-                    },
-                    "HTML: {s}\nhex: {x}",
-                    .{
-                        unicode.getHtmlNameFromCodePoint(@intCast(code_point)),
-                        physical[0..num_bytes],
-                    },
-                    .{},
-                );
+                {
+                    var tooltip: dvui.FloatingTooltipWidget = undefined;
+                    defer tooltip.deinit();
+                    tooltip.init(
+                        @src(),
+                        .{
+                            .active_rect = btn.wd.borderRectScale().r,
+                            .delay = 1_000_000,
+                        },
+                        .{ .role = .tooltip },
+                    );
+                    if (tooltip.shown()) {
+                        var grid: dvui.GridWidget = undefined;
+                        defer grid.deinit();
+                        grid.init(@src(), .numCols(2), .{}, .{});
+
+                        var cell: *dvui.BoxWidget = undefined;
+                        cell = grid.bodyCell(@src(), .colRow(0, 0), .{});
+                        dvui.labelNoFmt(
+                            @src(),
+                            "HTML",
+                            .{ .ellipsize = false },
+                            .{ .color_text = dvui.themeGet().text.opacity(0.5) },
+                        );
+                        cell.deinit();
+                        cell = grid.bodyCell(@src(), .colRow(1, 0), .{});
+                        dvui.label(
+                            @src(),
+                            "{s}",
+                            .{unicode.getHtmlNameFromCodePoint(@intCast(code_point))},
+                            .{},
+                        );
+                        cell.deinit();
+                        cell = grid.bodyCell(@src(), .colRow(0, 1), .{});
+                        dvui.labelNoFmt(
+                            @src(),
+                            "Logical hex",
+                            .{ .ellipsize = false },
+                            .{ .color_text = dvui.themeGet().text.opacity(0.5) },
+                        );
+                        cell.deinit();
+                        cell = grid.bodyCell(@src(), .colRow(1, 1), .{});
+                        dvui.label(
+                            @src(),
+                            "0x{x}",
+                            .{physical[0..num_bytes]},
+                            .{},
+                        );
+                        cell.deinit();
+                    }
+                }
 
                 // main character
                 dvui.labelNoFmt(

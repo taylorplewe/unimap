@@ -25,8 +25,8 @@ pub fn frame(app: *App) void {
         defer flex.deinit();
 
         var physical: [unicode.PHYSICAL_CHAR_VALUE_ALLOC_SIZE]u8 = undefined;
-        for (app.state.CharacterList.selected_block.range.start..app.state.CharacterList.selected_block.range.end + 1) |i| {
-            const num_bytes = std.unicode.utf8Encode(@intCast(i), &physical) catch unreachable;
+        for (app.state.CharacterList.selected_block.range.start..app.state.CharacterList.selected_block.range.end + 1) |code_point| {
+            const num_bytes = std.unicode.utf8Encode(@intCast(code_point), &physical) catch unreachable;
 
             var clicked = false;
             {
@@ -36,7 +36,7 @@ pub fn frame(app: *App) void {
                     @src(),
                     .{ .draw_focus = false },
                     .{
-                        .id_extra = i,
+                        .id_extra = code_point,
                         .padding = .all(2),
                         .min_size_content = .{ .w = 64, .h = 64 },
                         .max_size_content = .{ .w = 64, .h = 64 },
@@ -45,6 +45,15 @@ pub fn frame(app: *App) void {
                 btn.processEvents();
                 btn.drawBackground();
                 clicked = btn.clicked();
+
+                // tooltip showing HTML, decimal and hex values
+                dvui.tooltip(
+                    @src(),
+                    .{ .active_rect = btn.wd.borderRectScale().r },
+                    "{s}",
+                    .{unicode.getHtmlNameFromCodePoint(@intCast(code_point))},
+                    .{},
+                );
 
                 // main character
                 dvui.labelNoFmt(
@@ -62,7 +71,7 @@ pub fn frame(app: *App) void {
                 dvui.label(
                     @src(),
                     "U+{X:0>4}",
-                    .{i},
+                    .{code_point},
                     .{
                         .font = dvui.Font.theme(.body).withSize(8),
                         .gravity_x = 0.5,

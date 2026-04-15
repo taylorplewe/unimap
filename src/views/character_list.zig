@@ -47,11 +47,19 @@ pub fn frame(app: *App) void {
                 clicked = btn.clicked();
 
                 // tooltip showing HTML, decimal and hex values
+                // TODO: show a grid inside the tooltip (can't use `tooltip` shortcut)
                 dvui.tooltip(
                     @src(),
-                    .{ .active_rect = btn.wd.borderRectScale().r },
-                    "{s}",
-                    .{unicode.getHtmlNameFromCodePoint(@intCast(code_point))},
+                    .{
+                        .active_rect = btn.wd.borderRectScale().r,
+                        .delay = 1_000_000,
+                        .interactive = true,
+                    },
+                    "HTML: {s}\nhex: {x}",
+                    .{
+                        unicode.getHtmlNameFromCodePoint(@intCast(code_point)),
+                        physical[0..num_bytes],
+                    },
                     .{},
                 );
 
@@ -67,7 +75,7 @@ pub fn frame(app: *App) void {
                     },
                 );
 
-                // Unicode code point ("U+0000")
+                // Unicode code point (e.g. "U+0000")
                 dvui.label(
                     @src(),
                     "U+{X:0>4}",

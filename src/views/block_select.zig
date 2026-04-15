@@ -46,7 +46,7 @@ pub fn frame(app: *App) void {
             block_btn.drawFocus();
         }
         if (clicked) {
-            app.state = .{
+            app.next_state = .{
                 .CharacterList = .{
                     .selected_block = block,
                     .selected_block_index = i,

@@ -7,19 +7,7 @@ const unicode = @import("../unicode/unicode.zig");
 var character_font: dvui.Font = undefined;
 
 pub fn frame(app: *App) void {
-    {
-        var upper_sticky = dvui.box(
-            @src(),
-            .{ .dir = .horizontal },
-            .{ .expand = .horizontal, .background = true },
-        );
-        defer upper_sticky.deinit();
-
-        if (dvui.button(@src(), "Back to blocks", .{}, .{})) {
-            app.state = .BlockSelect;
-            return;
-        }
-    }
+    drawUpperBar(app);
 
     var scroll = dvui.scrollArea(
         @src(),
@@ -31,8 +19,6 @@ pub fn frame(app: *App) void {
     character_font = dvui.Font.theme(.body)
         .withSize(18)
         .withFamily(App.supported_fonts[app.state.CharacterList.selected_block_index]);
-
-    dvui.labelNoFmt(@src(), app.state.CharacterList.selected_block.name, .{}, .{});
 
     {
         var flex = dvui.flexbox(@src(), .{}, .{ .expand = .horizontal });
@@ -60,6 +46,39 @@ pub fn frame(app: *App) void {
             }
         }
     }
+}
+
+/// Draw the upper bar with the back button and possibly other future controls
+/// Returns `true` if the back button was clicked
+fn drawUpperBar(app: *App) void {
+    var upper_sticky = dvui.box(
+        @src(),
+        .{ .dir = .horizontal },
+        .{ .expand = .horizontal, .background = true },
+    );
+    defer upper_sticky.deinit();
+
+    if (dvui.buttonLabelAndIcon(
+        @src(),
+        .{
+            .icon_first = true,
+            .label = "Back to blocks",
+            .tvg_bytes = dvui.entypo.arrow_bold_left,
+            .button_opts = .{},
+        },
+        .{
+            .min_size_content = .{ .w = 128 },
+        },
+    )) {
+        app.next_state = .BlockSelect;
+    }
+
+    dvui.labelNoFmt(
+        @src(),
+        app.state.CharacterList.selected_block.name,
+        .{},
+        .{ .gravity_x = 0.5, .gravity_y = 0.5 },
+    );
 }
 
 // /// Like `(std.Io.Reader).takeInt()` or `std.mem.readInt()`, but no reader needed. Generates less machine code.

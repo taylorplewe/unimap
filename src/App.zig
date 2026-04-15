@@ -12,6 +12,7 @@ pub var clipboard_buf: [8]u16 = undefined; // Windows expects UTF-16 Unicode dat
 const App = @This();
 
 state: State = .BlockSelect,
+next_state: State = .BlockSelect,
 
 const Mode = enum {
     BlockSelect,
@@ -32,4 +33,5 @@ const views: std.EnumMap(Mode, View) = .init(.{
 
 pub fn frame(self: *App) void {
     views.getAssertContains(self.state).frame(self);
+    self.state = self.next_state;
 }

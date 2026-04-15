@@ -1,7 +1,7 @@
 const std = @import("std");
 const toLower = std.ascii.toLower;
 
-/// Optimized substr search. Produces *far* less machine code than `std.mem.containsAtLeast()`.
+/// Optimized substr search. Produces far less machine code than `std.mem.containsAtLeast()`.
 /// Inspired by the optimized (-O3) machine code output from C++'s `std::basic_string_view<char>::contains()`
 pub fn isNeedleInHaystackCaseInsensitive(haystack: []const u8, needle: []const u8) bool {
     // remove some unnecessary checks from the machine code output

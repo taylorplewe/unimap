@@ -6,6 +6,7 @@
             .end = 0x00007F,
         },
         .name = "Basic Latin",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -13,6 +14,7 @@
             .end = 0x0000FF,
         },
         .name = "Latin-1 Supplement",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -20,6 +22,7 @@
             .end = 0x00017F,
         },
         .name = "Latin Extended-A",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -27,6 +30,7 @@
             .end = 0x00024F,
         },
         .name = "Latin Extended-B",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -34,6 +38,7 @@
             .end = 0x0002AF,
         },
         .name = "IPA Extensions",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -41,6 +46,7 @@
             .end = 0x0002FF,
         },
         .name = "Spacing Modifier Letters",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -48,6 +54,7 @@
             .end = 0x00036F,
         },
         .name = "Combining Diacritical Marks",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -55,6 +62,7 @@
             .end = 0x0003FF,
         },
         .name = "Greek and Coptic",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -62,6 +70,7 @@
             .end = 0x0004FF,
         },
         .name = "Cyrillic",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -69,6 +78,7 @@
             .end = 0x00052F,
         },
         .name = "Cyrillic Supplement",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -76,6 +86,7 @@
             .end = 0x00058F,
         },
         .name = "Armenian",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -83,6 +94,7 @@
             .end = 0x0005FF,
         },
         .name = "Hebrew",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -90,6 +102,7 @@
             .end = 0x0006FF,
         },
         .name = "Arabic",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -97,6 +110,7 @@
             .end = 0x00074F,
         },
         .name = "Syriac",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -104,6 +118,7 @@
             .end = 0x00077F,
         },
         .name = "Arabic Supplement",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -111,6 +126,7 @@
             .end = 0x0007BF,
         },
         .name = "Thaana",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -118,6 +134,7 @@
             .end = 0x0007FF,
         },
         .name = "NKo",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -125,6 +142,7 @@
             .end = 0x00083F,
         },
         .name = "Samaritan",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -132,6 +150,7 @@
             .end = 0x00085F,
         },
         .name = "Mandaic",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -139,6 +158,7 @@
             .end = 0x00086F,
         },
         .name = "Syriac Supplement",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -146,6 +166,7 @@
             .end = 0x00089F,
         },
         .name = "Arabic Extended-B",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -153,6 +174,7 @@
             .end = 0x0008FF,
         },
         .name = "Arabic Extended-A",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -160,6 +182,7 @@
             .end = 0x00097F,
         },
         .name = "Devanagari",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -167,6 +190,7 @@
             .end = 0x0009FF,
         },
         .name = "Bengali",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -174,6 +198,7 @@
             .end = 0x000A7F,
         },
         .name = "Gurmukhi",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -181,6 +206,7 @@
             .end = 0x000AFF,
         },
         .name = "Gujarati",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -188,6 +214,7 @@
             .end = 0x000B7F,
         },
         .name = "Oriya",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -195,6 +222,7 @@
             .end = 0x000BFF,
         },
         .name = "Tamil",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -202,6 +230,7 @@
             .end = 0x000C7F,
         },
         .name = "Telugu",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -209,6 +238,7 @@
             .end = 0x000CFF,
         },
         .name = "Kannada",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -216,6 +246,7 @@
             .end = 0x000D7F,
         },
         .name = "Malayalam",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -223,6 +254,7 @@
             .end = 0x000DFF,
         },
         .name = "Sinhala",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -230,6 +262,7 @@
             .end = 0x000E7F,
         },
         .name = "Thai",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -237,6 +270,7 @@
             .end = 0x000EFF,
         },
         .name = "Lao",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -244,6 +278,7 @@
             .end = 0x000FFF,
         },
         .name = "Tibetan",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -251,6 +286,7 @@
             .end = 0x00109F,
         },
         .name = "Myanmar",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -258,6 +294,7 @@
             .end = 0x0010FF,
         },
         .name = "Georgian",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -265,6 +302,7 @@
             .end = 0x0011FF,
         },
         .name = "Hangul Jamo",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -272,6 +310,7 @@
             .end = 0x00137F,
         },
         .name = "Ethiopic",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -279,6 +318,7 @@
             .end = 0x00139F,
         },
         .name = "Ethiopic Supplement",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -286,6 +326,7 @@
             .end = 0x0013FF,
         },
         .name = "Cherokee",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -293,6 +334,7 @@
             .end = 0x00167F,
         },
         .name = "Unified Canadian Aboriginal Syllabics",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -300,6 +342,7 @@
             .end = 0x00169F,
         },
         .name = "Ogham",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -307,6 +350,7 @@
             .end = 0x0016FF,
         },
         .name = "Runic",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -314,6 +358,7 @@
             .end = 0x00171F,
         },
         .name = "Tagalog",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -321,6 +366,7 @@
             .end = 0x00173F,
         },
         .name = "Hanunoo",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -328,6 +374,7 @@
             .end = 0x00175F,
         },
         .name = "Buhid",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -335,6 +382,7 @@
             .end = 0x00177F,
         },
         .name = "Tagbanwa",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -342,6 +390,7 @@
             .end = 0x0017FF,
         },
         .name = "Khmer",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -349,6 +398,7 @@
             .end = 0x0018AF,
         },
         .name = "Mongolian",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -356,6 +406,7 @@
             .end = 0x0018FF,
         },
         .name = "Unified Canadian Aboriginal Syllabics Extended",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -363,6 +414,7 @@
             .end = 0x00194F,
         },
         .name = "Limbu",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -370,6 +422,7 @@
             .end = 0x00197F,
         },
         .name = "Tai Le",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -377,6 +430,7 @@
             .end = 0x0019DF,
         },
         .name = "New Tai Lue",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -384,6 +438,7 @@
             .end = 0x0019FF,
         },
         .name = "Khmer Symbols",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -391,6 +446,7 @@
             .end = 0x001A1F,
         },
         .name = "Buginese",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -398,6 +454,7 @@
             .end = 0x001AAF,
         },
         .name = "Tai Tham",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -405,6 +462,7 @@
             .end = 0x001AFF,
         },
         .name = "Combining Diacritical Marks Extended",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -412,6 +470,7 @@
             .end = 0x001B7F,
         },
         .name = "Balinese",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -419,6 +478,7 @@
             .end = 0x001BBF,
         },
         .name = "Sundanese",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -426,6 +486,7 @@
             .end = 0x001BFF,
         },
         .name = "Batak",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -433,6 +494,7 @@
             .end = 0x001C4F,
         },
         .name = "Lepcha",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -440,6 +502,7 @@
             .end = 0x001C7F,
         },
         .name = "Ol Chiki",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -447,6 +510,7 @@
             .end = 0x001C8F,
         },
         .name = "Cyrillic Extended-C",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -454,6 +518,7 @@
             .end = 0x001CBF,
         },
         .name = "Georgian Extended",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -461,6 +526,7 @@
             .end = 0x001CCF,
         },
         .name = "Sundanese Supplement",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -468,6 +534,7 @@
             .end = 0x001CFF,
         },
         .name = "Vedic Extensions",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -475,6 +542,7 @@
             .end = 0x001D7F,
         },
         .name = "Phonetic Extensions",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -482,6 +550,7 @@
             .end = 0x001DBF,
         },
         .name = "Phonetic Extensions Supplement",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -489,6 +558,7 @@
             .end = 0x001DFF,
         },
         .name = "Combining Diacritical Marks Supplement",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -496,6 +566,7 @@
             .end = 0x001EFF,
         },
         .name = "Latin Extended Additional",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -503,6 +574,7 @@
             .end = 0x001FFF,
         },
         .name = "Greek Extended",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -510,6 +582,7 @@
             .end = 0x00206F,
         },
         .name = "General Punctuation",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -517,6 +590,7 @@
             .end = 0x00209F,
         },
         .name = "Superscripts and Subscripts",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -524,6 +598,7 @@
             .end = 0x0020CF,
         },
         .name = "Currency Symbols",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -531,6 +606,7 @@
             .end = 0x0020FF,
         },
         .name = "Combining Diacritical Marks for Symbols",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -538,6 +614,7 @@
             .end = 0x00214F,
         },
         .name = "Letterlike Symbols",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -545,6 +622,7 @@
             .end = 0x00218F,
         },
         .name = "Number Forms",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -552,6 +630,7 @@
             .end = 0x0021FF,
         },
         .name = "Arrows",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -559,6 +638,7 @@
             .end = 0x0022FF,
         },
         .name = "Mathematical Operators",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -566,6 +646,7 @@
             .end = 0x0023FF,
         },
         .name = "Miscellaneous Technical",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -573,6 +654,7 @@
             .end = 0x00243F,
         },
         .name = "Control Pictures",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -580,6 +662,7 @@
             .end = 0x00245F,
         },
         .name = "Optical Character Recognition",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -587,6 +670,7 @@
             .end = 0x0024FF,
         },
         .name = "Enclosed Alphanumerics",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -594,6 +678,7 @@
             .end = 0x00257F,
         },
         .name = "Box Drawing",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -601,6 +686,7 @@
             .end = 0x00259F,
         },
         .name = "Block Elements",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -608,6 +694,7 @@
             .end = 0x0025FF,
         },
         .name = "Geometric Shapes",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -615,6 +702,7 @@
             .end = 0x0026FF,
         },
         .name = "Miscellaneous Symbols",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -622,6 +710,7 @@
             .end = 0x0027BF,
         },
         .name = "Dingbats",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -629,6 +718,7 @@
             .end = 0x0027EF,
         },
         .name = "Miscellaneous Mathematical Symbols-A",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -636,6 +726,7 @@
             .end = 0x0027FF,
         },
         .name = "Supplemental Arrows-A",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -643,6 +734,7 @@
             .end = 0x0028FF,
         },
         .name = "Braille Patterns",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -650,6 +742,7 @@
             .end = 0x00297F,
         },
         .name = "Supplemental Arrows-B",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -657,6 +750,7 @@
             .end = 0x0029FF,
         },
         .name = "Miscellaneous Mathematical Symbols-B",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -664,6 +758,7 @@
             .end = 0x002AFF,
         },
         .name = "Supplemental Mathematical Operators",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -671,6 +766,7 @@
             .end = 0x002BFF,
         },
         .name = "Miscellaneous Symbols and Arrows",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -678,6 +774,7 @@
             .end = 0x002C5F,
         },
         .name = "Glagolitic",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -685,6 +782,7 @@
             .end = 0x002C7F,
         },
         .name = "Latin Extended-C",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -692,6 +790,7 @@
             .end = 0x002CFF,
         },
         .name = "Coptic",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -699,6 +798,7 @@
             .end = 0x002D2F,
         },
         .name = "Georgian Supplement",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -706,6 +806,7 @@
             .end = 0x002D7F,
         },
         .name = "Tifinagh",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -713,6 +814,7 @@
             .end = 0x002DDF,
         },
         .name = "Ethiopic Extended",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -720,6 +822,7 @@
             .end = 0x002DFF,
         },
         .name = "Cyrillic Extended-A",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -727,6 +830,7 @@
             .end = 0x002E7F,
         },
         .name = "Supplemental Punctuation",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -734,6 +838,7 @@
             .end = 0x002EFF,
         },
         .name = "CJK Radicals Supplement",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -741,6 +846,7 @@
             .end = 0x002FDF,
         },
         .name = "Kangxi Radicals",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -748,6 +854,7 @@
             .end = 0x002FFF,
         },
         .name = "Ideographic Description Characters",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -755,6 +862,7 @@
             .end = 0x00303F,
         },
         .name = "CJK Symbols and Punctuation",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -762,6 +870,7 @@
             .end = 0x00309F,
         },
         .name = "Hiragana",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -769,6 +878,7 @@
             .end = 0x0030FF,
         },
         .name = "Katakana",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -776,6 +886,7 @@
             .end = 0x00312F,
         },
         .name = "Bopomofo",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -783,6 +894,7 @@
             .end = 0x00318F,
         },
         .name = "Hangul Compatibility Jamo",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -790,6 +902,7 @@
             .end = 0x00319F,
         },
         .name = "Kanbun",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -797,6 +910,7 @@
             .end = 0x0031BF,
         },
         .name = "Bopomofo Extended",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -804,6 +918,7 @@
             .end = 0x0031EF,
         },
         .name = "CJK Strokes",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -811,6 +926,7 @@
             .end = 0x0031FF,
         },
         .name = "Katakana Phonetic Extensions",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -818,6 +934,7 @@
             .end = 0x0032FF,
         },
         .name = "Enclosed CJK Letters and Months",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -825,6 +942,7 @@
             .end = 0x0033FF,
         },
         .name = "CJK Compatibility",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -832,6 +950,7 @@
             .end = 0x004DBF,
         },
         .name = "CJK Unified Ideographs Extension A",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -839,6 +958,7 @@
             .end = 0x004DFF,
         },
         .name = "Yijing Hexagram Symbols",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -846,6 +966,7 @@
             .end = 0x009FFF,
         },
         .name = "CJK Unified Ideographs",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -853,6 +974,7 @@
             .end = 0x00A48F,
         },
         .name = "Yi Syllables",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -860,6 +982,7 @@
             .end = 0x00A4CF,
         },
         .name = "Yi Radicals",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -867,6 +990,7 @@
             .end = 0x00A4FF,
         },
         .name = "Lisu",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -874,6 +998,7 @@
             .end = 0x00A63F,
         },
         .name = "Vai",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -881,6 +1006,7 @@
             .end = 0x00A69F,
         },
         .name = "Cyrillic Extended-B",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -888,6 +1014,7 @@
             .end = 0x00A6FF,
         },
         .name = "Bamum",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -895,6 +1022,7 @@
             .end = 0x00A71F,
         },
         .name = "Modifier Tone Letters",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -902,6 +1030,7 @@
             .end = 0x00A7FF,
         },
         .name = "Latin Extended-D",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -909,6 +1038,7 @@
             .end = 0x00A82F,
         },
         .name = "Syloti Nagri",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -916,6 +1046,7 @@
             .end = 0x00A83F,
         },
         .name = "Common Indic Number Forms",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -923,6 +1054,7 @@
             .end = 0x00A87F,
         },
         .name = "Phags-pa",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -930,6 +1062,7 @@
             .end = 0x00A8DF,
         },
         .name = "Saurashtra",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -937,6 +1070,7 @@
             .end = 0x00A8FF,
         },
         .name = "Devanagari Extended",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -944,6 +1078,7 @@
             .end = 0x00A92F,
         },
         .name = "Kayah Li",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -951,6 +1086,7 @@
             .end = 0x00A95F,
         },
         .name = "Rejang",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -958,6 +1094,7 @@
             .end = 0x00A97F,
         },
         .name = "Hangul Jamo Extended-A",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -965,6 +1102,7 @@
             .end = 0x00A9DF,
         },
         .name = "Javanese",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -972,6 +1110,7 @@
             .end = 0x00A9FF,
         },
         .name = "Myanmar Extended-B",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -979,6 +1118,7 @@
             .end = 0x00AA5F,
         },
         .name = "Cham",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -986,6 +1126,7 @@
             .end = 0x00AA7F,
         },
         .name = "Myanmar Extended-A",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -993,6 +1134,7 @@
             .end = 0x00AADF,
         },
         .name = "Tai Viet",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1000,6 +1142,7 @@
             .end = 0x00AAFF,
         },
         .name = "Meetei Mayek Extensions",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1007,6 +1150,7 @@
             .end = 0x00AB2F,
         },
         .name = "Ethiopic Extended-A",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1014,6 +1158,7 @@
             .end = 0x00AB6F,
         },
         .name = "Latin Extended-E",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1021,6 +1166,7 @@
             .end = 0x00ABBF,
         },
         .name = "Cherokee Supplement",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1028,6 +1174,7 @@
             .end = 0x00ABFF,
         },
         .name = "Meetei Mayek",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1035,6 +1182,7 @@
             .end = 0x00D7AF,
         },
         .name = "Hangul Syllables",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1042,6 +1190,7 @@
             .end = 0x00D7FF,
         },
         .name = "Hangul Jamo Extended-B",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1049,6 +1198,7 @@
             .end = 0x00DB7F,
         },
         .name = "High Surrogates",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1056,6 +1206,7 @@
             .end = 0x00DBFF,
         },
         .name = "High Private Use Surrogates",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1063,6 +1214,7 @@
             .end = 0x00DFFF,
         },
         .name = "Low Surrogates",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1070,6 +1222,7 @@
             .end = 0x00F8FF,
         },
         .name = "Private Use Area",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1077,6 +1230,7 @@
             .end = 0x00FAFF,
         },
         .name = "CJK Compatibility Ideographs",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1084,6 +1238,7 @@
             .end = 0x00FB4F,
         },
         .name = "Alphabetic Presentation Forms",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1091,6 +1246,7 @@
             .end = 0x00FDFF,
         },
         .name = "Arabic Presentation Forms-A",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1098,6 +1254,7 @@
             .end = 0x00FE0F,
         },
         .name = "Variation Selectors",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1105,6 +1262,7 @@
             .end = 0x00FE1F,
         },
         .name = "Vertical Forms",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1112,6 +1270,7 @@
             .end = 0x00FE2F,
         },
         .name = "Combining Half Marks",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1119,6 +1278,7 @@
             .end = 0x00FE4F,
         },
         .name = "CJK Compatibility Forms",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1126,6 +1286,7 @@
             .end = 0x00FE6F,
         },
         .name = "Small Form Variants",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1133,6 +1294,7 @@
             .end = 0x00FEFF,
         },
         .name = "Arabic Presentation Forms-B",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1140,6 +1302,7 @@
             .end = 0x00FFEF,
         },
         .name = "Halfwidth and Fullwidth Forms",
+        .supported_font = "gnu unifont",
     },
     .{
         .range = .{
@@ -1147,6 +1310,7 @@
             .end = 0x00FFFF,
         },
         .name = "Specials",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1154,6 +1318,7 @@
             .end = 0x01007F,
         },
         .name = "Linear B Syllabary",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1161,6 +1326,7 @@
             .end = 0x0100FF,
         },
         .name = "Linear B Ideograms",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1168,6 +1334,7 @@
             .end = 0x01013F,
         },
         .name = "Aegean Numbers",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1175,6 +1342,7 @@
             .end = 0x01018F,
         },
         .name = "Ancient Greek Numbers",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1182,6 +1350,7 @@
             .end = 0x0101CF,
         },
         .name = "Ancient Symbols",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1189,6 +1358,7 @@
             .end = 0x0101FF,
         },
         .name = "Phaistos Disc",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1196,6 +1366,7 @@
             .end = 0x01029F,
         },
         .name = "Lycian",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1203,6 +1374,7 @@
             .end = 0x0102DF,
         },
         .name = "Carian",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1210,6 +1382,7 @@
             .end = 0x0102FF,
         },
         .name = "Coptic Epact Numbers",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1217,6 +1390,7 @@
             .end = 0x01032F,
         },
         .name = "Old Italic",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1224,6 +1398,7 @@
             .end = 0x01034F,
         },
         .name = "Gothic",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1231,6 +1406,7 @@
             .end = 0x01037F,
         },
         .name = "Old Permic",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1238,6 +1414,7 @@
             .end = 0x01039F,
         },
         .name = "Ugaritic",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1245,6 +1422,7 @@
             .end = 0x0103DF,
         },
         .name = "Old Persian",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1252,6 +1430,7 @@
             .end = 0x01044F,
         },
         .name = "Deseret",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -1259,6 +1438,7 @@
             .end = 0x01047F,
         },
         .name = "Shavian",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1266,6 +1446,7 @@
             .end = 0x0104AF,
         },
         .name = "Osmanya",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1273,6 +1454,7 @@
             .end = 0x0104FF,
         },
         .name = "Osage",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1280,6 +1462,7 @@
             .end = 0x01052F,
         },
         .name = "Elbasan",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1287,6 +1470,7 @@
             .end = 0x01056F,
         },
         .name = "Caucasian Albanian",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1294,6 +1478,7 @@
             .end = 0x0105BF,
         },
         .name = "Vithkuqi",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1301,6 +1486,7 @@
             .end = 0x0105FF,
         },
         .name = "Todhri",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1308,6 +1494,7 @@
             .end = 0x01077F,
         },
         .name = "Linear A",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1315,6 +1502,7 @@
             .end = 0x0107BF,
         },
         .name = "Latin Extended-F",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1322,6 +1510,7 @@
             .end = 0x01083F,
         },
         .name = "Cypriot Syllabary",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1329,6 +1518,7 @@
             .end = 0x01085F,
         },
         .name = "Imperial Aramaic",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1336,6 +1526,7 @@
             .end = 0x01087F,
         },
         .name = "Palmyrene",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1343,6 +1534,7 @@
             .end = 0x0108AF,
         },
         .name = "Nabataean",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1350,6 +1542,7 @@
             .end = 0x0108FF,
         },
         .name = "Hatran",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1357,6 +1550,7 @@
             .end = 0x01091F,
         },
         .name = "Phoenician",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1364,6 +1558,7 @@
             .end = 0x01093F,
         },
         .name = "Lydian",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1371,6 +1566,7 @@
             .end = 0x01095F,
         },
         .name = "Sidetic",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1378,6 +1574,7 @@
             .end = 0x01099F,
         },
         .name = "Meroitic Hieroglyphs",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1385,6 +1582,7 @@
             .end = 0x0109FF,
         },
         .name = "Meroitic Cursive",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1392,6 +1590,7 @@
             .end = 0x010A5F,
         },
         .name = "Kharoshthi",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1399,6 +1598,7 @@
             .end = 0x010A7F,
         },
         .name = "Old South Arabian",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1406,6 +1606,7 @@
             .end = 0x010A9F,
         },
         .name = "Old North Arabian",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1413,6 +1614,7 @@
             .end = 0x010AFF,
         },
         .name = "Manichaean",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1420,6 +1622,7 @@
             .end = 0x010B3F,
         },
         .name = "Avestan",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1427,6 +1630,7 @@
             .end = 0x010B5F,
         },
         .name = "Inscriptional Parthian",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1434,6 +1638,7 @@
             .end = 0x010B7F,
         },
         .name = "Inscriptional Pahlavi",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1441,6 +1646,7 @@
             .end = 0x010BAF,
         },
         .name = "Psalter Pahlavi",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1448,6 +1654,7 @@
             .end = 0x010C4F,
         },
         .name = "Old Turkic",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1455,6 +1662,7 @@
             .end = 0x010CFF,
         },
         .name = "Old Hungarian",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1462,6 +1670,7 @@
             .end = 0x010D3F,
         },
         .name = "Hanifi Rohingya",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1469,6 +1678,7 @@
             .end = 0x010D8F,
         },
         .name = "Garay",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1476,6 +1686,7 @@
             .end = 0x010E7F,
         },
         .name = "Rumi Numeral Symbols",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1483,6 +1694,7 @@
             .end = 0x010EBF,
         },
         .name = "Yezidi",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1490,6 +1702,7 @@
             .end = 0x010EFF,
         },
         .name = "Arabic Extended-C",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1497,6 +1710,7 @@
             .end = 0x010F2F,
         },
         .name = "Old Sogdian",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1504,6 +1718,7 @@
             .end = 0x010F6F,
         },
         .name = "Sogdian",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1511,6 +1726,7 @@
             .end = 0x010FAF,
         },
         .name = "Old Uyghur",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1518,6 +1734,7 @@
             .end = 0x010FDF,
         },
         .name = "Chorasmian",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1525,6 +1742,7 @@
             .end = 0x010FFF,
         },
         .name = "Elymaic",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1532,6 +1750,7 @@
             .end = 0x01107F,
         },
         .name = "Brahmi",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1539,6 +1758,7 @@
             .end = 0x0110CF,
         },
         .name = "Kaithi",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1546,6 +1766,7 @@
             .end = 0x0110FF,
         },
         .name = "Sora Sompeng",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1553,6 +1774,7 @@
             .end = 0x01114F,
         },
         .name = "Chakma",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1560,6 +1782,7 @@
             .end = 0x01117F,
         },
         .name = "Mahajani",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1567,6 +1790,7 @@
             .end = 0x0111DF,
         },
         .name = "Sharada",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1574,6 +1798,7 @@
             .end = 0x0111FF,
         },
         .name = "Sinhala Archaic Numbers",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1581,6 +1806,7 @@
             .end = 0x01124F,
         },
         .name = "Khojki",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1588,6 +1814,7 @@
             .end = 0x0112AF,
         },
         .name = "Multani",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1595,6 +1822,7 @@
             .end = 0x0112FF,
         },
         .name = "Khudawadi",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1602,6 +1830,7 @@
             .end = 0x01137F,
         },
         .name = "Grantha",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1609,6 +1838,7 @@
             .end = 0x0113FF,
         },
         .name = "Tulu-Tigalari",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1616,6 +1846,7 @@
             .end = 0x01147F,
         },
         .name = "Newa",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1623,6 +1854,7 @@
             .end = 0x0114DF,
         },
         .name = "Tirhuta",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1630,6 +1862,7 @@
             .end = 0x0115FF,
         },
         .name = "Siddham",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1637,6 +1870,7 @@
             .end = 0x01165F,
         },
         .name = "Modi",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1644,6 +1878,7 @@
             .end = 0x01167F,
         },
         .name = "Mongolian Supplement",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1651,6 +1886,7 @@
             .end = 0x0116CF,
         },
         .name = "Takri",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1658,6 +1894,7 @@
             .end = 0x0116FF,
         },
         .name = "Myanmar Extended-C",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1665,6 +1902,7 @@
             .end = 0x01174F,
         },
         .name = "Ahom",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1672,6 +1910,7 @@
             .end = 0x01184F,
         },
         .name = "Dogra",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1679,6 +1918,7 @@
             .end = 0x0118FF,
         },
         .name = "Warang Citi",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1686,6 +1926,7 @@
             .end = 0x01195F,
         },
         .name = "Dives Akuru",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1693,6 +1934,7 @@
             .end = 0x0119FF,
         },
         .name = "Nandinagari",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1700,6 +1942,7 @@
             .end = 0x011A4F,
         },
         .name = "Zanabazar Square",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1707,6 +1950,7 @@
             .end = 0x011AAF,
         },
         .name = "Soyombo",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1714,6 +1958,7 @@
             .end = 0x011ABF,
         },
         .name = "Unified Canadian Aboriginal Syllabics Extended-A",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1721,6 +1966,7 @@
             .end = 0x011AFF,
         },
         .name = "Pau Cin Hau",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1728,6 +1974,7 @@
             .end = 0x011B5F,
         },
         .name = "Devanagari Extended-A",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1735,6 +1982,7 @@
             .end = 0x011B7F,
         },
         .name = "Sharada Supplement",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1742,6 +1990,7 @@
             .end = 0x011BFF,
         },
         .name = "Sunuwar",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1749,6 +1998,7 @@
             .end = 0x011C6F,
         },
         .name = "Bhaiksuki",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1756,6 +2006,7 @@
             .end = 0x011CBF,
         },
         .name = "Marchen",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1763,6 +2014,7 @@
             .end = 0x011D5F,
         },
         .name = "Masaram Gondi",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1770,6 +2022,7 @@
             .end = 0x011DAF,
         },
         .name = "Gunjala Gondi",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1777,6 +2030,7 @@
             .end = 0x011DEF,
         },
         .name = "Tolong Siki",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1784,6 +2038,7 @@
             .end = 0x011EFF,
         },
         .name = "Makasar",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1791,6 +2046,7 @@
             .end = 0x011F5F,
         },
         .name = "Kawi",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1798,6 +2054,7 @@
             .end = 0x011FBF,
         },
         .name = "Lisu Supplement",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1805,6 +2062,7 @@
             .end = 0x011FFF,
         },
         .name = "Tamil Supplement",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1812,6 +2070,7 @@
             .end = 0x0123FF,
         },
         .name = "Cuneiform",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1819,6 +2078,7 @@
             .end = 0x01247F,
         },
         .name = "Cuneiform Numbers and Punctuation",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1826,6 +2086,7 @@
             .end = 0x01254F,
         },
         .name = "Early Dynastic Cuneiform",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1833,6 +2094,7 @@
             .end = 0x012FFF,
         },
         .name = "Cypro-Minoan",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1840,6 +2102,7 @@
             .end = 0x01342F,
         },
         .name = "Egyptian Hieroglyphs",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1847,6 +2110,7 @@
             .end = 0x01345F,
         },
         .name = "Egyptian Hieroglyph Format Controls",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1854,6 +2118,7 @@
             .end = 0x0143FF,
         },
         .name = "Egyptian Hieroglyphs Extended-A",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1861,6 +2126,7 @@
             .end = 0x01467F,
         },
         .name = "Anatolian Hieroglyphs",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1868,6 +2134,7 @@
             .end = 0x01613F,
         },
         .name = "Gurung Khema",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1875,6 +2142,7 @@
             .end = 0x016A3F,
         },
         .name = "Bamum Supplement",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1882,6 +2150,7 @@
             .end = 0x016A6F,
         },
         .name = "Mro",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1889,6 +2158,7 @@
             .end = 0x016ACF,
         },
         .name = "Tangsa",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1896,6 +2166,7 @@
             .end = 0x016AFF,
         },
         .name = "Bassa Vah",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1903,6 +2174,7 @@
             .end = 0x016B8F,
         },
         .name = "Pahawh Hmong",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1910,6 +2182,7 @@
             .end = 0x016D7F,
         },
         .name = "Kirat Rai",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1917,6 +2190,7 @@
             .end = 0x016E9F,
         },
         .name = "Medefaidrin",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1924,6 +2198,7 @@
             .end = 0x016EDF,
         },
         .name = "Beria Erfe",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1931,6 +2206,7 @@
             .end = 0x016F9F,
         },
         .name = "Miao",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1938,6 +2214,7 @@
             .end = 0x016FFF,
         },
         .name = "Ideographic Symbols and Punctuation",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1945,6 +2222,7 @@
             .end = 0x0187FF,
         },
         .name = "Tangut",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1952,6 +2230,7 @@
             .end = 0x018AFF,
         },
         .name = "Tangut Components",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1959,6 +2238,7 @@
             .end = 0x018CFF,
         },
         .name = "Khitan Small Script",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1966,6 +2246,7 @@
             .end = 0x018D7F,
         },
         .name = "Tangut Supplement",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1973,6 +2254,7 @@
             .end = 0x018DFF,
         },
         .name = "Tangut Components Supplement",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1980,6 +2262,7 @@
             .end = 0x01AFFF,
         },
         .name = "Kana Extended-B",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1987,6 +2270,7 @@
             .end = 0x01B0FF,
         },
         .name = "Kana Supplement",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -1994,6 +2278,7 @@
             .end = 0x01B12F,
         },
         .name = "Kana Extended-A",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2001,6 +2286,7 @@
             .end = 0x01B16F,
         },
         .name = "Small Kana Extension",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2008,6 +2294,7 @@
             .end = 0x01B2FF,
         },
         .name = "Nushu",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2015,6 +2302,7 @@
             .end = 0x01BC9F,
         },
         .name = "Duployan",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2022,6 +2310,7 @@
             .end = 0x01BCAF,
         },
         .name = "Shorthand Format Controls",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2029,6 +2318,7 @@
             .end = 0x01CEBF,
         },
         .name = "Symbols for Legacy Computing Supplement",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2036,6 +2326,7 @@
             .end = 0x01CEFF,
         },
         .name = "Miscellaneous Symbols Supplement",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2043,6 +2334,7 @@
             .end = 0x01CFCF,
         },
         .name = "Znamenny Musical Notation",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2050,6 +2342,7 @@
             .end = 0x01D0FF,
         },
         .name = "Byzantine Musical Symbols",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2057,6 +2350,7 @@
             .end = 0x01D1FF,
         },
         .name = "Musical Symbols",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2064,6 +2358,7 @@
             .end = 0x01D24F,
         },
         .name = "Ancient Greek Musical Notation",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2071,6 +2366,7 @@
             .end = 0x01D2DF,
         },
         .name = "Kaktovik Numerals",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2078,6 +2374,7 @@
             .end = 0x01D2FF,
         },
         .name = "Mayan Numerals",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2085,6 +2382,7 @@
             .end = 0x01D35F,
         },
         .name = "Tai Xuan Jing Symbols",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2092,6 +2390,7 @@
             .end = 0x01D37F,
         },
         .name = "Counting Rod Numerals",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2099,6 +2398,7 @@
             .end = 0x01D7FF,
         },
         .name = "Mathematical Alphanumeric Symbols",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2106,6 +2406,7 @@
             .end = 0x01DAAF,
         },
         .name = "Sutton SignWriting",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2113,6 +2414,7 @@
             .end = 0x01DFFF,
         },
         .name = "Latin Extended-G",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2120,6 +2422,7 @@
             .end = 0x01E02F,
         },
         .name = "Glagolitic Supplement",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2127,6 +2430,7 @@
             .end = 0x01E08F,
         },
         .name = "Cyrillic Extended-D",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2134,6 +2438,7 @@
             .end = 0x01E14F,
         },
         .name = "Nyiakeng Puachue Hmong",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2141,6 +2446,7 @@
             .end = 0x01E2BF,
         },
         .name = "Toto",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2148,6 +2454,7 @@
             .end = 0x01E2FF,
         },
         .name = "Wancho",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2155,6 +2462,7 @@
             .end = 0x01E4FF,
         },
         .name = "Nag Mundari",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2162,6 +2470,7 @@
             .end = 0x01E5FF,
         },
         .name = "Ol Onal",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2169,6 +2478,7 @@
             .end = 0x01E6FF,
         },
         .name = "Tai Yo",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2176,6 +2486,7 @@
             .end = 0x01E7FF,
         },
         .name = "Ethiopic Extended-B",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2183,6 +2494,7 @@
             .end = 0x01E8DF,
         },
         .name = "Mende Kikakui",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2190,6 +2502,7 @@
             .end = 0x01E95F,
         },
         .name = "Adlam",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2197,6 +2510,7 @@
             .end = 0x01ECBF,
         },
         .name = "Indic Siyaq Numbers",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2204,6 +2518,7 @@
             .end = 0x01ED4F,
         },
         .name = "Ottoman Siyaq Numbers",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2211,6 +2526,7 @@
             .end = 0x01EEFF,
         },
         .name = "Arabic Mathematical Alphabetic Symbols",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2218,6 +2534,7 @@
             .end = 0x01F02F,
         },
         .name = "Mahjong Tiles",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2225,6 +2542,7 @@
             .end = 0x01F09F,
         },
         .name = "Domino Tiles",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2232,6 +2550,7 @@
             .end = 0x01F0FF,
         },
         .name = "Playing Cards",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2239,6 +2558,7 @@
             .end = 0x01F1FF,
         },
         .name = "Enclosed Alphanumeric Supplement",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2246,6 +2566,7 @@
             .end = 0x01F2FF,
         },
         .name = "Enclosed Ideographic Supplement",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2253,6 +2574,7 @@
             .end = 0x01F5FF,
         },
         .name = "Miscellaneous Symbols and Pictographs",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2260,6 +2582,7 @@
             .end = 0x01F64F,
         },
         .name = "Emoticons",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2267,6 +2590,7 @@
             .end = 0x01F67F,
         },
         .name = "Ornamental Dingbats",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2274,6 +2598,7 @@
             .end = 0x01F6FF,
         },
         .name = "Transport and Map Symbols",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2281,6 +2606,7 @@
             .end = 0x01F77F,
         },
         .name = "Alchemical Symbols",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2288,6 +2614,7 @@
             .end = 0x01F7FF,
         },
         .name = "Geometric Shapes Extended",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2295,6 +2622,7 @@
             .end = 0x01F8FF,
         },
         .name = "Supplemental Arrows-C",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2302,6 +2630,7 @@
             .end = 0x01F9FF,
         },
         .name = "Supplemental Symbols and Pictographs",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2309,6 +2638,7 @@
             .end = 0x01FA6F,
         },
         .name = "Chess Symbols",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2316,6 +2646,7 @@
             .end = 0x01FAFF,
         },
         .name = "Symbols and Pictographs Extended-A",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -2323,6 +2654,7 @@
             .end = 0x01FBFF,
         },
         .name = "Symbols for Legacy Computing",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2330,6 +2662,7 @@
             .end = 0x02A6DF,
         },
         .name = "CJK Unified Ideographs Extension B",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2337,6 +2670,7 @@
             .end = 0x02B73F,
         },
         .name = "CJK Unified Ideographs Extension C",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2344,6 +2678,7 @@
             .end = 0x02B81F,
         },
         .name = "CJK Unified Ideographs Extension D",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2351,6 +2686,7 @@
             .end = 0x02CEAF,
         },
         .name = "CJK Unified Ideographs Extension E",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2358,6 +2694,7 @@
             .end = 0x02EBEF,
         },
         .name = "CJK Unified Ideographs Extension F",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2365,6 +2702,7 @@
             .end = 0x02EE5F,
         },
         .name = "CJK Unified Ideographs Extension I",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2372,6 +2710,7 @@
             .end = 0x02FA1F,
         },
         .name = "CJK Compatibility Ideographs Supplement",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2379,6 +2718,7 @@
             .end = 0x03134F,
         },
         .name = "CJK Unified Ideographs Extension G",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2386,6 +2726,7 @@
             .end = 0x0323AF,
         },
         .name = "CJK Unified Ideographs Extension H",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2393,6 +2734,7 @@
             .end = 0x03347F,
         },
         .name = "CJK Unified Ideographs Extension J",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2400,6 +2742,7 @@
             .end = 0x0E007F,
         },
         .name = "Tags",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2407,6 +2750,7 @@
             .end = 0x0E01EF,
         },
         .name = "Variation Selectors Supplement",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2414,6 +2758,7 @@
             .end = 0x0FFFFF,
         },
         .name = "Supplementary Private Use Area-A",
+        .supported_font = "",
     },
     .{
         .range = .{
@@ -2421,5 +2766,6 @@
             .end = 0x10FFFF,
         },
         .name = "Supplementary Private Use Area-B",
+        .supported_font = "",
     },
 }

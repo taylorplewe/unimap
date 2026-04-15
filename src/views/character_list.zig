@@ -20,13 +20,13 @@ pub fn frame(app: *App) void {
 
     character_font = dvui.Font.theme(.body)
         .withSize(18)
-        .withFamily(App.supported_fonts[app.state.CharacterList.selected_block_index]);
+        .withFamily(app.state.CharacterList.supported_font);
 
     {
         var flex = dvui.flexbox(@src(), .{}, .{ .expand = .horizontal });
         defer flex.deinit();
 
-        for (app.state.CharacterList.selected_block.range.start..app.state.CharacterList.selected_block.range.end + 1) |code_point| {
+        for (app.state.CharacterList.range.start..app.state.CharacterList.range.end + 1) |code_point| {
             drawCharacterButton(@intCast(code_point));
         }
     }
@@ -59,7 +59,7 @@ fn drawUpperBar(app: *App) void {
 
     dvui.labelNoFmt(
         @src(),
-        app.state.CharacterList.selected_block.name,
+        app.state.CharacterList.name,
         .{},
         .{ .gravity_x = 0.5, .gravity_y = 0.5 },
     );

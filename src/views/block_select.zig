@@ -49,17 +49,17 @@ pub fn frame(app: *App) void {
     defer scroll.deinit();
 
     if (filtered_blocks_len) |len| {
-        for (filtered_blocks[0..len], 0..) |block, i| {
-            drawBlock(app, block, i);
+        for (filtered_blocks[0..len]) |block| {
+            drawBlock(app, block);
         }
     } else {
-        for (App.blocks, 0..) |*block, i| {
-            drawBlock(app, block, i);
+        for (App.blocks) |*block| {
+            drawBlock(app, block);
         }
     }
 }
 
-fn drawBlock(app: *App, block: *const unicode.Block, i: usize) void {
+fn drawBlock(app: *App, block: *const unicode.Block) void {
     var clicked = false;
     {
         var block_btn: dvui.ButtonWidget = undefined;
@@ -95,10 +95,7 @@ fn drawBlock(app: *App, block: *const unicode.Block, i: usize) void {
     }
     if (clicked) {
         app.next_state = .{
-            .CharacterList = .{
-                .selected_block = block,
-                .selected_block_index = i,
-            },
+            .CharacterList = block,
         };
     }
 }

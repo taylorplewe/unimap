@@ -21,4 +21,5 @@ pub const CodePointRange = struct {
 pub const Block = struct {
     range: CodePointRange,
     name: []const u8,
+    supported_font: []const u8,
 };

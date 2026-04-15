@@ -4,9 +4,10 @@ const dvui = @import("dvui");
 const App = @import("../App.zig");
 const unicode = @import("../unicode/unicode.zig");
 var filtered_blocks: [400]*const unicode.Block = undefined;
-var filtered_blocks_len: usize = 0;
+var filtered_blocks_len: ?usize = null;
 
 pub fn frame(app: *App) void {
+    // upper bar with filter thing
     {
         var upper_sticky = dvui.box(
             @src(),
@@ -15,18 +16,23 @@ pub fn frame(app: *App) void {
         );
         defer upper_sticky.deinit();
 
-        var search_entry = dvui.textEntry(@src(), .{ .placeholder = "Search for a Unicode block name..." }, .{});
+        var search_entry = dvui.textEntry(
+            @src(),
+            .{ .placeholder = "Filter blocks..." },
+            .{ .gravity_x = 1.0 },
+        );
         defer search_entry.deinit();
 
         if (search_entry.text_changed) {
-            filtered_blocks_len = 0;
             const search_query = search_entry.textGet();
-            if (search_query.len > 0) {
+            if (search_query.len == 0) {
+                filtered_blocks_len = null;
+            } else {
                 filtered_blocks_len = 0;
                 for (App.blocks) |*block| {
                     if (std.mem.containsAtLeast(u8, block.name, 1, search_query)) {
-                        filtered_blocks[filtered_blocks_len] = block;
-                        filtered_blocks_len += 1;
+                        filtered_blocks[filtered_blocks_len.?] = block;
+                        filtered_blocks_len.? += 1;
                     }
                 }
             }
@@ -40,8 +46,8 @@ pub fn frame(app: *App) void {
     );
     defer scroll.deinit();
 
-    if (filtered_blocks_len > 0) {
-        for (filtered_blocks[0..filtered_blocks_len], 0..) |block, i| {
+    if (filtered_blocks_len) |len| {
+        for (filtered_blocks[0..len], 0..) |block, i| {
             drawBlock(app, block, i);
         }
     } else {

@@ -22,8 +22,17 @@ pub fn main() !void {
     var file_name_buf: [256]u8 = undefined;
     var writer_buf: [2048]u8 = undefined;
     var header_writer_buf: [4]u8 = undefined;
+    var done_writing_chars = false;
     blocks_loop: for (blocks) |block| {
         std.debug.print("doing block {s}...", .{block.name});
+        const file_path = try std.fmt.bufPrint(&file_name_buf, "out/{s}.bin", .{block.name});
+        std.mem.replaceScalar(u8, file_path, ' ', '_');
+        var out_file = try std.fs.cwd().createFile(file_path, .{ .truncate = true });
+        defer out_file.close();
+        if (done_writing_chars) {
+            std.debug.print("\x1b[33mskipped\x1b[0m\n", .{});
+            continue :blocks_loop;
+        }
 
         // first loop: see how many names are actually in this block
         var header_size: usize = 0; // number of names in this block, plus non-named code points at beginning (zeroes)
@@ -57,9 +66,6 @@ pub fn main() !void {
         }
 
         // there are names in this block; create file and get parallel writers ready
-        const file_path = try std.fmt.bufPrint(&file_name_buf, "out/{s}.bin", .{block.name});
-        std.mem.replaceScalar(u8, file_path, ' ', '_');
-        var out_file = try std.fs.cwd().createFile(file_path, .{ .truncate = true });
         var out_file_writer = out_file.writer(&writer_buf);
         var out_writer = &out_file_writer.interface;
         var header_file_writer = out_file.writer(&header_writer_buf);
@@ -78,7 +84,6 @@ pub fn main() !void {
             if (code_point > block.range.end) {
                 try header_writer.flush();
                 try out_file_writer.end();
-                out_file.close();
                 std.debug.print("\x1b[32mdone\x1b[0m\n", .{});
                 continue :blocks_loop;
             }
@@ -99,10 +104,9 @@ pub fn main() !void {
         // no more lines in names.txt, done
         try header_writer.flush();
         try out_file_writer.end();
-        out_file.close();
-        break :blocks_loop;
+        std.debug.print("\x1b[32mdone with all\x1b[0m\n", .{});
+        done_writing_chars = true;
     }
-    std.debug.print("\x1b[32mdone with all\x1b[0m\n", .{});
 }
 
 /// Like `(std.Io.Reader).takeInt()` or `std.mem.readInt()`, but no reader needed. Generates less machine code.

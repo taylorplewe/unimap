@@ -5,7 +5,7 @@ const App = @import("../App.zig");
 const unicode = @import("../unicode/unicode.zig");
 
 var character_font: dvui.Font = undefined;
-/// the actual logical bytes that are used to draw the current glyph
+/// the actual logical UTF-8 bytes that are used to draw the current glyph
 var logical: [unicode.PHYSICAL_CHAR_VALUE_ALLOC_SIZE]u8 = undefined;
 
 pub fn frame(app: *App) void {
@@ -27,7 +27,7 @@ pub fn frame(app: *App) void {
         defer flex.deinit();
 
         for (app.state.CharacterList.range.start..app.state.CharacterList.range.end + 1) |code_point| {
-            drawCharacterButton(@intCast(code_point));
+            drawCharacterButton(@intCast(code_point), app);
         }
     }
 }
@@ -65,7 +65,7 @@ fn drawUpperBar(app: *App) void {
     );
 }
 
-inline fn drawCharacterButton(code_point: unicode.CodePoint) void {
+inline fn drawCharacterButton(code_point: unicode.CodePoint, app: *App) void {
     const num_bytes = std.unicode.utf8Encode(code_point, &logical) catch unreachable;
 
     var clicked = false;
@@ -86,7 +86,7 @@ inline fn drawCharacterButton(code_point: unicode.CodePoint) void {
         btn.drawBackground();
         clicked = btn.clicked();
 
-        drawCharacterTooltip(code_point, logical[0..num_bytes], &btn);
+        drawCharacterTooltip(code_point, app, logical[0..num_bytes], &btn);
 
         // main character
         dvui.labelNoFmt(
@@ -130,6 +130,7 @@ inline fn drawCharacterButton(code_point: unicode.CodePoint) void {
 /// draw the tooltip showing HTML, decimal and hex values for a given character button
 inline fn drawCharacterTooltip(
     code_point: unicode.CodePoint,
+    app: *App,
     logical_value: []u8,
     btn: *dvui.ButtonWidget,
 ) void {
@@ -144,6 +145,13 @@ inline fn drawCharacterTooltip(
         .{ .role = .tooltip },
     );
     if (tooltip.shown()) {
+        const char_name = unicode.getCharName(code_point, app.state.CharacterList);
+        if (char_name != null) {
+            dvui.label(@src(), "{s}", .{char_name.?}, .{});
+        } else {
+            dvui.labelNoFmt(@src(), "<unnamed>", .{}, .{});
+        }
+
         var grid: dvui.GridWidget = undefined;
         defer grid.deinit();
         grid.init(@src(), .numCols(2), .{}, .{});
@@ -168,7 +176,7 @@ inline fn drawCharacterTooltip(
         cell = grid.bodyCell(@src(), .colRow(0, 1), .{});
         dvui.labelNoFmt(
             @src(),
-            "Logical hex",
+            "UTF-8 hex",
             .{ .ellipsize = false },
             .{ .color_text = dvui.themeGet().text.opacity(0.5) },
         );

@@ -28,3 +28,9 @@ fn doSlicesMatchN(haystack: []const u8, needle: []const u8) bool {
     }
     return true;
 }
+
+/// Like `(std.Io.Reader).takeInt()` or `std.mem.readInt()`, but no reader needed. Generates less machine code.
+/// Unsafe? Very
+pub inline fn getIntFromDataAtOffs(comptime T: type, data: []const u8, offs: usize) T {
+    return @as(*T, @ptrCast(@alignCast(@constCast(data[offs..])))).*;
+}

@@ -30,7 +30,7 @@ pub fn frame(app: *App) void {
                 filtered_blocks_len = null;
             } else {
                 filtered_blocks_len = 0;
-                for (App.blocks) |*block| {
+                for (unicode.blocks) |*block| {
                     // if (std.mem.containsAtLeast(u8, block.name, 1, search_query)) {
                     if (utils.isNeedleInHaystackCaseInsensitive(block.name, search_query)) {
                         filtered_blocks[filtered_blocks_len.?] = block;
@@ -53,7 +53,7 @@ pub fn frame(app: *App) void {
             drawBlock(app, block);
         }
     } else {
-        for (App.blocks) |*block| {
+        for (unicode.blocks) |*block| {
             drawBlock(app, block);
         }
     }

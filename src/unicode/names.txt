@@ -39699,8 +39699,6 @@ FFFF	<not a character>
 1FBF8	SEGMENTED DIGIT EIGHT
 1FBF9	SEGMENTED DIGIT NINE
 1FBFA	ALARM BELL SYMBOL
-1FFFE	<not a character>
-1FFFF	<not a character>
 2F800	CJK COMPATIBILITY IDEOGRAPH-2F800
 2F801	CJK COMPATIBILITY IDEOGRAPH-2F801
 2F802	CJK COMPATIBILITY IDEOGRAPH-2F802
@@ -40243,30 +40241,6 @@ FFFF	<not a character>
 2FA1B	CJK COMPATIBILITY IDEOGRAPH-2FA1B
 2FA1C	CJK COMPATIBILITY IDEOGRAPH-2FA1C
 2FA1D	CJK COMPATIBILITY IDEOGRAPH-2FA1D
-2FFFE	<not a character>
-2FFFF	<not a character>
-3FFFE	<not a character>
-3FFFF	<not a character>
-4FFFE	<not a character>
-4FFFF	<not a character>
-5FFFE	<not a character>
-5FFFF	<not a character>
-6FFFE	<not a character>
-6FFFF	<not a character>
-7FFFE	<not a character>
-7FFFF	<not a character>
-8FFFE	<not a character>
-8FFFF	<not a character>
-9FFFE	<not a character>
-9FFFF	<not a character>
-AFFFE	<not a character>
-AFFFF	<not a character>
-BFFFE	<not a character>
-BFFFF	<not a character>
-CFFFE	<not a character>
-CFFFF	<not a character>
-DFFFE	<not a character>
-DFFFF	<not a character>
 E0001	LANGUAGE TAG
 E0020	TAG SPACE
 E0021	TAG EXCLAMATION MARK
@@ -40604,9 +40578,3 @@ E01EC	VARIATION SELECTOR-253
 E01ED	VARIATION SELECTOR-254
 E01EE	VARIATION SELECTOR-255
 E01EF	VARIATION SELECTOR-256
-EFFFE	<not a character>
-EFFFF	<not a character>
-FFFFE	<not a character>
-FFFFF	<not a character>
-10FFFE	<not a character>
-10FFFF	<not a character>

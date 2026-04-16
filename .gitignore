@@ -3,3 +3,4 @@ zig-out/
 *.o
 
 src/assets
+gen-names-bins/out

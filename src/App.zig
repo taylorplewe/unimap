@@ -4,8 +4,7 @@ const View = @import("views/View.zig");
 const character_list = @import("views/character_list.zig");
 const block_select = @import("views/block_select.zig");
 const unicode = @import("unicode/unicode.zig");
-
-pub const blocks: []const unicode.Block = @import("unicode/blocks.zon");
+const utils = @import("utils.zig");
 
 const App = @This();
 

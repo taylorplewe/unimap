@@ -39,6 +39,18 @@ pub fn frame(app: *App) void {
                 }
             }
         }
+
+        // forward slash shortcut
+        for (dvui.events()) |e| {
+            switch (e.evt) {
+                .key => {
+                    if (e.evt.key.mod == .none and e.evt.key.code == .slash) {
+                        dvui.currentWindow().focusWidget(search_entry.wd.id, null, null);
+                    }
+                },
+                else => break,
+            }
+        }
     }
 
     var scroll = dvui.scrollArea(

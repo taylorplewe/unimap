@@ -6,7 +6,6 @@ const block_select = @import("views/block_select.zig");
 const unicode = @import("unicode/unicode.zig");
 
 pub const blocks: []const unicode.Block = @import("unicode/blocks.zon");
-pub var clipboard_buf: [8]u16 = undefined; // Windows expects UTF-16 Unicode data
 
 const App = @This();
 

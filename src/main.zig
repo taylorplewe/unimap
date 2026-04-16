@@ -40,7 +40,6 @@ fn frame() !dvui.App.Result {
         var scaler = dvui.scale(
             @src(),
             .{
-                .scale = &dvui.currentWindow().content_scale,
                 .pinch_zoom = .global,
             },
             .{ .rect = .cast(dvui.windowRect()) },

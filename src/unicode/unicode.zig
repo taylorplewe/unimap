@@ -27,7 +27,11 @@ pub inline fn getHtmlNameFromCodePoint(code_point: CodePoint) []const u8 {
 /// Get the Unicode name for a character
 pub fn getCharName(code_point: CodePoint, current_block: *const Block) ?[]const u8 {
     if (char_names.get(current_block.name)) |bytes| {
-        const code_point_header_addr = (code_point - current_block.range.start) * @sizeOf(u32);
+        const num_header_entries = std.mem.readInt(u16, @ptrCast(bytes[0..]), .little);
+        if (code_point - current_block.range.start >= num_header_entries) return null;
+
+        const code_point_header_addr = ((code_point - current_block.range.start) * @sizeOf(u32)) + @sizeOf(u16);
+        if (code_point_header_addr > bytes.len) return null;
         const char_name_addr = std.mem.readInt(u32, @ptrCast(bytes[code_point_header_addr..]), .little);
         if (char_name_addr == 0) return null;
         const char_name_len = bytes[char_name_addr];

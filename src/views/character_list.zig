@@ -149,7 +149,12 @@ inline fn drawCharacterTooltip(
         if (char_name != null) {
             dvui.label(@src(), "{s}", .{char_name.?}, .{});
         } else {
-            dvui.labelNoFmt(@src(), "<unnamed>", .{}, .{});
+            dvui.labelNoFmt(
+                @src(),
+                "<unnamed>",
+                .{},
+                .{ .color_text = dvui.themeGet().text.opacity(0.4) },
+            );
         }
 
         var grid: dvui.GridWidget = undefined;

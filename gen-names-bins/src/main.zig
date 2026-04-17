@@ -96,7 +96,9 @@ pub fn main() !void {
 
             const char_name = line_parts_it.next().?;
             try out_writer.writeInt(u8, @intCast(char_name.len), .little);
+            try out_writer.flush(); // random erroneous bytes would get written if I didn't flush here and 2 lines down
             _ = try out_writer.write(char_name);
+            try out_writer.flush();
             try header_writer.writeInt(u32, name_pos, .little);
             name_pos += @intCast(char_name.len + 1);
 
@@ -113,6 +115,7 @@ pub fn main() !void {
 
 /// Like `(std.Io.Reader).takeInt()` or `std.mem.readInt()`, but no reader needed. Generates less machine code.
 /// Unsafe? Very
+/// TODO: figure out why the @alignCast() isn't actually fixing runtime alignment panics
 inline fn getIntFromDataAtOffs(comptime T: type, data: []const u8, offs: usize) T {
     return @as(*T, @ptrCast(@alignCast(@constCast(data[offs..])))).*;
 }
@@ -168,5 +171,20 @@ test "first and last Ugaritic name can be retrieved from specific code point" {
         const name_len = bytes[name_addr];
         const name = bytes[name_addr + 1 .. name_addr + 1 + name_len];
         try std.testing.expectEqualSlices(u8, "UGARITIC WORD DIVIDER", name);
+    }
+}
+
+test "all header addrs and char lengths stay within bounds of file lengths" {
+    for (unicode.blocks) |*block| {
+        if (unicode.char_names.get(block.name)) |bytes| {
+            const num_header_entries = std.mem.readInt(u16, @ptrCast(bytes[0..]), .little);
+            for (0..num_header_entries) |i| {
+                const name_addr_addr = (i * @sizeOf(u32)) + @sizeOf(u16);
+                const name_addr = std.mem.readInt(u32, @ptrCast(bytes[name_addr_addr..]), .little);
+                if (name_addr == 0) continue;
+                const name_len = bytes[name_addr];
+                _ = bytes[name_addr + 1 .. name_addr + name_len + 1];
+            }
+        }
     }
 }

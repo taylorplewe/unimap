@@ -266,6 +266,7 @@ fn searchCharactersByName(query: []u8) void {
     character_results_len = 0;
     block_loop: for (unicode.blocks) |*block| {
         if (unicode.char_names.get(block.name)) |bytes| {
+            if (bytes.len == 0) continue :block_loop;
             const num_header_entries = std.mem.readInt(u16, @ptrCast(bytes[0..]), .little);
             for (0..num_header_entries) |i| {
                 const name_addr_addr = (i * @sizeOf(u32)) + @sizeOf(u16);

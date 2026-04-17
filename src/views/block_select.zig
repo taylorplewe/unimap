@@ -125,6 +125,7 @@ pub fn doFrame(app: *App) void {
                                 .char_to_focus = code_point,
                             },
                         };
+                        @memset(&go_to_code_point_buf, 0);
                     }
                 } else |_| {} // invalid input
             }
@@ -139,9 +140,28 @@ pub fn doFrame(app: *App) void {
     defer scroll.deinit();
 
     if (character_results_len) |len| {
-        for (character_results_buf[0..len]) |*res| {
-            drawCharacterResult(app, res);
+        var scroll_info: dvui.ScrollInfo = .{ .vertical = .auto, .horizontal = .none };
+        var grid = dvui.grid(
+            @src(),
+            .numCols(1),
+            .{ .scroll_opts = .{ .scroll_info = &scroll_info } },
+            .{ .expand = .both, .background = true },
+        );
+        defer grid.deinit();
+        const scroller: dvui.GridWidget.VirtualScroller = .init(grid, .{
+            .total_rows = len,
+            .scroll_info = &scroll_info,
+        });
+        const first = scroller.startRow();
+        const last = scroller.endRow();
+        for (first..last) |i| {
+            var cell = grid.bodyCell(@src(), .colRow(0, i), .{});
+            defer cell.deinit();
+            drawCharacterResult(app, &character_results_buf[i]);
         }
+        // for (character_results_buf[0..len]) |*res| {
+        //     drawCharacterResult(app, res);
+        // }
     } else {
         if (filtered_blocks_len) |len| {
             for (filtered_blocks[0..len]) |block| {

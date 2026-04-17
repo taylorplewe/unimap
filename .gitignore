@@ -4,3 +4,5 @@ zig-out/
 
 src/assets
 gen-names-bins/out
+gen-names-bins/src/unicode
+src/unicode/names-bins

@@ -39,6 +39,12 @@ pub fn getCharName(code_point: CodePoint, current_block: *const Block) ?[]const 
     }
     return null;
 }
+pub fn getBlockThatContainsCodePoint(code_point: CodePoint) ?*const Block {
+    for (blocks) |*block| {
+        if (block.range.start <= code_point and block.range.end >= code_point) return block;
+    }
+    return null;
+}
 pub const CodePointRange = struct {
     start: CodePoint,
     end: CodePoint,

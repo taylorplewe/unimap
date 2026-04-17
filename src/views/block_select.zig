@@ -12,6 +12,8 @@ var character_results_buf: [2048]CharacterSearchResult = undefined;
 var character_results_len: ?usize = null;
 var character_search_buf: [256]u8 = undefined;
 
+var go_to_code_point_buf: [6]u8 = undefined;
+
 pub fn doFrame(app: *App) void {
     // upper bar with filter thing
     {
@@ -80,6 +82,51 @@ pub fn doFrame(app: *App) void {
                     },
                     else => break,
                 }
+            }
+        }
+
+        _ = dvui.spacer(@src(), .{ .expand = .horizontal });
+
+        // go to code point
+        {
+            dvui.labelNoFmt(
+                @src(),
+                "Go to code point U+",
+                .{ .ellipsize = false },
+                .{
+                    .gravity_y = 0.5,
+                    .padding = .{
+                        .x = dvui.LabelWidget.defaults.padding.?.x,
+                        .y = dvui.LabelWidget.defaults.padding.?.y,
+                        .w = 0,
+                        .h = dvui.LabelWidget.defaults.padding.?.h,
+                    },
+                },
+            );
+            var code_point_entry = dvui.textEntry(
+                @src(),
+                .{ .placeholder = "000000", .text = .{ .buffer = &go_to_code_point_buf } },
+                .{ .max_size_content = .sizeM(6, 1) },
+            );
+            const code_point_text = code_point_entry.textGet();
+            code_point_entry.deinit();
+
+            if (dvui.button(
+                @src(),
+                "Go",
+                .{ .draw_focus = false },
+                .{},
+            ) and code_point_entry.textGet().len > 0) {
+                if (std.fmt.parseInt(unicode.CodePoint, code_point_text, 16)) |code_point| {
+                    if (unicode.getBlockThatContainsCodePoint(code_point)) |block| {
+                        app.next_state = .{
+                            .CharacterList = .{
+                                .block = block,
+                                .char_to_focus = code_point,
+                            },
+                        };
+                    }
+                } else |_| {} // invalid input
             }
         }
     }

@@ -8,7 +8,7 @@ var filtered_blocks: [400]*const unicode.Block = undefined;
 var filtered_blocks_len: ?usize = null;
 var blocks_search_entry_buf: [256]u8 = undefined;
 
-var character_results_buf: [2048]CharacterSearchResult = undefined;
+var character_results_buf: [256]CharacterSearchResult = undefined;
 var character_results_len: ?usize = null;
 var character_search_buf: [256]u8 = undefined;
 
@@ -155,7 +155,11 @@ pub fn doFrame(app: *App) void {
         const first = scroller.startRow();
         const last = scroller.endRow();
         for (first..last) |i| {
-            var cell = grid.bodyCell(@src(), .colRow(0, i), .{});
+            var cell = grid.bodyCell(
+                @src(),
+                .colRow(0, i),
+                .{ .size = .{ .w = grid.data().contentRect().w - dvui.GridWidget.scrollbar_padding_defaults.w } },
+            );
             defer cell.deinit();
             drawCharacterResult(app, &character_results_buf[i]);
         }
@@ -185,9 +189,20 @@ fn drawCharacterResult(app: *App, res: *CharacterSearchResult) void {
 
     var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .horizontal });
     defer hbox.deinit();
-    dvui.labelNoFmt(@src(), res.name, .{}, .{});
-    dvui.label(@src(), "U+{X:0>4}", .{res.code_point}, .{});
-    dvui.labelNoFmt(@src(), res.containing_block.name, .{}, .{});
+    const utf8_encoded = unicode.getUtf8EncodedChar(res.code_point);
+    dvui.labelNoFmt(
+        @src(),
+        utf8_encoded,
+        .{},
+        .{
+            .font = dvui.themeGet().font_body.withSize(18).withFamily(res.containing_block.supported_font),
+            .gravity_y = 0.5,
+        },
+    );
+    dvui.labelNoFmt(@src(), res.name, .{}, .{ .gravity_y = 0.5 });
+    _ = dvui.spacer(@src(), .{ .expand = .horizontal });
+    dvui.label(@src(), "U+{X:0>4}", .{res.code_point}, .{ .gravity_y = 0.5, .color_text = dvui.themeGet().text.opacity(0.4) });
+    dvui.labelNoFmt(@src(), res.containing_block.name, .{}, .{ .gravity_y = 0.5 });
 
     if (clicked) {
         app.next_state = .{

@@ -5,8 +5,6 @@ const App = @import("../App.zig");
 const unicode = @import("../unicode/unicode.zig");
 
 var character_font: dvui.Font = undefined;
-/// the actual logical UTF-8 bytes that are used to draw the current glyph
-var logical: [unicode.PHYSICAL_CHAR_VALUE_ALLOC_SIZE]u8 = undefined;
 
 pub fn doFrame(app: *App) void {
     drawUpperBar(app);
@@ -66,7 +64,7 @@ fn drawUpperBar(app: *App) void {
 }
 
 inline fn drawCharacterButton(code_point: unicode.CodePoint, app: *App) void {
-    const num_bytes = std.unicode.utf8Encode(code_point, &logical) catch unreachable;
+    const utf8_encoded = unicode.getUtf8EncodedChar(code_point);
 
     var clicked = false;
     {
@@ -86,12 +84,12 @@ inline fn drawCharacterButton(code_point: unicode.CodePoint, app: *App) void {
         btn.drawBackground();
         clicked = btn.clicked();
 
-        drawCharacterTooltip(code_point, app, logical[0..num_bytes], &btn);
+        drawCharacterTooltip(code_point, app, utf8_encoded, &btn);
 
         // main character
         dvui.labelNoFmt(
             @src(),
-            logical[0..num_bytes],
+            utf8_encoded,
             .{ .ellipsize = false },
             .{
                 .font = character_font,
@@ -125,7 +123,7 @@ inline fn drawCharacterButton(code_point: unicode.CodePoint, app: *App) void {
         }
     }
     if (clicked) {
-        dvui.clipboardTextSet(logical[0..num_bytes]);
+        dvui.clipboardTextSet(utf8_encoded);
         dvui.toast(
             @src(),
             .{

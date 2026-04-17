@@ -12,9 +12,17 @@ pub const char_names: std.StaticStringMap([]const u8) = .initComptime(blk: {
     break :blk name_bins;
 });
 
-pub const PHYSICAL_CHAR_VALUE_ALLOC_SIZE = 8;
-
 pub const CodePoint = u21;
+
+pub const UTF8_ENCODED_ALLOC_SIZE = 8;
+/// Returns a slice (between 1-4 bytes long) that can be used to render a glyph, using a supported font.
+///
+/// Must be inlined since returned slice is stack-allocated.
+pub inline fn getUtf8EncodedChar(code_point: CodePoint) []u8 {
+    var utf8_encoded: [UTF8_ENCODED_ALLOC_SIZE]u8 = undefined;
+    const num_bytes = std.unicode.utf8Encode(code_point, &utf8_encoded) catch unreachable;
+    return utf8_encoded[0..num_bytes];
+}
 /// Get the HTML entity name (e.g. "&copy;") for a Unicode character
 /// The returned string may be allocated on the stack, and as such, this function must be inlined
 pub inline fn getHtmlNameFromCodePoint(code_point: CodePoint) []const u8 {

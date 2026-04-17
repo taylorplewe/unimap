@@ -8,7 +8,7 @@ var character_font: dvui.Font = undefined;
 /// the actual logical UTF-8 bytes that are used to draw the current glyph
 var logical: [unicode.PHYSICAL_CHAR_VALUE_ALLOC_SIZE]u8 = undefined;
 
-pub fn frame(app: *App) void {
+pub fn doFrame(app: *App) void {
     drawUpperBar(app);
 
     var scroll = dvui.scrollArea(
@@ -20,13 +20,13 @@ pub fn frame(app: *App) void {
 
     character_font = dvui.Font.theme(.body)
         .withSize(18)
-        .withFamily(app.state.CharacterList.supported_font);
+        .withFamily(app.state.CharacterList.block.supported_font);
 
     {
         var flex = dvui.flexbox(@src(), .{}, .{ .expand = .horizontal });
         defer flex.deinit();
 
-        for (app.state.CharacterList.range.start..app.state.CharacterList.range.end + 1) |code_point| {
+        for (app.state.CharacterList.block.range.start..app.state.CharacterList.block.range.end + 1) |code_point| {
             drawCharacterButton(@intCast(code_point), app);
         }
     }
@@ -59,7 +59,7 @@ fn drawUpperBar(app: *App) void {
 
     dvui.labelNoFmt(
         @src(),
-        app.state.CharacterList.name,
+        app.state.CharacterList.block.name,
         .{},
         .{ .gravity_x = 0.5, .gravity_y = 0.5 },
     );
@@ -74,7 +74,7 @@ inline fn drawCharacterButton(code_point: unicode.CodePoint, app: *App) void {
         defer btn.deinit();
         btn.init(
             @src(),
-            .{ .draw_focus = false },
+            .{},
             .{
                 .id_extra = code_point,
                 .padding = .all(2),
@@ -114,6 +114,15 @@ inline fn drawCharacterButton(code_point: unicode.CodePoint, app: *App) void {
             },
         );
         btn.drawFocus();
+
+        // got here from clicking a search result?
+        if (app.state.CharacterList.char_to_focus) |char_to_focus| {
+            if (char_to_focus == code_point) {
+                dvui.currentWindow().focusWidget(btn.wd.id, null, null);
+                btn.init_options.draw_focus = true;
+                app.state.CharacterList.char_to_focus = null;
+            }
+        }
     }
     if (clicked) {
         dvui.clipboardTextSet(logical[0..num_bytes]);
@@ -145,7 +154,7 @@ inline fn drawCharacterTooltip(
         .{ .role = .tooltip },
     );
     if (tooltip.shown()) {
-        const char_name = unicode.getCharName(code_point, app.state.CharacterList);
+        const char_name = unicode.getCharName(code_point, app.state.CharacterList.block);
         if (char_name != null) {
             dvui.label(@src(), "{s}", .{char_name.?}, .{});
         } else {

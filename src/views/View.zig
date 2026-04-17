@@ -2,4 +2,4 @@
 
 const App = @import("../App.zig");
 
-frame: *const fn (*App) void,
+doFrame: *const fn (*App) void,

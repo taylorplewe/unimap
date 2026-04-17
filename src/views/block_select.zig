@@ -10,8 +10,9 @@ var blocks_search_entry_buf: [256]u8 = undefined;
 
 var character_results_buf: [2048]CharacterSearchResult = undefined;
 var character_results_len: ?usize = null;
+var character_search_buf: [256]u8 = undefined;
 
-pub fn frame(app: *App) void {
+pub fn doFrame(app: *App) void {
     // upper bar with filter thing
     {
         var upper_sticky = dvui.box(
@@ -25,7 +26,7 @@ pub fn frame(app: *App) void {
         {
             var search_entry = dvui.textEntry(
                 @src(),
-                .{ .placeholder = "Search characters..." },
+                .{ .placeholder = "Search characters...", .text = .{ .buffer = &character_search_buf } },
                 .{},
             );
             defer search_entry.deinit();
@@ -36,10 +37,10 @@ pub fn frame(app: *App) void {
                     character_results_len = null;
                 } else {
                     searchCharactersByName(search_query);
-                    std.debug.print("num of results: {d}\n", .{character_results_len.?});
-                    for (character_results_buf[0..character_results_len.?]) |res| {
-                        std.debug.print(" U+{X:0>6} - {s} - {s}\n", .{ res.code_point, res.name, res.containing_block.name });
-                    }
+                    // std.debug.print("num of results: {d}\n", .{character_results_len.?});
+                    // for (character_results_buf[0..character_results_len.?]) |res| {
+                    //     std.debug.print(" U+{X:0>6} - {s} - {s}\n", .{ res.code_point, res.name, res.containing_block.name });
+                    // }
                 }
             }
         }
@@ -90,14 +91,44 @@ pub fn frame(app: *App) void {
     );
     defer scroll.deinit();
 
-    if (filtered_blocks_len) |len| {
-        for (filtered_blocks[0..len]) |block| {
-            drawBlock(app, block);
+    if (character_results_len) |len| {
+        for (character_results_buf[0..len]) |*res| {
+            drawCharacterResult(app, res);
         }
     } else {
-        for (unicode.blocks) |*block| {
-            drawBlock(app, block);
+        if (filtered_blocks_len) |len| {
+            for (filtered_blocks[0..len]) |block| {
+                drawBlock(app, block);
+            }
+        } else {
+            for (unicode.blocks) |*block| {
+                drawBlock(app, block);
+            }
         }
+    }
+}
+
+fn drawCharacterResult(app: *App, res: *CharacterSearchResult) void {
+    var btn: dvui.ButtonWidget = undefined;
+    defer btn.deinit();
+    btn.init(@src(), .{}, .{ .id_extra = res.code_point, .expand = .horizontal });
+    btn.processEvents();
+    btn.drawBackground();
+    const clicked = btn.clicked();
+
+    var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .horizontal });
+    defer hbox.deinit();
+    dvui.labelNoFmt(@src(), res.name, .{}, .{});
+    dvui.label(@src(), "U+{X:0>4}", .{res.code_point}, .{});
+    dvui.labelNoFmt(@src(), res.containing_block.name, .{}, .{});
+
+    if (clicked) {
+        app.next_state = .{
+            .CharacterList = .{
+                .block = res.containing_block,
+                .char_to_focus = res.code_point,
+            },
+        };
     }
 }
 
@@ -137,7 +168,9 @@ fn drawBlock(app: *App, block: *const unicode.Block) void {
     }
     if (clicked) {
         app.next_state = .{
-            .CharacterList = block,
+            .CharacterList = .{
+                .block = block,
+            },
         };
     }
 }

@@ -30,19 +30,12 @@ var app: App = .{
 
 const fonts_to_load: []const struct { []const u8, []const u8 } = @import("fonts.zon");
 var arena: std.heap.ArenaAllocator = undefined;
-fn init(_: *dvui.Window) !void {
+fn init(win: *dvui.Window) !void {
     arena = .init(std.heap.page_allocator);
 
     // load fonts
-    var file_read_buf: [4096]u8 = undefined;
-    inline for (fonts_to_load) |font| {
-        if (std.fs.openFileAbsolute("C:\\Windows\\Fonts\\" ++ font.@"0", .{ .mode = .read_only })) |font_file| {
-            var font_file_reader = font_file.reader(&file_read_buf);
-            var font_reader = &font_file_reader.interface;
-            const font_ttf_bytes = try font_reader.allocRemaining(arena.allocator(), .unlimited);
-            try dvui.addFont(font.@"1", font_ttf_bytes, null);
-        } else |_| {} // font file not found on the user's computer
-    }
+    const thread = try std.Thread.spawn(.{}, loadFonts, .{win});
+    thread.detach();
 
     // possibly add gnu unifont here
 }
@@ -68,3 +61,15 @@ fn frame() !dvui.App.Result {
 pub const std_options: std.Options = .{
     .logFn = dvui.App.logFn,
 };
+
+fn loadFonts(win: *dvui.Window) !void {
+    var file_read_buf: [4096]u8 = undefined;
+    inline for (fonts_to_load) |font| {
+        if (std.fs.openFileAbsolute("C:\\Windows\\Fonts\\" ++ font.@"0", .{ .mode = .read_only })) |font_file| {
+            var font_file_reader = font_file.reader(&file_read_buf);
+            var font_reader = &font_file_reader.interface;
+            const font_ttf_bytes = try font_reader.allocRemaining(arena.allocator(), .unlimited);
+            try win.addFont(font.@"1", font_ttf_bytes, null);
+        } else |_| {} // font file not found on the user's computer
+    }
+}

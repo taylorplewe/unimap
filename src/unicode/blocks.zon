@@ -7,7 +7,7 @@
         },
         .name = "Basic Latin",
         .chars_names_bin_filename = "Basic_Latin",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -16,7 +16,7 @@
         },
         .name = "Latin-1 Supplement",
         .chars_names_bin_filename = "Latin-1_Supplement",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -25,7 +25,7 @@
         },
         .name = "Latin Extended-A",
         .chars_names_bin_filename = "Latin_Extended-A",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -34,7 +34,7 @@
         },
         .name = "Latin Extended-B",
         .chars_names_bin_filename = "Latin_Extended-B",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -43,7 +43,7 @@
         },
         .name = "IPA Extensions",
         .chars_names_bin_filename = "IPA_Extensions",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -52,7 +52,7 @@
         },
         .name = "Spacing Modifier Letters",
         .chars_names_bin_filename = "Spacing_Modifier_Letters",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -61,7 +61,7 @@
         },
         .name = "Combining Diacritical Marks",
         .chars_names_bin_filename = "Combining_Diacritical_Marks",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -70,7 +70,7 @@
         },
         .name = "Greek and Coptic",
         .chars_names_bin_filename = "Greek_and_Coptic",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -79,7 +79,7 @@
         },
         .name = "Cyrillic",
         .chars_names_bin_filename = "Cyrillic",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -88,7 +88,7 @@
         },
         .name = "Cyrillic Supplement",
         .chars_names_bin_filename = "Cyrillic_Supplement",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -97,7 +97,7 @@
         },
         .name = "Armenian",
         .chars_names_bin_filename = "Armenian",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -106,7 +106,7 @@
         },
         .name = "Hebrew",
         .chars_names_bin_filename = "Hebrew",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -115,7 +115,7 @@
         },
         .name = "Arabic",
         .chars_names_bin_filename = "Arabic",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -124,7 +124,7 @@
         },
         .name = "Syriac",
         .chars_names_bin_filename = "Syriac",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -133,7 +133,7 @@
         },
         .name = "Arabic Supplement",
         .chars_names_bin_filename = "Arabic_Supplement",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -142,7 +142,7 @@
         },
         .name = "Thaana",
         .chars_names_bin_filename = "Thaana",
-        .supported_font = "gnu unifont",
+        .supported_font = "mv boli",
     },
     .{
         .range = .{
@@ -151,7 +151,7 @@
         },
         .name = "NKo",
         .chars_names_bin_filename = "NKo",
-        .supported_font = "gnu unifont",
+        .supported_font = "ebrima",
     },
     .{
         .range = .{
@@ -196,7 +196,7 @@
         },
         .name = "Arabic Extended-A",
         .chars_names_bin_filename = "Arabic_Extended-A",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -205,7 +205,7 @@
         },
         .name = "Devanagari",
         .chars_names_bin_filename = "Devanagari",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -214,7 +214,7 @@
         },
         .name = "Bengali",
         .chars_names_bin_filename = "Bengali",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -223,7 +223,7 @@
         },
         .name = "Gurmukhi",
         .chars_names_bin_filename = "Gurmukhi",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -232,7 +232,7 @@
         },
         .name = "Gujarati",
         .chars_names_bin_filename = "Gujarati",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -241,7 +241,7 @@
         },
         .name = "Oriya",
         .chars_names_bin_filename = "Oriya",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -250,7 +250,7 @@
         },
         .name = "Tamil",
         .chars_names_bin_filename = "Tamil",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -259,7 +259,7 @@
         },
         .name = "Telugu",
         .chars_names_bin_filename = "Telugu",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -268,7 +268,7 @@
         },
         .name = "Kannada",
         .chars_names_bin_filename = "Kannada",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -277,7 +277,7 @@
         },
         .name = "Malayalam",
         .chars_names_bin_filename = "Malayalam",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -286,7 +286,7 @@
         },
         .name = "Sinhala",
         .chars_names_bin_filename = "Sinhala",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -295,7 +295,7 @@
         },
         .name = "Thai",
         .chars_names_bin_filename = "Thai",
-        .supported_font = "gnu unifont",
+        .supported_font = "leelawadee ui",
     },
     .{
         .range = .{
@@ -304,7 +304,7 @@
         },
         .name = "Lao",
         .chars_names_bin_filename = "Lao",
-        .supported_font = "gnu unifont",
+        .supported_font = "leelawadee ui",
     },
     .{
         .range = .{
@@ -313,7 +313,7 @@
         },
         .name = "Tibetan",
         .chars_names_bin_filename = "Tibetan",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms himalaya",
     },
     .{
         .range = .{
@@ -322,7 +322,7 @@
         },
         .name = "Myanmar",
         .chars_names_bin_filename = "Myanmar",
-        .supported_font = "gnu unifont",
+        .supported_font = "myanmar text",
     },
     .{
         .range = .{
@@ -331,7 +331,7 @@
         },
         .name = "Georgian",
         .chars_names_bin_filename = "Georgian",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -340,7 +340,7 @@
         },
         .name = "Hangul Jamo",
         .chars_names_bin_filename = "Hangul_Jamo",
-        .supported_font = "gnu unifont",
+        .supported_font = "malgun gothic",
     },
     .{
         .range = .{
@@ -349,7 +349,7 @@
         },
         .name = "Ethiopic",
         .chars_names_bin_filename = "Ethiopic",
-        .supported_font = "gnu unifont",
+        .supported_font = "ebrima",
     },
     .{
         .range = .{
@@ -358,7 +358,7 @@
         },
         .name = "Ethiopic Supplement",
         .chars_names_bin_filename = "Ethiopic_Supplement",
-        .supported_font = "gnu unifont",
+        .supported_font = "ebrima",
     },
     .{
         .range = .{
@@ -367,7 +367,7 @@
         },
         .name = "Cherokee",
         .chars_names_bin_filename = "Cherokee",
-        .supported_font = "gnu unifont",
+        .supported_font = "gadugi",
     },
     .{
         .range = .{
@@ -376,7 +376,7 @@
         },
         .name = "Unified Canadian Aboriginal Syllabics",
         .chars_names_bin_filename = "Unified_Canadian_Aboriginal_Syllabics",
-        .supported_font = "gnu unifont",
+        .supported_font = "gadugi",
     },
     .{
         .range = .{
@@ -385,7 +385,7 @@
         },
         .name = "Ogham",
         .chars_names_bin_filename = "Ogham",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -394,7 +394,7 @@
         },
         .name = "Runic",
         .chars_names_bin_filename = "Runic",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -439,7 +439,7 @@
         },
         .name = "Khmer",
         .chars_names_bin_filename = "Khmer",
-        .supported_font = "gnu unifont",
+        .supported_font = "leelawadee ui",
     },
     .{
         .range = .{
@@ -448,7 +448,7 @@
         },
         .name = "Mongolian",
         .chars_names_bin_filename = "Mongolian",
-        .supported_font = "gnu unifont",
+        .supported_font = "mongolian baiti",
     },
     .{
         .range = .{
@@ -457,7 +457,7 @@
         },
         .name = "Unified Canadian Aboriginal Syllabics Extended",
         .chars_names_bin_filename = "Unified_Canadian_Aboriginal_Syllabics_Extended",
-        .supported_font = "gnu unifont",
+        .supported_font = "gadugi",
     },
     .{
         .range = .{
@@ -475,7 +475,7 @@
         },
         .name = "Tai Le",
         .chars_names_bin_filename = "Tai_Le",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms tai le",
     },
     .{
         .range = .{
@@ -484,7 +484,7 @@
         },
         .name = "New Tai Lue",
         .chars_names_bin_filename = "New_Tai_Lue",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms new tai le",
     },
     .{
         .range = .{
@@ -493,7 +493,7 @@
         },
         .name = "Khmer Symbols",
         .chars_names_bin_filename = "Khmer_Symbols",
-        .supported_font = "gnu unifont",
+        .supported_font = "leelawadee ui",
     },
     .{
         .range = .{
@@ -502,7 +502,7 @@
         },
         .name = "Buginese",
         .chars_names_bin_filename = "Buginese",
-        .supported_font = "gnu unifont",
+        .supported_font = "leelawadee ui",
     },
     .{
         .range = .{
@@ -565,7 +565,7 @@
         },
         .name = "Ol Chiki",
         .chars_names_bin_filename = "Ol_Chiki",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -583,7 +583,7 @@
         },
         .name = "Georgian Extended",
         .chars_names_bin_filename = "Georgian_Extended",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -601,7 +601,7 @@
         },
         .name = "Vedic Extensions",
         .chars_names_bin_filename = "Vedic_Extensions",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -610,7 +610,7 @@
         },
         .name = "Phonetic Extensions",
         .chars_names_bin_filename = "Phonetic_Extensions",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -619,7 +619,7 @@
         },
         .name = "Phonetic Extensions Supplement",
         .chars_names_bin_filename = "Phonetic_Extensions_Supplement",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -628,7 +628,7 @@
         },
         .name = "Combining Diacritical Marks Supplement",
         .chars_names_bin_filename = "Combining_Diacritical_Marks_Supplement",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -637,7 +637,7 @@
         },
         .name = "Latin Extended Additional",
         .chars_names_bin_filename = "Latin_Extended_Additional",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -646,7 +646,7 @@
         },
         .name = "Greek Extended",
         .chars_names_bin_filename = "Greek_Extended",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -655,7 +655,7 @@
         },
         .name = "General Punctuation",
         .chars_names_bin_filename = "General_Punctuation",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -664,7 +664,7 @@
         },
         .name = "Superscripts and Subscripts",
         .chars_names_bin_filename = "Superscripts_and_Subscripts",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -673,7 +673,7 @@
         },
         .name = "Currency Symbols",
         .chars_names_bin_filename = "Currency_Symbols",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -682,7 +682,7 @@
         },
         .name = "Combining Diacritical Marks for Symbols",
         .chars_names_bin_filename = "Combining_Diacritical_Marks_for_Symbols",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -691,7 +691,7 @@
         },
         .name = "Letterlike Symbols",
         .chars_names_bin_filename = "Letterlike_Symbols",
-        .supported_font = "gnu unifont",
+        .supported_font = "cambria math",
     },
     .{
         .range = .{
@@ -700,7 +700,7 @@
         },
         .name = "Number Forms",
         .chars_names_bin_filename = "Number_Forms",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -709,7 +709,7 @@
         },
         .name = "Arrows",
         .chars_names_bin_filename = "Arrows",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -718,7 +718,7 @@
         },
         .name = "Mathematical Operators",
         .chars_names_bin_filename = "Mathematical_Operators",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -727,7 +727,7 @@
         },
         .name = "Miscellaneous Technical",
         .chars_names_bin_filename = "Miscellaneous_Technical",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -736,7 +736,7 @@
         },
         .name = "Control Pictures",
         .chars_names_bin_filename = "Control_Pictures",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -745,7 +745,7 @@
         },
         .name = "Optical Character Recognition",
         .chars_names_bin_filename = "Optical_Character_Recognition",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -754,7 +754,7 @@
         },
         .name = "Enclosed Alphanumerics",
         .chars_names_bin_filename = "Enclosed_Alphanumerics",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -763,7 +763,7 @@
         },
         .name = "Box Drawing",
         .chars_names_bin_filename = "Box_Drawing",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -772,7 +772,7 @@
         },
         .name = "Block Elements",
         .chars_names_bin_filename = "Block_Elements",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -781,7 +781,7 @@
         },
         .name = "Geometric Shapes",
         .chars_names_bin_filename = "Geometric_Shapes",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -790,7 +790,7 @@
         },
         .name = "Miscellaneous Symbols",
         .chars_names_bin_filename = "Miscellaneous_Symbols",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -799,7 +799,7 @@
         },
         .name = "Dingbats",
         .chars_names_bin_filename = "Dingbats",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -808,7 +808,7 @@
         },
         .name = "Miscellaneous Mathematical Symbols-A",
         .chars_names_bin_filename = "Miscellaneous_Mathematical_Symbols-A",
-        .supported_font = "gnu unifont",
+        .supported_font = "cambria math",
     },
     .{
         .range = .{
@@ -817,7 +817,7 @@
         },
         .name = "Supplemental Arrows-A",
         .chars_names_bin_filename = "Supplemental_Arrows-A",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -826,7 +826,7 @@
         },
         .name = "Braille Patterns",
         .chars_names_bin_filename = "Braille_Patterns",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -835,7 +835,7 @@
         },
         .name = "Supplemental Arrows-B",
         .chars_names_bin_filename = "Supplemental_Arrows-B",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -844,7 +844,7 @@
         },
         .name = "Miscellaneous Mathematical Symbols-B",
         .chars_names_bin_filename = "Miscellaneous_Mathematical_Symbols-B",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -853,7 +853,7 @@
         },
         .name = "Supplemental Mathematical Operators",
         .chars_names_bin_filename = "Supplemental_Mathematical_Operators",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -862,7 +862,7 @@
         },
         .name = "Miscellaneous Symbols and Arrows",
         .chars_names_bin_filename = "Miscellaneous_Symbols_and_Arrows",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -871,7 +871,7 @@
         },
         .name = "Glagolitic",
         .chars_names_bin_filename = "Glagolitic",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -880,7 +880,7 @@
         },
         .name = "Latin Extended-C",
         .chars_names_bin_filename = "Latin_Extended-C",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -889,7 +889,7 @@
         },
         .name = "Coptic",
         .chars_names_bin_filename = "Coptic",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -898,7 +898,7 @@
         },
         .name = "Georgian Supplement",
         .chars_names_bin_filename = "Georgian_Supplement",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -907,7 +907,7 @@
         },
         .name = "Tifinagh",
         .chars_names_bin_filename = "Tifinagh",
-        .supported_font = "gnu unifont",
+        .supported_font = "ebrima",
     },
     .{
         .range = .{
@@ -916,7 +916,7 @@
         },
         .name = "Ethiopic Extended",
         .chars_names_bin_filename = "Ethiopic_Extended",
-        .supported_font = "gnu unifont",
+        .supported_font = "ebrima",
     },
     .{
         .range = .{
@@ -925,7 +925,7 @@
         },
         .name = "Cyrillic Extended-A",
         .chars_names_bin_filename = "Cyrillic_Extended-A",
-        .supported_font = "gnu unifont",
+        .supported_font = "gnu unifont", // NOTE: Segoe UI and Microsoft Sans Serif support this one; don't really want to load either of those just for this?
     },
     .{
         .range = .{
@@ -934,7 +934,7 @@
         },
         .name = "Supplemental Punctuation",
         .chars_names_bin_filename = "Supplemental_Punctuation",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol", // NOTE: Tahoma and Times New Roman support 18 and 16 more characters than this one, respectively
     },
     .{
         .range = .{
@@ -943,7 +943,7 @@
         },
         .name = "CJK Radicals Supplement",
         .chars_names_bin_filename = "CJK_Radicals_Supplement",
-        .supported_font = "gnu unifont",
+        .supported_font = "yu gothic",
     },
     .{
         .range = .{
@@ -952,7 +952,7 @@
         },
         .name = "Kangxi Radicals",
         .chars_names_bin_filename = "Kangxi_Radicals",
-        .supported_font = "gnu unifont",
+        .supported_font = "yu gothic",
     },
     .{
         .range = .{
@@ -961,7 +961,7 @@
         },
         .name = "Ideographic Description Characters",
         .chars_names_bin_filename = "Ideographic_Description_Characters",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -970,7 +970,7 @@
         },
         .name = "CJK Symbols and Punctuation",
         .chars_names_bin_filename = "CJK_Symbols_and_Punctuation",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -979,7 +979,7 @@
         },
         .name = "Hiragana",
         .chars_names_bin_filename = "Hiragana",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -988,7 +988,7 @@
         },
         .name = "Katakana",
         .chars_names_bin_filename = "Katakana",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -997,7 +997,7 @@
         },
         .name = "Bopomofo",
         .chars_names_bin_filename = "Bopomofo",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -1006,7 +1006,7 @@
         },
         .name = "Hangul Compatibility Jamo",
         .chars_names_bin_filename = "Hangul_Compatibility_Jamo",
-        .supported_font = "gnu unifont",
+        .supported_font = "malgun gothic",
     },
     .{
         .range = .{
@@ -1015,7 +1015,7 @@
         },
         .name = "Kanbun",
         .chars_names_bin_filename = "Kanbun",
-        .supported_font = "gnu unifont",
+        .supported_font = "yu gothic",
     },
     .{
         .range = .{
@@ -1024,7 +1024,7 @@
         },
         .name = "Bopomofo Extended",
         .chars_names_bin_filename = "Bopomofo_Extended",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -1033,7 +1033,7 @@
         },
         .name = "CJK Strokes",
         .chars_names_bin_filename = "CJK_Strokes",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -1042,7 +1042,7 @@
         },
         .name = "Katakana Phonetic Extensions",
         .chars_names_bin_filename = "Katakana_Phonetic_Extensions",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -1051,7 +1051,7 @@
         },
         .name = "Enclosed CJK Letters and Months",
         .chars_names_bin_filename = "Enclosed_CJK_Letters_and_Months",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -1060,7 +1060,7 @@
         },
         .name = "CJK Compatibility",
         .chars_names_bin_filename = "CJK_Compatibility",
-        .supported_font = "gnu unifont",
+        .supported_font = "yu gothic",
     },
     .{
         .range = .{
@@ -1069,7 +1069,7 @@
         },
         .name = "CJK Unified Ideographs Extension A",
         .chars_names_bin_filename = "CJK_Unified_Ideographs_Extension_A",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -1078,7 +1078,7 @@
         },
         .name = "Yijing Hexagram Symbols",
         .chars_names_bin_filename = "Yijing_Hexagram_Symbols",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui symbol",
     },
     .{
         .range = .{
@@ -1087,7 +1087,7 @@
         },
         .name = "CJK Unified Ideographs",
         .chars_names_bin_filename = "CJK_Unified_Ideographs",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -1096,7 +1096,7 @@
         },
         .name = "Yi Syllables",
         .chars_names_bin_filename = "Yi_Syllables",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yi baiti",
     },
     .{
         .range = .{
@@ -1105,7 +1105,7 @@
         },
         .name = "Yi Radicals",
         .chars_names_bin_filename = "Yi_Radicals",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yi baiti",
     },
     .{
         .range = .{
@@ -1114,7 +1114,7 @@
         },
         .name = "Lisu",
         .chars_names_bin_filename = "Lisu",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -1123,7 +1123,7 @@
         },
         .name = "Vai",
         .chars_names_bin_filename = "Vai",
-        .supported_font = "gnu unifont",
+        .supported_font = "ebrima",
     },
     .{
         .range = .{
@@ -1132,7 +1132,7 @@
         },
         .name = "Cyrillic Extended-B",
         .chars_names_bin_filename = "Cyrillic_Extended-B",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -1141,7 +1141,7 @@
         },
         .name = "Bamum",
         .chars_names_bin_filename = "Bamum",
-        .supported_font = "gnu unifont",
+        .supported_font = "ebrima",
     },
     .{
         .range = .{
@@ -1150,7 +1150,7 @@
         },
         .name = "Modifier Tone Letters",
         .chars_names_bin_filename = "Modifier_Tone_Letters",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri", // NOTE: Segoe UI supports 28 more characters than this one
     },
     .{
         .range = .{
@@ -1159,7 +1159,7 @@
         },
         .name = "Latin Extended-D",
         .chars_names_bin_filename = "Latin_Extended-D",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -1177,7 +1177,7 @@
         },
         .name = "Common Indic Number Forms",
         .chars_names_bin_filename = "Common_Indic_Number_Forms",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -1186,7 +1186,7 @@
         },
         .name = "Phags-pa",
         .chars_names_bin_filename = "Phags-pa",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms phags pa",
     },
     .{
         .range = .{
@@ -1204,7 +1204,7 @@
         },
         .name = "Devanagari Extended",
         .chars_names_bin_filename = "Devanagari_Extended",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -1231,7 +1231,7 @@
         },
         .name = "Hangul Jamo Extended-A",
         .chars_names_bin_filename = "Hangul_Jamo_Extended-A",
-        .supported_font = "gnu unifont",
+        .supported_font = "malgun gothic",
     },
     .{
         .range = .{
@@ -1240,7 +1240,7 @@
         },
         .name = "Javanese",
         .chars_names_bin_filename = "Javanese",
-        .supported_font = "gnu unifont",
+        .supported_font = "javanese text",
     },
     .{
         .range = .{
@@ -1249,7 +1249,7 @@
         },
         .name = "Myanmar Extended-B",
         .chars_names_bin_filename = "Myanmar_Extended-B",
-        .supported_font = "gnu unifont",
+        .supported_font = "myanmar text",
     },
     .{
         .range = .{
@@ -1267,7 +1267,7 @@
         },
         .name = "Myanmar Extended-A",
         .chars_names_bin_filename = "Myanmar_Extended-A",
-        .supported_font = "gnu unifont",
+        .supported_font = "myanmar text",
     },
     .{
         .range = .{
@@ -1294,7 +1294,7 @@
         },
         .name = "Ethiopic Extended-A",
         .chars_names_bin_filename = "Ethiopic_Extended-A",
-        .supported_font = "gnu unifont",
+        .supported_font = "ebrima",
     },
     .{
         .range = .{
@@ -1303,7 +1303,7 @@
         },
         .name = "Latin Extended-E",
         .chars_names_bin_filename = "Latin_Extended-E",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -1312,7 +1312,7 @@
         },
         .name = "Cherokee Supplement",
         .chars_names_bin_filename = "Cherokee_Supplement",
-        .supported_font = "gnu unifont",
+        .supported_font = "gadugi",
     },
     .{
         .range = .{
@@ -1321,7 +1321,7 @@
         },
         .name = "Meetei Mayek",
         .chars_names_bin_filename = "Meetei_Mayek",
-        .supported_font = "gnu unifont",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -1330,7 +1330,7 @@
         },
         .name = "Hangul Syllables",
         .chars_names_bin_filename = "Hangul_Syllables",
-        .supported_font = "gnu unifont",
+        .supported_font = "malgun gothic",
     },
     .{
         .range = .{
@@ -1339,7 +1339,7 @@
         },
         .name = "Hangul Jamo Extended-B",
         .chars_names_bin_filename = "Hangul_Jamo_Extended-B",
-        .supported_font = "gnu unifont",
+        .supported_font = "malgun gothic",
     },
     .{
         .range = .{
@@ -1384,7 +1384,7 @@
         },
         .name = "CJK Compatibility Ideographs",
         .chars_names_bin_filename = "CJK_Compatibility_Ideographs",
-        .supported_font = "gnu unifont",
+        .supported_font = "yu gothic",
     },
     .{
         .range = .{
@@ -1393,7 +1393,7 @@
         },
         .name = "Alphabetic Presentation Forms",
         .chars_names_bin_filename = "Alphabetic_Presentation_Forms",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -1402,7 +1402,7 @@
         },
         .name = "Arabic Presentation Forms-A",
         .chars_names_bin_filename = "Arabic_Presentation_Forms-A",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri", // NOTE: Courier New supports a bunch of these
     },
     .{
         .range = .{
@@ -1411,7 +1411,7 @@
         },
         .name = "Variation Selectors",
         .chars_names_bin_filename = "Variation_Selectors",
-        .supported_font = "gnu unifont",
+        .supported_font = "segoe ui emoji",
     },
     .{
         .range = .{
@@ -1420,7 +1420,7 @@
         },
         .name = "Vertical Forms",
         .chars_names_bin_filename = "Vertical_Forms",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -1429,7 +1429,7 @@
         },
         .name = "Combining Half Marks",
         .chars_names_bin_filename = "Combining_Half_Marks",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -1438,7 +1438,7 @@
         },
         .name = "CJK Compatibility Forms",
         .chars_names_bin_filename = "CJK_Compatibility_Forms",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -1447,7 +1447,7 @@
         },
         .name = "Small Form Variants",
         .chars_names_bin_filename = "Small_Form_Variants",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -1456,7 +1456,7 @@
         },
         .name = "Arabic Presentation Forms-B",
         .chars_names_bin_filename = "Arabic_Presentation_Forms-B",
-        .supported_font = "gnu unifont",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -1465,7 +1465,7 @@
         },
         .name = "Halfwidth and Fullwidth Forms",
         .chars_names_bin_filename = "Halfwidth_and_Fullwidth_Forms",
-        .supported_font = "gnu unifont",
+        .supported_font = "ms yahei",
     },
     .{
         .range = .{
@@ -1474,7 +1474,7 @@
         },
         .name = "Specials",
         .chars_names_bin_filename = "Specials",
-        .supported_font = "",
+        .supported_font = "malgun gothic",
     },
     .{
         .range = .{
@@ -1627,7 +1627,7 @@
         },
         .name = "Osmanya",
         .chars_names_bin_filename = "Osmanya",
-        .supported_font = "",
+        .supported_font = "ebrima",
     },
     .{
         .range = .{
@@ -1636,7 +1636,7 @@
         },
         .name = "Osage",
         .chars_names_bin_filename = "Osage",
-        .supported_font = "",
+        .supported_font = "gadugi",
     },
     .{
         .range = .{
@@ -1690,7 +1690,7 @@
         },
         .name = "Latin Extended-F",
         .chars_names_bin_filename = "Latin_Extended-F",
-        .supported_font = "",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -1744,7 +1744,7 @@
         },
         .name = "Phoenician",
         .chars_names_bin_filename = "Phoenician",
-        .supported_font = "",
+        .supported_font = "segoe ui historic",
     },
     .{
         .range = .{
@@ -1987,7 +1987,7 @@
         },
         .name = "Sora Sompeng",
         .chars_names_bin_filename = "Sora_Sompeng",
-        .supported_font = "",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -1996,7 +1996,7 @@
         },
         .name = "Chakma",
         .chars_names_bin_filename = "Chakma",
-        .supported_font = "",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -2023,7 +2023,7 @@
         },
         .name = "Sinhala Archaic Numbers",
         .chars_names_bin_filename = "Sinhala_Archaic_Numbers",
-        .supported_font = "",
+        .supported_font = "nirmala",
     },
     .{
         .range = .{
@@ -2131,7 +2131,7 @@
         },
         .name = "Myanmar Extended-C",
         .chars_names_bin_filename = "Myanmar_Extended-C",
-        .supported_font = "",
+        .supported_font = "myanmar text",
     },
     .{
         .range = .{
@@ -2203,7 +2203,7 @@
         },
         .name = "Unified Canadian Aboriginal Syllabics Extended-A",
         .chars_names_bin_filename = "Unified_Canadian_Aboriginal_Syllabics_Extended-A",
-        .supported_font = "",
+        .supported_font = "gadugi",
     },
     .{
         .range = .{
@@ -2554,7 +2554,7 @@
         },
         .name = "Kana Supplement",
         .chars_names_bin_filename = "Kana_Supplement",
-        .supported_font = "",
+        .supported_font = "yu gothic",
     },
     .{
         .range = .{
@@ -2698,7 +2698,7 @@
         },
         .name = "Mathematical Alphanumeric Symbols",
         .chars_names_bin_filename = "Mathematical_Alphanumeric_Symbols",
-        .supported_font = "",
+        .supported_font = "cambria math",
     },
     .{
         .range = .{
@@ -2716,7 +2716,7 @@
         },
         .name = "Latin Extended-G",
         .chars_names_bin_filename = "Latin_Extended-G",
-        .supported_font = "",
+        .supported_font = "calibri",
     },
     .{
         .range = .{
@@ -2815,7 +2815,7 @@
         },
         .name = "Adlam",
         .chars_names_bin_filename = "Adlam",
-        .supported_font = "",
+        .supported_font = "ebrima",
     },
     .{
         .range = .{
@@ -2995,7 +2995,7 @@
         },
         .name = "CJK Unified Ideographs Extension B",
         .chars_names_bin_filename = "CJK_Unified_Ideographs_Extension_B",
-        .supported_font = "",
+        .supported_font = "simsun extb",
     },
     .{
         .range = .{
@@ -3004,7 +3004,7 @@
         },
         .name = "CJK Unified Ideographs Extension C",
         .chars_names_bin_filename = "CJK_Unified_Ideographs_Extension_C",
-        .supported_font = "",
+        .supported_font = "simsun extb",
     },
     .{
         .range = .{
@@ -3013,7 +3013,7 @@
         },
         .name = "CJK Unified Ideographs Extension D",
         .chars_names_bin_filename = "CJK_Unified_Ideographs_Extension_D",
-        .supported_font = "",
+        .supported_font = "simsun extb",
     },
     .{
         .range = .{
@@ -3022,7 +3022,7 @@
         },
         .name = "CJK Unified Ideographs Extension E",
         .chars_names_bin_filename = "CJK_Unified_Ideographs_Extension_E",
-        .supported_font = "",
+        .supported_font = "simsun extb",
     },
     .{
         .range = .{
@@ -3031,7 +3031,7 @@
         },
         .name = "CJK Unified Ideographs Extension F",
         .chars_names_bin_filename = "CJK_Unified_Ideographs_Extension_F",
-        .supported_font = "",
+        .supported_font = "simsun extb",
     },
     .{
         .range = .{
@@ -3040,7 +3040,7 @@
         },
         .name = "CJK Unified Ideographs Extension I",
         .chars_names_bin_filename = "CJK_Unified_Ideographs_Extension_I",
-        .supported_font = "",
+        .supported_font = "sumsun extg",
     },
     .{
         .range = .{
@@ -3049,7 +3049,7 @@
         },
         .name = "CJK Compatibility Ideographs Supplement",
         .chars_names_bin_filename = "CJK_Compatibility_Ideographs_Supplement",
-        .supported_font = "",
+        .supported_font = "yu gothic",
     },
     .{
         .range = .{
@@ -3058,7 +3058,7 @@
         },
         .name = "CJK Unified Ideographs Extension G",
         .chars_names_bin_filename = "CJK_Unified_Ideographs_Extension_G",
-        .supported_font = "",
+        .supported_font = "simsun extg",
     },
     .{
         .range = .{
@@ -3067,7 +3067,7 @@
         },
         .name = "CJK Unified Ideographs Extension H",
         .chars_names_bin_filename = "CJK_Unified_Ideographs_Extension_H",
-        .supported_font = "",
+        .supported_font = "simsun extg",
     },
     .{
         .range = .{

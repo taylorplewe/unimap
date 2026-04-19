@@ -4,6 +4,11 @@ const log = std.log;
 const dvui = @import("dvui");
 pub const main = dvui.App.main;
 pub const panic = dvui.App.panic;
+const dx11 = @import("dvui-backend");
+
+const c = @cImport({
+    @cInclude("windows.h");
+});
 
 const unicode = @import("unicode/unicode.zig");
 const App = @import("App.zig");
@@ -27,6 +32,13 @@ var app: App = .{
 const fonts_to_load: []const struct { []const u8, []const u8 } = @import("fonts.zon");
 var arena: std.heap.ArenaAllocator = undefined;
 fn init(win: *dvui.Window) !void {
+    const hwnd = dx11.hwndFromContext(win.backend.impl);
+    const style = dx11.win32.GetWindowLongPtrA(@ptrCast(hwnd), dx11.win32.GWL_STYLE);
+    const res = dx11.win32.SetWindowLongPtrA(@ptrCast(hwnd), dx11.win32.GWL_STYLE, style & ~(c.WS_SIZEBOX));
+    if (res == 0) {
+        log.err("could not set window style", .{});
+    }
+
     arena = .init(std.heap.page_allocator);
 
     // load fonts

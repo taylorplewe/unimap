@@ -34,8 +34,14 @@ pub fn doFrame(app: *App) void {
         {
             var search_entry = dvui.textEntry(
                 @src(),
-                .{ .placeholder = "Search characters and blocks...", .text = .{ .buffer = &search_buf } },
-                .{},
+                .{
+                    .placeholder = "Search characters and blocks...",
+                    .text = .{ .buffer = &search_buf },
+                },
+                .{
+                    .min_size_content = .sizeM(26, 1),
+                    .gravity_x = 0.5,
+                },
             );
             defer search_entry.deinit();
 
@@ -54,7 +60,6 @@ pub fn doFrame(app: *App) void {
                             }
                         }
                         searchCharactersByName(search_query);
-                        std.debug.print("results: {d}\n", .{search_results_len.?});
                     }
                 }
             }
@@ -126,10 +131,8 @@ pub fn doFrame(app: *App) void {
     );
     defer scroll.deinit();
 
-    if (search_results_len) |len| {
-        // for (character_results_buf[0..len]) |*res| {
-        //     drawCharacterResult(app, res);
-        // }
+    if (search_results_len) |_| {
+        drawSearchResults(app);
     } else {
         for (unicode.blocks) |*block| {
             drawBlock(app, block);
@@ -138,7 +141,7 @@ pub fn doFrame(app: *App) void {
 }
 
 fn drawBlockResult(_: *App, block: *const unicode.Block) void {
-    var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .horizontal });
+    var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .both });
     dvui.labelNoFmt(
         @src(),
         block.name,
@@ -146,6 +149,7 @@ fn drawBlockResult(_: *App, block: *const unicode.Block) void {
         .{
             .expand = .horizontal,
             .font = dvui.Font.theme(.body).withSize(10),
+            .gravity_y = 0.5,
         },
     );
     dvui.label(
@@ -271,30 +275,97 @@ fn searchCharactersByName(query: []u8) void {
 fn drawSearchResults(app: *App) void {
     const search_results = search_results_buf[0..search_results_len.?];
 
-    var scroll_info: dvui.ScrollInfo = .{ .vertical = .auto, .horizontal = .none };
+    // I spent hours figuring this out and I still don't exactly know why--but the scroll info MUST be inside of this struct type,
+    // and you pass around the pointer to the scroll_info field, as opposed to instantiating an actual ScrollInfo and passing around
+    // a reference to that, or else the scrolling behavior will all be completely messed up.
+    const local = struct {
+        var scroll_info: dvui.ScrollInfo = .{ .vertical = .given, .horizontal = .none };
+    };
+
     var grid = dvui.grid(
         @src(),
         .numCols(1),
-        .{ .scroll_opts = .{ .scroll_info = &scroll_info } },
-        .{ .expand = .both, .background = true },
+        .{
+            .scroll_opts = .{
+                .scroll_info = &local.scroll_info,
+                .vertical_bar = .auto_overlay,
+            },
+        },
+        .{ .expand = .both, .padding = .all(0) },
     );
     defer grid.deinit();
-    const scroller: dvui.GridWidget.VirtualScroller = .init(grid, .{
-        .total_rows = search_results.len,
-        .scroll_info = &scroll_info,
-    });
+
+    const col_width = grid.data().contentRect().w;
+
+    // combine hover state with borders
+    const CellStyle = dvui.GridWidget.CellStyle;
+    const borders: CellStyle.Borders = .initBox(1, search_results.len, 0, 1);
+    var style_hovered: CellStyle.HoveredRow = .{
+        .cell_opts = .{
+            .background = true,
+            .color_fill = dvui.themeGet().color(.control, .fill),
+            .color_fill_hover = dvui.themeGet().color(.control, .fill_hover),
+            .size = .{ .w = col_width, .h = 48 },
+        },
+    };
+    style_hovered.processEvents(grid);
+    const cell_style: CellStyle.Combine(CellStyle.HoveredRow, CellStyle.Borders) = .{
+        .style1 = style_hovered,
+        .style2 = borders,
+    };
+
+    // use virtual scrolling to make scrolling thru hundreds of search results performant
+    const scroller: dvui.GridWidget.VirtualScroller = .init(grid, .{ .total_rows = search_results.len, .scroll_info = &local.scroll_info });
     const first = scroller.startRow();
-    const last = scroller.endRow();
-    for (first..last) |i| {
-        var cell = grid.bodyCell(
-            @src(),
-            .colRow(0, i),
-            .{ .size = .{ .w = grid.data().contentRect().w - dvui.GridWidget.scrollbar_padding_defaults.w, .h = 64 } },
-        );
-        defer cell.deinit();
-        switch (search_results[i]) {
-            .block => drawBlockResult(app, search_results[i].block),
-            .character => drawCharacterResult(app, &search_results[i].character),
+    const last = scroller.endRow(); // Note that endRow is exclusive, meaning it can be used as a slice end index.
+    for (first..last) |num| {
+        const cell_num: dvui.GridWidget.Cell = .colRow(0, num);
+        {
+            var cell = grid.bodyCell(@src(), cell_num, cell_style.cellOptions(cell_num));
+            defer cell.deinit();
+            const clicked = dvui.clicked(&cell.wd, .{});
+            switch (search_results[num]) {
+                .block => {
+                    drawBlockResult(app, search_results[num].block);
+                    if (clicked) {
+                        app.next_state = .{
+                            .CharacterList = .{ .block = search_results[num].block },
+                        };
+                    }
+                },
+                .character => {
+                    drawCharacterResult(app, &search_results[num].character);
+                    if (clicked) {
+                        app.next_state = .{
+                            .CharacterList = .{
+                                .block = search_results[num].character.containing_block,
+                                .char_to_focus = search_results[num].character.code_point,
+                            },
+                        };
+                    }
+                },
+            }
         }
     }
+
+    // // const animator = dvui.animate(
+    // //     @src(),
+    // //     .{
+    // //         .duration = 150_000,
+    // //         .easing = dvui.easing.inOutQuad,
+    // //         .kind = .alpha,
+    // //     },
+    // //     .{
+    // //         .expand = .both,
+    // //     },
+    // // );
+    // // defer animator.deinit();
+
+    // // var floating_window_rect: dvui.Rect = .cast(dvui.windowRect().insetAll(16));
+    // // var floating_window = dvui.floatingWindow(@src(), .{
+    // //     .resize = .none,
+    // //     .rect = &floating_window_rect,
+    // //     .stay_above_parent_window = true,
+    // // }, .{});
+    // // defer floating_window.deinit();
 }

@@ -34,7 +34,7 @@ var arena: std.heap.ArenaAllocator = undefined;
 fn init(win: *dvui.Window) !void {
     const hwnd = dx11.hwndFromContext(win.backend.impl);
     const style = dx11.win32.GetWindowLongPtrA(@ptrCast(hwnd), dx11.win32.GWL_STYLE);
-    const res = dx11.win32.SetWindowLongPtrA(@ptrCast(hwnd), dx11.win32.GWL_STYLE, style & ~(c.WS_SIZEBOX)); // TODO: see if you can remove the title bar here
+    const res = dx11.win32.SetWindowLongPtrA(@ptrCast(hwnd), dx11.win32.GWL_STYLE, style & ~(c.WS_SIZEBOX | c.WS_MAXIMIZEBOX)); // TODO: see if you can remove the title bar here
     if (res == 0) {
         log.err("could not set window style", .{});
     }

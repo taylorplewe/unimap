@@ -8,6 +8,7 @@ const unicode = @import("../unicode/unicode.zig");
 var search_buf: [128]u8 = undefined;
 var search_results_len: ?usize = null;
 var search_results_buf: [256]SearchResult = undefined;
+var should_focus_modal_search_bar = false;
 
 var go_to_code_point_buf: [6]u8 = undefined;
 
@@ -31,7 +32,7 @@ pub fn doFrame(app: *App) void {
         );
         defer upper_sticky.deinit();
 
-        {
+        if (search_results_len == null) {
             var search_entry = dvui.textEntry(
                 @src(),
                 .{
@@ -52,6 +53,7 @@ pub fn doFrame(app: *App) void {
                 } else {
                     search: {
                         search_results_len = 0;
+                        should_focus_modal_search_bar = true;
                         for (unicode.blocks) |*block| {
                             if (utils.isNeedleInHaystackCaseInsensitive(block.name, search_query)) {
                                 search_results_buf[search_results_len.?] = .{ .block = block };
@@ -68,7 +70,7 @@ pub fn doFrame(app: *App) void {
             for (dvui.events()) |e| {
                 switch (e.evt) {
                     .key => {
-                        if (e.evt.key.mod == .none and e.evt.key.code == .slash) {
+                        if ((e.evt.key.mod == .none and e.evt.key.code == .slash) or (e.evt.key.mod.control() and e.evt.key.code == .k)) {
                             dvui.currentWindow().focusWidget(search_entry.wd.id, null, null);
                         }
                     },
@@ -130,13 +132,11 @@ pub fn doFrame(app: *App) void {
         .{ .expand = .both, .style = .window },
     );
     defer scroll.deinit();
-
+    for (unicode.blocks) |*block| {
+        drawBlock(app, block);
+    }
     if (search_results_len) |_| {
-        drawSearchResults(app);
-    } else {
-        for (unicode.blocks) |*block| {
-            drawBlock(app, block);
-        }
+        drawSearchResultsWindow(app);
     }
 }
 
@@ -165,13 +165,6 @@ fn drawBlockResult(_: *App, block: *const unicode.Block) void {
     hbox.deinit();
 }
 fn drawCharacterResult(_: *App, res: *CharacterSearchResult) void {
-    // var btn: dvui.ButtonWidget = undefined;
-    // defer btn.deinit();
-    // btn.init(@src(), .{}, .{ .id_extra = res.code_point, .expand = .horizontal });
-    // btn.processEvents();
-    // btn.drawBackground();
-    // const clicked = btn.clicked();
-
     var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .horizontal });
     defer hbox.deinit();
     const utf8_encoded = unicode.getUtf8EncodedChar(res.code_point);
@@ -188,15 +181,6 @@ fn drawCharacterResult(_: *App, res: *CharacterSearchResult) void {
     _ = dvui.spacer(@src(), .{ .expand = .horizontal });
     dvui.label(@src(), "U+{X:0>4}", .{res.code_point}, .{ .gravity_y = 0.5, .color_text = dvui.themeGet().text.opacity(0.4) });
     dvui.labelNoFmt(@src(), res.containing_block.name, .{}, .{ .gravity_y = 0.5 });
-
-    // if (clicked) {
-    //     app.next_state = .{
-    //         .CharacterList = .{
-    //             .block = res.containing_block,
-    //             .char_to_focus = res.code_point,
-    //         },
-    //     };
-    // }
 }
 
 fn drawBlock(app: *App, block: *const unicode.Block) void {
@@ -272,8 +256,84 @@ fn searchCharactersByName(query: []u8) void {
     }
 }
 
-fn drawSearchResults(app: *App) void {
+fn drawSearchResultsWindow(app: *App) void {
     const search_results = search_results_buf[0..search_results_len.?];
+
+    const animator = dvui.animate(
+        @src(),
+        .{
+            .duration = 150_000,
+            .easing = dvui.easing.inOutQuad,
+            .kind = .alpha,
+        },
+        .{
+            .expand = .both,
+        },
+    );
+    defer animator.deinit();
+
+    var floating_window_rect: dvui.Rect = .cast(dvui.windowRect().insetAll(32));
+    var floating_window = dvui.floatingWindow(@src(), .{
+        .resize = .none,
+        .rect = &floating_window_rect,
+        .stay_above_parent_window = true,
+        .modal = true,
+    }, .{
+        .box_shadow = .{
+            .fade = 23,
+            .alpha = 0.3,
+            .offset = .{ .x = 0, .y = 4 },
+        },
+        .color_text = .fromHex("#000f"),
+    });
+    defer floating_window.deinit();
+
+    // search entry at top
+    {
+        var search_entry = dvui.textEntry(
+            @src(),
+            .{
+                .text = .{ .buffer = &search_buf },
+            },
+            .{ .expand = .horizontal },
+        );
+        defer search_entry.deinit();
+        if (search_entry.text_changed) {
+            const search_query = search_entry.textGet();
+            if (search_query.len == 0) {
+                search_results_len = null;
+            } else {
+                search: {
+                    search_results_len = 0;
+                    for (unicode.blocks) |*block| {
+                        if (utils.isNeedleInHaystackCaseInsensitive(block.name, search_query)) {
+                            search_results_buf[search_results_len.?] = .{ .block = block };
+                            search_results_len.? += 1;
+                            if (search_results_len.? == search_results_buf.len) break :search;
+                        }
+                    }
+                    searchCharactersByName(search_query);
+                }
+            }
+        }
+        if (should_focus_modal_search_bar) {
+            dvui.focusWidget(search_entry.wd.id, floating_window.wd.id, null);
+            const entered_text = search_entry.textGet();
+            search_entry.textSet(@constCast(entered_text), false);
+            should_focus_modal_search_bar = false;
+        }
+
+        // escape to close window
+        for (dvui.events()) |e| {
+            switch (e.evt) {
+                .key => if (e.evt.key.code == .escape) {
+                    search_entry.len = 0;
+                    clearSearchResults();
+                },
+                else => {},
+            }
+        }
+    }
 
     // I spent hours figuring this out and I still don't exactly know why--but the scroll info MUST be inside of this struct type,
     // and you pass around the pointer to the scroll_info field, as opposed to instantiating an actual ScrollInfo and passing around
@@ -331,6 +391,7 @@ fn drawSearchResults(app: *App) void {
                         app.next_state = .{
                             .CharacterList = .{ .block = search_results[num].block },
                         };
+                        clearSearchResults();
                     }
                 },
                 .character => {
@@ -342,30 +403,15 @@ fn drawSearchResults(app: *App) void {
                                 .char_to_focus = search_results[num].character.code_point,
                             },
                         };
+                        clearSearchResults();
                     }
                 },
             }
         }
     }
+}
 
-    // // const animator = dvui.animate(
-    // //     @src(),
-    // //     .{
-    // //         .duration = 150_000,
-    // //         .easing = dvui.easing.inOutQuad,
-    // //         .kind = .alpha,
-    // //     },
-    // //     .{
-    // //         .expand = .both,
-    // //     },
-    // // );
-    // // defer animator.deinit();
-
-    // // var floating_window_rect: dvui.Rect = .cast(dvui.windowRect().insetAll(16));
-    // // var floating_window = dvui.floatingWindow(@src(), .{
-    // //     .resize = .none,
-    // //     .rect = &floating_window_rect,
-    // //     .stay_above_parent_window = true,
-    // // }, .{});
-    // // defer floating_window.deinit();
+fn clearSearchResults() void {
+    search_results_len = null;
+    @memset(&search_buf, 0);
 }

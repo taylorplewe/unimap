@@ -4,15 +4,22 @@ const dvui = @import("dvui");
 const utils = @import("../utils.zig");
 const App = @import("../App.zig");
 const unicode = @import("../unicode/unicode.zig");
-var filtered_blocks: [400]*const unicode.Block = undefined;
-var filtered_blocks_len: ?usize = null;
-var blocks_search_entry_buf: [256]u8 = undefined;
 
-var character_results_buf: [256]CharacterSearchResult = undefined;
-var character_results_len: ?usize = null;
-var character_search_buf: [256]u8 = undefined;
+var search_buf: [128]u8 = undefined;
+var search_results_len: ?usize = null;
+var search_results_buf: [256]SearchResult = undefined;
 
 var go_to_code_point_buf: [6]u8 = undefined;
+
+const CharacterSearchResult = struct {
+    code_point: unicode.CodePoint,
+    name: []const u8,
+    containing_block: *const unicode.Block,
+};
+const SearchResult = union(enum) {
+    block: *const unicode.Block,
+    character: CharacterSearchResult,
+};
 
 pub fn doFrame(app: *App) void {
     // upper bar with filter thing
@@ -24,11 +31,10 @@ pub fn doFrame(app: *App) void {
         );
         defer upper_sticky.deinit();
 
-        // chars search input
         {
             var search_entry = dvui.textEntry(
                 @src(),
-                .{ .placeholder = "Search characters...", .text = .{ .buffer = &character_search_buf } },
+                .{ .placeholder = "Search characters and blocks...", .text = .{ .buffer = &search_buf } },
                 .{},
             );
             defer search_entry.deinit();
@@ -36,38 +42,19 @@ pub fn doFrame(app: *App) void {
             if (search_entry.text_changed) {
                 const search_query = search_entry.textGet();
                 if (search_query.len == 0) {
-                    character_results_len = null;
+                    search_results_len = null;
                 } else {
-                    searchCharactersByName(search_query);
-                    // std.debug.print("num of results: {d}\n", .{character_results_len.?});
-                    // for (character_results_buf[0..character_results_len.?]) |res| {
-                    //     std.debug.print(" U+{X:0>6} - {s} - {s}\n", .{ res.code_point, res.name, res.containing_block.name });
-                    // }
-                }
-            }
-        }
-
-        // blocks search input
-        {
-            var search_entry = dvui.textEntry(
-                @src(),
-                .{ .placeholder = "Filter blocks...", .text = .{ .buffer = &blocks_search_entry_buf } },
-                .{},
-            );
-            defer search_entry.deinit();
-
-            if (search_entry.text_changed) {
-                const search_query = search_entry.textGet();
-                if (search_query.len == 0) {
-                    filtered_blocks_len = null;
-                } else {
-                    filtered_blocks_len = 0;
-                    for (unicode.blocks) |*block| {
-                        // if (std.mem.containsAtLeast(u8, block.name, 1, search_query)) {
-                        if (utils.isNeedleInHaystackCaseInsensitive(block.name, search_query)) {
-                            filtered_blocks[filtered_blocks_len.?] = block;
-                            filtered_blocks_len.? += 1;
+                    search: {
+                        search_results_len = 0;
+                        for (unicode.blocks) |*block| {
+                            if (utils.isNeedleInHaystackCaseInsensitive(block.name, search_query)) {
+                                search_results_buf[search_results_len.?] = .{ .block = block };
+                                search_results_len.? += 1;
+                                if (search_results_len.? == search_results_buf.len) break :search;
+                            }
                         }
+                        searchCharactersByName(search_query);
+                        std.debug.print("results: {d}\n", .{search_results_len.?});
                     }
                 }
             }
@@ -139,7 +126,7 @@ pub fn doFrame(app: *App) void {
     );
     defer scroll.deinit();
 
-    if (character_results_len) |len| {
+    if (search_results_len) |len| {
         var scroll_info: dvui.ScrollInfo = .{ .vertical = .auto, .horizontal = .none };
         var grid = dvui.grid(
             @src(),
@@ -158,34 +145,54 @@ pub fn doFrame(app: *App) void {
             var cell = grid.bodyCell(
                 @src(),
                 .colRow(0, i),
-                .{ .size = .{ .w = grid.data().contentRect().w - dvui.GridWidget.scrollbar_padding_defaults.w } },
+                .{ .size = .{ .w = grid.data().contentRect().w - dvui.GridWidget.scrollbar_padding_defaults.w, .h = 64 } },
             );
             defer cell.deinit();
-            drawCharacterResult(app, &character_results_buf[i]);
+            switch (search_results_buf[i]) {
+                .block => drawBlockResult(app, search_results_buf[i].block),
+                .character => drawCharacterResult(app, &search_results_buf[i].character),
+            }
         }
         // for (character_results_buf[0..len]) |*res| {
         //     drawCharacterResult(app, res);
         // }
     } else {
-        if (filtered_blocks_len) |len| {
-            for (filtered_blocks[0..len]) |block| {
-                drawBlock(app, block);
-            }
-        } else {
-            for (unicode.blocks) |*block| {
-                drawBlock(app, block);
-            }
+        for (unicode.blocks) |*block| {
+            drawBlock(app, block);
         }
     }
 }
 
-fn drawCharacterResult(app: *App, res: *CharacterSearchResult) void {
-    var btn: dvui.ButtonWidget = undefined;
-    defer btn.deinit();
-    btn.init(@src(), .{}, .{ .id_extra = res.code_point, .expand = .horizontal });
-    btn.processEvents();
-    btn.drawBackground();
-    const clicked = btn.clicked();
+fn drawBlockResult(_: *App, block: *const unicode.Block) void {
+    var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .horizontal });
+    dvui.labelNoFmt(
+        @src(),
+        block.name,
+        .{},
+        .{
+            .expand = .horizontal,
+            .font = dvui.Font.theme(.body).withSize(10),
+        },
+    );
+    dvui.label(
+        @src(),
+        "U+{X:0>4} - U+{X:0>4}",
+        .{ block.range.start, block.range.end },
+        .{
+            .color_text = .fromHex("#aaa"),
+            .font = dvui.Font.theme(.body).withSize(8),
+            .gravity_y = 0.5,
+        },
+    );
+    hbox.deinit();
+}
+fn drawCharacterResult(_: *App, res: *CharacterSearchResult) void {
+    // var btn: dvui.ButtonWidget = undefined;
+    // defer btn.deinit();
+    // btn.init(@src(), .{}, .{ .id_extra = res.code_point, .expand = .horizontal });
+    // btn.processEvents();
+    // btn.drawBackground();
+    // const clicked = btn.clicked();
 
     var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .horizontal });
     defer hbox.deinit();
@@ -204,14 +211,14 @@ fn drawCharacterResult(app: *App, res: *CharacterSearchResult) void {
     dvui.label(@src(), "U+{X:0>4}", .{res.code_point}, .{ .gravity_y = 0.5, .color_text = dvui.themeGet().text.opacity(0.4) });
     dvui.labelNoFmt(@src(), res.containing_block.name, .{}, .{ .gravity_y = 0.5 });
 
-    if (clicked) {
-        app.next_state = .{
-            .CharacterList = .{
-                .block = res.containing_block,
-                .char_to_focus = res.code_point,
-            },
-        };
-    }
+    // if (clicked) {
+    //     app.next_state = .{
+    //         .CharacterList = .{
+    //             .block = res.containing_block,
+    //             .char_to_focus = res.code_point,
+    //         },
+    //     };
+    // }
 }
 
 fn drawBlock(app: *App, block: *const unicode.Block) void {
@@ -257,16 +264,10 @@ fn drawBlock(app: *App, block: *const unicode.Block) void {
     }
 }
 
-const CharacterSearchResult = struct {
-    code_point: unicode.CodePoint,
-    name: []const u8,
-    containing_block: *const unicode.Block,
-};
 fn searchCharactersByName(query: []u8) void {
-    character_results_len = 0;
-    block_loop: for (unicode.blocks) |*block| {
+    for (unicode.blocks) |*block| {
         if (unicode.char_names.get(block.name)) |bytes| {
-            if (bytes.len == 0) continue :block_loop;
+            if (bytes.len == 0) continue;
             const num_header_entries = std.mem.readInt(u16, @ptrCast(bytes[0..]), .little);
             for (0..num_header_entries) |i| {
                 const name_addr_addr = (i * @sizeOf(u32)) + @sizeOf(u16);
@@ -276,14 +277,16 @@ fn searchCharactersByName(query: []u8) void {
                 const name = bytes[name_addr + 1 .. name_addr + name_len + 1];
                 if (utils.isNeedleInHaystackCaseInsensitive(name, query)) {
                     const code_point: unicode.CodePoint = @intCast(i + block.range.start);
-                    character_results_buf[character_results_len.?] = .{
-                        .code_point = code_point,
-                        .name = name,
-                        .containing_block = block,
+                    search_results_buf[search_results_len.?] = .{
+                        .character = .{
+                            .code_point = code_point,
+                            .name = name,
+                            .containing_block = block,
+                        },
                     };
-                    character_results_len.? += 1;
-                    if (character_results_len.? == character_results_buf.len) {
-                        break :block_loop;
+                    search_results_len.? += 1;
+                    if (search_results_len.? == search_results_buf.len) {
+                        return;
                     }
                 }
             }

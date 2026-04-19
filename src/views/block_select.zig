@@ -78,7 +78,7 @@ pub fn doFrame(app: *App) void {
         {
             dvui.labelNoFmt(
                 @src(),
-                "Go to code point U+",
+                "Go to U+",
                 .{ .ellipsize = false },
                 .{
                     .gravity_y = 0.5,
@@ -127,32 +127,6 @@ pub fn doFrame(app: *App) void {
     defer scroll.deinit();
 
     if (search_results_len) |len| {
-        var scroll_info: dvui.ScrollInfo = .{ .vertical = .auto, .horizontal = .none };
-        var grid = dvui.grid(
-            @src(),
-            .numCols(1),
-            .{ .scroll_opts = .{ .scroll_info = &scroll_info } },
-            .{ .expand = .both, .background = true },
-        );
-        defer grid.deinit();
-        const scroller: dvui.GridWidget.VirtualScroller = .init(grid, .{
-            .total_rows = len,
-            .scroll_info = &scroll_info,
-        });
-        const first = scroller.startRow();
-        const last = scroller.endRow();
-        for (first..last) |i| {
-            var cell = grid.bodyCell(
-                @src(),
-                .colRow(0, i),
-                .{ .size = .{ .w = grid.data().contentRect().w - dvui.GridWidget.scrollbar_padding_defaults.w, .h = 64 } },
-            );
-            defer cell.deinit();
-            switch (search_results_buf[i]) {
-                .block => drawBlockResult(app, search_results_buf[i].block),
-                .character => drawCharacterResult(app, &search_results_buf[i].character),
-            }
-        }
         // for (character_results_buf[0..len]) |*res| {
         //     drawCharacterResult(app, res);
         // }
@@ -290,6 +264,37 @@ fn searchCharactersByName(query: []u8) void {
                     }
                 }
             }
+        }
+    }
+}
+
+fn drawSearchResults(app: *App) void {
+    const search_results = search_results_buf[0..search_results_len.?];
+
+    var scroll_info: dvui.ScrollInfo = .{ .vertical = .auto, .horizontal = .none };
+    var grid = dvui.grid(
+        @src(),
+        .numCols(1),
+        .{ .scroll_opts = .{ .scroll_info = &scroll_info } },
+        .{ .expand = .both, .background = true },
+    );
+    defer grid.deinit();
+    const scroller: dvui.GridWidget.VirtualScroller = .init(grid, .{
+        .total_rows = search_results.len,
+        .scroll_info = &scroll_info,
+    });
+    const first = scroller.startRow();
+    const last = scroller.endRow();
+    for (first..last) |i| {
+        var cell = grid.bodyCell(
+            @src(),
+            .colRow(0, i),
+            .{ .size = .{ .w = grid.data().contentRect().w - dvui.GridWidget.scrollbar_padding_defaults.w, .h = 64 } },
+        );
+        defer cell.deinit();
+        switch (search_results[i]) {
+            .block => drawBlockResult(app, search_results[i].block),
+            .character => drawCharacterResult(app, &search_results[i].character),
         }
     }
 }

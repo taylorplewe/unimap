@@ -1,4 +1,5 @@
 const std = @import("std");
+const log = std.log;
 
 const dvui = @import("dvui");
 pub const main = dvui.App.main;
@@ -6,11 +7,6 @@ pub const panic = dvui.App.panic;
 
 const unicode = @import("unicode/unicode.zig");
 const App = @import("App.zig");
-
-// DEBUG
-const gnu_unifont = @embedFile("assets/gnu-unifont.otf");
-// const segoe_ui_symbol = @embedFile("assets/seguisym.ttf");
-// const segoe_ui_historic = @embedFile("assets/seguihis.ttf");
 
 pub const dvui_app: dvui.App = .{
     .config = .{
@@ -36,8 +32,6 @@ fn init(win: *dvui.Window) !void {
     // load fonts
     const thread = try std.Thread.spawn(.{}, loadFonts, .{win});
     thread.detach();
-
-    // possibly add gnu unifont here
 }
 fn deinit() void {
     arena.deinit();
@@ -62,14 +56,17 @@ pub const std_options: std.Options = .{
     .logFn = dvui.App.logFn,
 };
 
+const WINDOWS_FONTS_PATH = "C:\\Windows\\Fonts\\";
 fn loadFonts(win: *dvui.Window) !void {
     var file_read_buf: [4096]u8 = undefined;
     inline for (fonts_to_load) |font| {
-        if (std.fs.openFileAbsolute("C:\\Windows\\Fonts\\" ++ font.@"0", .{ .mode = .read_only })) |font_file| {
+        if (std.fs.openFileAbsolute(WINDOWS_FONTS_PATH ++ font.@"0", .{ .mode = .read_only })) |font_file| {
             var font_file_reader = font_file.reader(&file_read_buf);
             var font_reader = &font_file_reader.interface;
             const font_ttf_bytes = try font_reader.allocRemaining(arena.allocator(), .unlimited);
             try win.addFont(font.@"1", font_ttf_bytes, null);
-        } else |_| {} // font file not found on the user's computer
+        } else |_| {
+            log.warn("could not find font at path '" ++ WINDOWS_FONTS_PATH ++ "{s}' on your computer", .{font.@"0"});
+        } // font file not found on the user's computer
     }
 }

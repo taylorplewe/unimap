@@ -3040,7 +3040,7 @@
         },
         .name = "CJK Unified Ideographs Extension I",
         .chars_names_bin_filename = "CJK_Unified_Ideographs_Extension_I",
-        .supported_font = "sumsun extg",
+        .supported_font = "simsun extg",
     },
     .{
         .range = .{

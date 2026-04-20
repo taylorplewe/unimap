@@ -32,6 +32,10 @@ pub fn doFrame(app: *App) void {
         );
         defer upper_sticky.deinit();
 
+        if (dvui.buttonIcon(@src(), "about", dvui.entypo.info_with_circle, .{ .draw_focus = false }, .{}, .{ .gravity_y = 0.5 })) {
+            dvui.dialog(@src(), .{}, .{ .modal = false, .title = "Unimap", .ok_label = "Close", .max_size = .{ .w = 300, .h = 300 }, .message = "(c) 2026 Taylor Plewe\nhttps://github.com/taylorplewe" });
+        }
+
         if (search_results_len == null) {
             var search_entry = dvui.textEntry(
                 @src(),
@@ -83,6 +87,8 @@ pub fn doFrame(app: *App) void {
 
         // go to code point
         {
+            var should_go_to_point = false;
+
             dvui.labelNoFmt(
                 @src(),
                 "Go to U+",
@@ -103,6 +109,9 @@ pub fn doFrame(app: *App) void {
                 .{ .max_size_content = .sizeM(6, 1) },
             );
             const code_point_text = code_point_entry.textGet();
+            if (code_point_entry.enter_pressed) {
+                should_go_to_point = true;
+            }
             code_point_entry.deinit();
 
             if (dvui.button(
@@ -110,18 +119,20 @@ pub fn doFrame(app: *App) void {
                 "Go",
                 .{ .draw_focus = false },
                 .{},
-            ) and code_point_entry.textGet().len > 0) {
-                if (std.fmt.parseInt(unicode.CodePoint, code_point_text, 16)) |code_point| {
-                    if (unicode.getBlockThatContainsCodePoint(code_point)) |block| {
-                        app.next_state = .{
-                            .CharacterList = .{
-                                .block = block,
-                                .char_to_focus = code_point,
-                            },
-                        };
-                        @memset(&go_to_code_point_buf, 0);
-                    }
-                } else |_| {} // invalid input
+            ) or should_go_to_point) {
+                if (code_point_entry.textGet().len > 0) {
+                    if (std.fmt.parseInt(unicode.CodePoint, code_point_text, 16)) |code_point| {
+                        if (unicode.getBlockThatContainsCodePoint(code_point)) |block| {
+                            app.next_state = .{
+                                .CharacterList = .{
+                                    .block = block,
+                                    .char_to_focus = code_point,
+                                },
+                            };
+                            @memset(&go_to_code_point_buf, 0);
+                        }
+                    } else |_| {} // invalid input
+                }
             }
         }
     }
@@ -139,50 +150,6 @@ pub fn doFrame(app: *App) void {
         drawSearchResultsWindow(app);
     }
 }
-
-fn drawBlockResult(_: *App, block: *const unicode.Block) void {
-    var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .both });
-    dvui.labelNoFmt(
-        @src(),
-        block.name,
-        .{},
-        .{
-            .expand = .horizontal,
-            .font = dvui.Font.theme(.body).withSize(10),
-            .gravity_y = 0.5,
-        },
-    );
-    dvui.label(
-        @src(),
-        "U+{X:0>4} - U+{X:0>4}",
-        .{ block.range.start, block.range.end },
-        .{
-            .color_text = .fromHex("#aaa"),
-            .font = dvui.Font.theme(.body).withSize(8),
-            .gravity_y = 0.5,
-        },
-    );
-    hbox.deinit();
-}
-fn drawCharacterResult(_: *App, res: *CharacterSearchResult) void {
-    var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .horizontal });
-    defer hbox.deinit();
-    const utf8_encoded = unicode.getUtf8EncodedChar(res.code_point);
-    dvui.labelNoFmt(
-        @src(),
-        utf8_encoded,
-        .{},
-        .{
-            .font = dvui.themeGet().font_body.withSize(18).withFamily(res.containing_block.supported_font),
-            .gravity_y = 0.5,
-        },
-    );
-    dvui.labelNoFmt(@src(), res.name, .{}, .{ .gravity_y = 0.5 });
-    _ = dvui.spacer(@src(), .{ .expand = .horizontal });
-    dvui.label(@src(), "U+{X:0>4}", .{res.code_point}, .{ .gravity_y = 0.5, .color_text = dvui.themeGet().text.opacity(0.4) });
-    dvui.labelNoFmt(@src(), res.containing_block.name, .{}, .{ .gravity_y = 0.5 });
-}
-
 fn drawBlock(app: *App, block: *const unicode.Block) void {
     var clicked = false;
     {
@@ -226,36 +193,57 @@ fn drawBlock(app: *App, block: *const unicode.Block) void {
     }
 }
 
-fn searchCharactersByName(query: []u8) void {
-    for (unicode.blocks) |*block| {
-        if (unicode.char_names.get(block.name)) |bytes| {
-            if (bytes.len == 0) continue;
-            const num_header_entries = std.mem.readInt(u16, @ptrCast(bytes[0..]), .little);
-            for (0..num_header_entries) |i| {
-                const name_addr_addr = (i * @sizeOf(u32)) + @sizeOf(u16);
-                const name_addr = std.mem.readInt(u32, @ptrCast(bytes[name_addr_addr..]), .little);
-                if (name_addr == 0) continue;
-                const name_len = bytes[name_addr];
-                const name = bytes[name_addr + 1 .. name_addr + name_len + 1];
-                if (utils.isNeedleInHaystackCaseInsensitive(name, query)) {
-                    const code_point: unicode.CodePoint = @intCast(i + block.range.start);
-                    search_results_buf[search_results_len.?] = .{
-                        .character = .{
-                            .code_point = code_point,
-                            .name = name,
-                            .containing_block = block,
-                        },
-                    };
-                    search_results_len.? += 1;
-                    if (search_results_len.? == search_results_buf.len) {
-                        return;
-                    }
-                }
-            }
-        }
-    }
+fn drawBlockResult(_: *App, block: *const unicode.Block) void {
+    var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .both });
+    dvui.labelNoFmt(
+        @src(),
+        "Block",
+        .{},
+        .{
+            .font = dvui.Font.theme(.body).withSize(8),
+            .color_text = dvui.themeGet().text.opacity(0.4),
+            .gravity_y = 0.5,
+        },
+    );
+    dvui.labelNoFmt(
+        @src(),
+        block.name,
+        .{},
+        .{
+            .expand = .horizontal,
+            .font = dvui.Font.theme(.body).withSize(10),
+            .gravity_y = 0.5,
+        },
+    );
+    dvui.label(
+        @src(),
+        "U+{X:0>4} - U+{X:0>4}",
+        .{ block.range.start, block.range.end },
+        .{
+            .color_text = dvui.themeGet().text.opacity(0.4),
+            .gravity_y = 0.5,
+        },
+    );
+    hbox.deinit();
 }
-
+fn drawCharacterResult(_: *App, res: *CharacterSearchResult) void {
+    var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .horizontal });
+    defer hbox.deinit();
+    const utf8_encoded = unicode.getUtf8EncodedChar(res.code_point);
+    dvui.labelNoFmt(
+        @src(),
+        utf8_encoded,
+        .{},
+        .{
+            .font = dvui.themeGet().font_body.withSize(18).withFamily(res.containing_block.supported_font),
+            .gravity_y = 0.5,
+        },
+    );
+    dvui.labelNoFmt(@src(), res.name, .{}, .{ .gravity_y = 0.5 });
+    _ = dvui.spacer(@src(), .{ .expand = .horizontal });
+    dvui.label(@src(), "U+{X:0>4}", .{res.code_point}, .{ .gravity_y = 0.5, .color_text = dvui.themeGet().text.opacity(0.4) });
+    dvui.labelNoFmt(@src(), res.containing_block.name, .{}, .{ .gravity_y = 0.5 });
+}
 fn drawSearchResultsWindow(app: *App) void {
     const search_results = search_results_buf[0..search_results_len.?];
 
@@ -410,7 +398,35 @@ fn drawSearchResultsWindow(app: *App) void {
         }
     }
 }
-
+fn searchCharactersByName(query: []u8) void {
+    for (unicode.blocks) |*block| {
+        if (unicode.char_names.get(block.name)) |bytes| {
+            if (bytes.len == 0) continue;
+            const num_header_entries = std.mem.readInt(u16, @ptrCast(bytes[0..]), .little);
+            for (0..num_header_entries) |i| {
+                const name_addr_addr = (i * @sizeOf(u32)) + @sizeOf(u16);
+                const name_addr = std.mem.readInt(u32, @ptrCast(bytes[name_addr_addr..]), .little);
+                if (name_addr == 0) continue;
+                const name_len = bytes[name_addr];
+                const name = bytes[name_addr + 1 .. name_addr + name_len + 1];
+                if (utils.isNeedleInHaystackCaseInsensitive(name, query)) {
+                    const code_point: unicode.CodePoint = @intCast(i + block.range.start);
+                    search_results_buf[search_results_len.?] = .{
+                        .character = .{
+                            .code_point = code_point,
+                            .name = name,
+                            .containing_block = block,
+                        },
+                    };
+                    search_results_len.? += 1;
+                    if (search_results_len.? == search_results_buf.len) {
+                        return;
+                    }
+                }
+            }
+        }
+    }
+}
 fn clearSearchResults() void {
     search_results_len = null;
     @memset(&search_buf, 0);

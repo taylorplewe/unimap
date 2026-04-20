@@ -30,3 +30,5 @@ This is my entry into the [2026 Handmade Essentials Jam](https://handmade.networ
     zig build
     ./zig-out/bin/gen-names-bins.exe
     ```
+
+All of this should be able to be done in `build.zig`, I will get to that soon

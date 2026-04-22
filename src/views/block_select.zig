@@ -23,126 +23,7 @@ const SearchResult = union(enum) {
 };
 
 pub fn doFrame(app: *App) void {
-    // upper bar with filter thing
-    {
-        var upper_sticky = dvui.box(
-            @src(),
-            .{ .dir = .horizontal },
-            .{ .expand = .horizontal, .background = true },
-        );
-        defer upper_sticky.deinit();
-
-        if (dvui.buttonIcon(@src(), "about", dvui.entypo.info_with_circle, .{ .draw_focus = false }, .{}, .{ .gravity_y = 0.5 })) {
-            dvui.dialog(@src(), .{}, .{ .modal = false, .title = "Unimap", .ok_label = "Close", .max_size = .{ .w = 300, .h = 300 }, .message = "(c) 2026 Taylor Plewe\nhttps://github.com/taylorplewe" });
-        }
-
-        if (search_results_len == null) {
-            var search_entry = dvui.textEntry(
-                @src(),
-                .{
-                    .placeholder = "Search characters and blocks...",
-                    .text = .{ .buffer = &search_buf },
-                },
-                .{
-                    .min_size_content = .sizeM(26, 1),
-                    .gravity_x = 0.5,
-                },
-            );
-            defer search_entry.deinit();
-
-            if (search_entry.text_changed) {
-                const search_query = search_entry.textGet();
-                if (search_query.len == 0) {
-                    search_results_len = null;
-                } else {
-                    search: {
-                        search_results_len = 0;
-                        should_focus_modal_search_bar = true;
-                        for (unicode.blocks) |*block| {
-                            if (utils.isNeedleInHaystackCaseInsensitive(block.name, search_query)) {
-                                search_results_buf[search_results_len.?] = .{ .block = block };
-                                search_results_len.? += 1;
-                                if (search_results_len.? == search_results_buf.len) break :search;
-                            }
-                        }
-                        searchCharactersByName(search_query);
-                    }
-                }
-            }
-
-            // forward slash shortcut
-            for (dvui.events()) |e| {
-                switch (e.evt) {
-                    .key => {
-                        if ((e.evt.key.mod == .none and e.evt.key.code == .slash) or (e.evt.key.mod.control() and e.evt.key.code == .k)) {
-                            dvui.currentWindow().focusWidget(search_entry.wd.id, null, null);
-                        }
-                    },
-                    else => break,
-                }
-            }
-        }
-
-        _ = dvui.spacer(@src(), .{ .expand = .horizontal });
-
-        // go to code point
-        {
-            var should_go_to_point = false;
-
-            dvui.labelNoFmt(
-                @src(),
-                "Go to U+",
-                .{ .ellipsize = false },
-                .{
-                    .gravity_y = 0.5,
-                    .padding = .{
-                        .x = dvui.LabelWidget.defaults.padding.?.x,
-                        .y = dvui.LabelWidget.defaults.padding.?.y,
-                        .w = 0,
-                        .h = dvui.LabelWidget.defaults.padding.?.h,
-                    },
-                },
-            );
-            var code_point_entry = dvui.textEntry(
-                @src(),
-                .{ .placeholder = "000000", .text = .{ .buffer = &go_to_code_point_buf } },
-                .{ .max_size_content = .sizeM(6, 1) },
-            );
-            const code_point_text = code_point_entry.textGet();
-            for (dvui.events()) |e| {
-                switch (e.evt) {
-                    .key => |key| {
-                        if ((key.code == .enter or key.code == .kp_enter) and key.action == .down) {
-                            should_go_to_point = true;
-                        }
-                    },
-                    else => {},
-                }
-            }
-            code_point_entry.deinit();
-
-            if (dvui.button(
-                @src(),
-                "Go",
-                .{ .draw_focus = false },
-                .{},
-            ) or should_go_to_point) {
-                if (code_point_entry.textGet().len > 0) {
-                    if (std.fmt.parseInt(unicode.CodePoint, code_point_text, 16)) |code_point| {
-                        if (unicode.getBlockThatContainsCodePoint(code_point)) |block| {
-                            app.next_state = .{
-                                .CharacterList = .{
-                                    .block = block,
-                                    .char_to_focus = code_point,
-                                },
-                            };
-                            @memset(&go_to_code_point_buf, 0);
-                        }
-                    } else |_| {} // invalid input
-                }
-            }
-        }
-    }
+    drawUpperSticky(app);
 
     var scroll = dvui.scrollArea(
         @src(),
@@ -155,6 +36,125 @@ pub fn doFrame(app: *App) void {
     }
     if (search_results_len) |_| {
         drawSearchResultsWindow(app);
+    }
+}
+fn drawUpperSticky(app: *App) void {
+    var upper_sticky = dvui.box(
+        @src(),
+        .{ .dir = .horizontal },
+        .{ .expand = .horizontal, .background = true },
+    );
+    defer upper_sticky.deinit();
+
+    if (dvui.buttonIcon(@src(), "about", dvui.entypo.info_with_circle, .{ .draw_focus = false }, .{}, .{ .gravity_y = 0.5 })) {
+        dvui.dialog(@src(), .{}, .{ .modal = false, .title = "Unimap", .ok_label = "Close", .max_size = .{ .w = 300, .h = 300 }, .message = "(c) 2026 Taylor Plewe\nhttps://github.com/taylorplewe" });
+    }
+
+    if (search_results_len == null) {
+        var search_entry = dvui.textEntry(
+            @src(),
+            .{
+                .placeholder = "Search characters and blocks...",
+                .text = .{ .buffer = &search_buf },
+            },
+            .{
+                .min_size_content = .sizeM(26, 1),
+                .gravity_x = 0.5,
+            },
+        );
+        defer search_entry.deinit();
+
+        if (search_entry.text_changed) {
+            const search_query = search_entry.textGet();
+            if (search_query.len == 0) {
+                search_results_len = null;
+            } else {
+                search: {
+                    search_results_len = 0;
+                    should_focus_modal_search_bar = true;
+                    for (unicode.blocks) |*block| {
+                        if (utils.isNeedleInHaystackCaseInsensitive(block.name, search_query)) {
+                            search_results_buf[search_results_len.?] = .{ .block = block };
+                            search_results_len.? += 1;
+                            if (search_results_len.? == search_results_buf.len) break :search;
+                        }
+                    }
+                    searchCharactersByName(search_query);
+                }
+            }
+        }
+
+        // forward slash shortcut
+        for (dvui.events()) |e| {
+            switch (e.evt) {
+                .key => {
+                    if ((e.evt.key.mod == .none and e.evt.key.code == .slash) or (e.evt.key.mod.control() and e.evt.key.code == .k)) {
+                        dvui.currentWindow().focusWidget(search_entry.wd.id, null, null);
+                    }
+                },
+                else => break,
+            }
+        }
+    }
+
+    _ = dvui.spacer(@src(), .{ .expand = .horizontal });
+
+    // go to code point
+    {
+        var should_go_to_point = false;
+
+        dvui.labelNoFmt(
+            @src(),
+            "Go to U+",
+            .{ .ellipsize = false },
+            .{
+                .gravity_y = 0.5,
+                .padding = .{
+                    .x = dvui.LabelWidget.defaults.padding.?.x,
+                    .y = dvui.LabelWidget.defaults.padding.?.y,
+                    .w = 0,
+                    .h = dvui.LabelWidget.defaults.padding.?.h,
+                },
+            },
+        );
+        var code_point_entry = dvui.textEntry(
+            @src(),
+            .{ .placeholder = "000000", .text = .{ .buffer = &go_to_code_point_buf } },
+            .{ .max_size_content = .sizeM(6, 1) },
+        );
+        const code_point_text = code_point_entry.textGet();
+        for (dvui.events()) |e| {
+            switch (e.evt) {
+                .key => |key| {
+                    if ((key.code == .enter or key.code == .kp_enter) and key.action == .down) {
+                        should_go_to_point = true;
+                    }
+                },
+                else => {},
+            }
+        }
+        code_point_entry.deinit();
+
+        if (dvui.button(
+            @src(),
+            "Go",
+            .{ .draw_focus = false },
+            .{},
+        ) or should_go_to_point) {
+            if (code_point_entry.textGet().len > 0) {
+                if (std.fmt.parseInt(unicode.CodePoint, code_point_text, 16)) |code_point| {
+                    if (unicode.getBlockThatContainsCodePoint(code_point)) |block| {
+                        app.next_state = .{
+                            .CharacterList = .{
+                                .block = block,
+                                .char_to_focus = code_point,
+                            },
+                        };
+                        @memset(&go_to_code_point_buf, 0);
+                    }
+                } else |_| {} // invalid input
+            }
+        }
     }
 }
 fn drawBlock(app: *App, block: *const unicode.Block) void {
@@ -190,6 +190,14 @@ fn drawBlock(app: *App, block: *const unicode.Block) void {
         hbox.deinit();
 
         block_btn.drawFocus();
+
+        // possibly focus button
+        if (app.state.BlockSelect.block_to_focus) |block_to_focus| {
+            if (block_to_focus == block) {
+                dvui.focusWidget(block_btn.wd.id, null, null);
+                app.next_state.BlockSelect.block_to_focus = null;
+            }
+        }
     }
     if (clicked) {
         app.next_state = .{

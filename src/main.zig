@@ -27,9 +27,7 @@ pub const dvui_app: dvui.App = .{
     .frameFn = frame,
 };
 
-var app: App = .{
-    .state = .BlockSelect,
-};
+var app: App = .{};
 
 const fonts_to_load: []const struct { []const u8, []const u8 } = @import("fonts.zon");
 var arena: std.heap.ArenaAllocator = undefined;

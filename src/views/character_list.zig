@@ -86,6 +86,17 @@ fn drawUpperBar(app: *App) void {
     );
     defer upper_sticky.deinit();
 
+    var should_go_back = false;
+
+    for (dvui.events()) |e| {
+        switch (e.evt) {
+            .mouse => |mouse| {
+                if (mouse.button == .four) should_go_back = true;
+            },
+            else => {},
+        }
+    }
+
     if (dvui.buttonLabelAndIcon(
         @src(),
         .{
@@ -97,8 +108,8 @@ fn drawUpperBar(app: *App) void {
         .{
             .min_size_content = .{ .w = 128 },
         },
-    )) {
-        app.next_state = .BlockSelect;
+    ) or should_go_back) {
+        app.next_state = .{ .BlockSelect = .{ .block_to_focus = app.state.CharacterList.block } };
     }
 
     dvui.labelNoFmt(

@@ -8,17 +8,20 @@ const utils = @import("utils.zig");
 
 const App = @This();
 
-state: State = .BlockSelect,
+state: State = .{ .BlockSelect = .{} },
 /// The state to switch to at the very end of this frame
-next_state: State = .BlockSelect,
+next_state: State = .{ .BlockSelect = .{} },
 
 const Mode = enum {
     BlockSelect,
     CharacterList,
 };
 pub const State = union(Mode) {
-    BlockSelect,
+    BlockSelect: BlockSelectState,
     CharacterList: CharacterListState,
+};
+const BlockSelectState = struct {
+    block_to_focus: ?*const unicode.Block = null,
 };
 const CharacterListState = struct {
     block: *const unicode.Block,

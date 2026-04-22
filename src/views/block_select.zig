@@ -109,8 +109,15 @@ pub fn doFrame(app: *App) void {
                 .{ .max_size_content = .sizeM(6, 1) },
             );
             const code_point_text = code_point_entry.textGet();
-            if (code_point_entry.enter_pressed) {
-                should_go_to_point = true;
+            for (dvui.events()) |e| {
+                switch (e.evt) {
+                    .key => |key| {
+                        if ((key.code == .enter or key.code == .kp_enter) and key.action == .down) {
+                            should_go_to_point = true;
+                        }
+                    },
+                    else => {},
+                }
             }
             code_point_entry.deinit();
 
@@ -192,8 +199,7 @@ fn drawBlock(app: *App, block: *const unicode.Block) void {
         };
     }
 }
-
-fn drawBlockResult(_: *App, block: *const unicode.Block) void {
+fn drawBlockResult(block: *const unicode.Block) void {
     var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .both });
     dvui.labelNoFmt(
         @src(),
@@ -226,7 +232,7 @@ fn drawBlockResult(_: *App, block: *const unicode.Block) void {
     );
     hbox.deinit();
 }
-fn drawCharacterResult(_: *App, res: *CharacterSearchResult) void {
+fn drawCharacterResult(res: *CharacterSearchResult) void {
     var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .horizontal });
     defer hbox.deinit();
     const utf8_encoded = unicode.getUtf8EncodedChar(res.code_point);
@@ -374,7 +380,7 @@ fn drawSearchResultsWindow(app: *App) void {
             const clicked = dvui.clicked(&cell.wd, .{});
             switch (search_results[num]) {
                 .block => {
-                    drawBlockResult(app, search_results[num].block);
+                    drawBlockResult(search_results[num].block);
                     if (clicked) {
                         app.next_state = .{
                             .CharacterList = .{ .block = search_results[num].block },
@@ -383,7 +389,7 @@ fn drawSearchResultsWindow(app: *App) void {
                     }
                 },
                 .character => {
-                    drawCharacterResult(app, &search_results[num].character);
+                    drawCharacterResult(&search_results[num].character);
                     if (clicked) {
                         app.next_state = .{
                             .CharacterList = .{

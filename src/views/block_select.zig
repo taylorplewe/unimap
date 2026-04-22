@@ -47,7 +47,7 @@ fn drawUpperSticky(app: *App) void {
     defer upper_sticky.deinit();
 
     if (dvui.buttonIcon(@src(), "about", dvui.entypo.info_with_circle, .{ .draw_focus = false }, .{}, .{ .gravity_y = 0.5 })) {
-        dvui.dialog(@src(), .{}, .{ .modal = false, .title = "Unimap", .ok_label = "Close", .max_size = .{ .w = 300, .h = 300 }, .message = "(c) 2026 Taylor Plewe\nhttps://github.com/taylorplewe" });
+        dvui.dialog(@src(), .{}, .{ .message = "", .displayFn = infoDialogDisplayFn });
     }
 
     if (search_results_len == null) {
@@ -286,7 +286,7 @@ fn drawSearchResultsWindow(app: *App) void {
             .alpha = 0.3,
             .offset = .{ .x = 0, .y = 4 },
         },
-        .color_text = .fromHex("#000f"),
+        .color_text = .fromHex("#000f"), // drop shadow color == text color
     });
     defer floating_window.deinit();
 
@@ -411,6 +411,54 @@ fn drawSearchResultsWindow(app: *App) void {
             }
         }
     }
+}
+/// Simplified version of the default `dialogDisplay()` from `dvui.zig`
+fn infoDialogDisplayFn(id: dvui.Id) !void {
+    var win = dvui.floatingWindow(
+        @src(),
+        .{ .modal = false },
+        .{ .role = .dialog, .id_extra = id.asUsize() },
+    );
+    defer win.deinit();
+
+    var header_openflag = true;
+    win.dragAreaSet(dvui.windowHeader("Unimap", "", &header_openflag));
+    if (!header_openflag) {
+        dvui.dialogRemove(id);
+        return;
+    }
+
+    {
+        // Add the buttons at the bottom first, so that they are guaranteed to be shown
+        var hbox = dvui.box(
+            @src(),
+            .{ .dir = .horizontal },
+            .{ .gravity_x = 0.5, .gravity_y = 1.0 },
+        );
+        defer hbox.deinit();
+
+        var ok_data: dvui.WidgetData = undefined;
+        if (dvui.button(@src(), "Close", .{}, .{ .data_out = &ok_data })) {
+            dvui.dialogRemove(id);
+            return;
+        }
+        dvui.focusWidget(ok_data.id, null, null);
+    }
+
+    // Now add the scroll area which will get the remaining space
+    var scroll = dvui.scrollArea(@src(), .{}, .{ .expand = .both, .style = .window });
+    var tl = dvui.textLayout(
+        @src(),
+        .{},
+        .{
+            .background = false,
+            .gravity_x = 0.5,
+        },
+    );
+    tl.addText("© 2026 Taylor Plewe", .{});
+    tl.deinit();
+    dvui.link(@src(), .{ .url = "https://github.com/taylorplewe/unimap" }, .{});
+    scroll.deinit();
 }
 fn searchCharactersByName(query: []u8) void {
     for (unicode.blocks) |*block| {

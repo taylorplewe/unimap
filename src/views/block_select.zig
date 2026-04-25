@@ -73,7 +73,7 @@ fn drawUpperSticky(app: *App) void {
                     search_results_len = 0;
                     should_focus_modal_search_bar = true;
                     for (unicode.blocks) |*block| {
-                        if (utils.isNeedleInHaystackCaseInsensitive(block.name, search_query)) {
+                        if (utils.isNeedleInHaystack(block.name, search_query, false)) {
                             search_results_buf[search_results_len.?] = .{ .block = block };
                             search_results_len.? += 1;
                             if (search_results_len.? == search_results_buf.len) break :search;
@@ -308,7 +308,7 @@ fn drawSearchResultsWindow(app: *App) void {
                 search: {
                     search_results_len = 0;
                     for (unicode.blocks) |*block| {
-                        if (utils.isNeedleInHaystackCaseInsensitive(block.name, search_query)) {
+                        if (utils.isNeedleInHaystack(block.name, search_query, false)) {
                             search_results_buf[search_results_len.?] = .{ .block = block };
                             search_results_len.? += 1;
                             if (search_results_len.? == search_results_buf.len) break :search;
@@ -471,7 +471,7 @@ fn searchCharactersByName(query: []u8) void {
                 if (name_addr == 0) continue;
                 const name_len = bytes[name_addr];
                 const name = bytes[name_addr + 1 .. name_addr + name_len + 1];
-                if (utils.isNeedleInHaystackCaseInsensitive(name, query)) {
+                if (utils.isNeedleInHaystack(name, query, true)) {
                     const code_point: unicode.CodePoint = @intCast(i + block.range.start);
                     search_results_buf[search_results_len.?] = .{
                         .character = .{

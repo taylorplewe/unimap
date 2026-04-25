@@ -28,9 +28,15 @@ This is my entry into the [2026 Handmade Essentials Jam](https://handmade.networ
     ```
 1. generate the character name binaries
     ```powershell
-    cd gen-names-bins
+    pushd gen-names-bins
     zig build
     ./zig-out/bin/gen-names-bins.exe
+    popd
+    ```
+1. build the main app
+    ```powershell
+    zig build
+    ./zig-out/bin/unimap.exe
     ```
 
 All of this should be able to be done in `build.zig`, I will get to that soon

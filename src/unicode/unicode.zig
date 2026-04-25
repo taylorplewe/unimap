@@ -33,7 +33,21 @@ pub inline fn getHtmlNameFromCodePoint(code_point: CodePoint) []const u8 {
     };
 }
 /// Get the Unicode name for a character
-pub fn getCharName(code_point: CodePoint, current_block: *const Block) ?[]const u8 {
+pub inline fn getCharName(code_point: CodePoint, current_block: *const Block) ?[]const u8 {
+    // some characters are just "<block name>-<code point>"
+    var name_buf: [256]u8 = undefined;
+    switch (current_block.range.start) {
+        0x00f900 => return if (code_point <= 0xfad9) std.fmt.bufPrint(&name_buf, "CJK COMPATIBILITY IDEOGRAPH-{X}", .{code_point}) catch "" else null,
+        0x00fe00 => return std.fmt.bufPrint(&name_buf, "VARIATION SELECTOR-{d}", .{(code_point - current_block.range.start) + 1}) catch "",
+        0x013460 => return std.fmt.bufPrint(&name_buf, "EGYPTIAN HIEROGLYPH-{X}", .{code_point}) catch "",
+        0x018800 => return std.fmt.bufPrint(&name_buf, "TANGUT COMPONENT-{d:0>3}", .{(code_point - current_block.range.start) + 1}) catch "",
+        0x018b00 => return std.fmt.bufPrint(&name_buf, "KHITAN SMALL SCRIPT CHARACTER-{X}", .{code_point}) catch "",
+        0x018d80 => return std.fmt.bufPrint(&name_buf, "TANGUT COMPONENT-{d:0>3}", .{(code_point - current_block.range.start) + 769}) catch "",
+        0x01b170 => return std.fmt.bufPrint(&name_buf, "NUSHU CHARACTER-{X}", .{code_point}) catch "",
+        0x02f800 => return std.fmt.bufPrint(&name_buf, "CJK COMPATIBILITY IDEOGRAPH-{X}", .{code_point}) catch "",
+        0x0e0100 => return std.fmt.bufPrint(&name_buf, "VARIATION SELECTOR-{d}", .{(code_point - current_block.range.start) + 17}) catch "",
+        else => {},
+    }
     if (char_names.get(current_block.name)) |bytes| {
         const num_header_entries = std.mem.readInt(u16, @ptrCast(bytes[0..]), .little);
         if (code_point - current_block.range.start >= num_header_entries) return null;

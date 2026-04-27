@@ -15,7 +15,7 @@
     .{ "yugothr.ttc", "yu gothic" },
     .{ "msyh.ttc", "ms yahei" },
     .{ "mmrtext.ttf", "myanmar text" },
-    .{ "nirmala.ttf", "nirmala" },
+    .{ "nirmala.ttc", "nirmala" },
     .{ "malgun.ttf", "malgun gothic" },
     .{ "monbaiti.ttf", "mongolian baiti" },
     .{ "taile.ttf", "ms tai le" },

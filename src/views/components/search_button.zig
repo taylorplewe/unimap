@@ -40,11 +40,23 @@ pub fn doFrame() void {
         "Search",
         .{},
         .{
-            .margin = .{ .x = 0, .y = 0, .w = 4, .h = 0 },
+            .margin = .{ .x = 0, .y = 0, .w = 8, .h = 0 },
             .color_text = if (btn.hover) text_color_hover else text_color,
         },
     );
-    key_label.doFrame("/", if (btn.hover) text_color_hover else text_color);
+    key_label.list(
+        @src(),
+        &.{
+            &.{
+                "/",
+            },
+            &.{
+                "Ctrl K",
+            },
+        },
+        if (btn.hover) text_color_hover else text_color,
+    );
+    // key_label.doFrame("/", if (btn.hover) text_color_hover else text_color);
 
     if (!search.show_search_window) {
         for (dvui.events()) |e| {

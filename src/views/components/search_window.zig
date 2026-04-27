@@ -1,3 +1,4 @@
+const std = @import("std");
 const dvui = @import("dvui");
 
 const App = @import("../../App.zig");
@@ -35,7 +36,7 @@ pub fn doFrame(app: *App) void {
     });
     defer floating_window.deinit();
 
-    // search entry at top
+    // search entry & close button at top
     {
         var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .horizontal });
         defer hbox.deinit();
@@ -98,7 +99,57 @@ pub fn doFrame(app: *App) void {
         }
     }
 
-    if (search.results().len == 0) return;
+    if (search.results().len == 0) {
+        const HelpText = struct {
+            text_layout: *dvui.TextLayoutWidget,
+            fn init(src: std.builtin.SourceLocation) @This() {
+                return .{
+                    .text_layout = dvui.textLayout(
+                        src,
+                        .{ .break_lines = false },
+                        .{
+                            .gravity_x = 0.5,
+                            .gravity_y = 0.5,
+                            .background = false,
+                            .color_text = dvui.themeGet().text.opacity(0.5),
+                        },
+                    ),
+                };
+            }
+            fn deinit(self: *@This()) void {
+                self.text_layout.deinit();
+            }
+            fn dimText(self: *@This(), text: []const u8) void {
+                self.text_layout.addText(text, .{});
+            }
+            fn brightText(self: *@This(), text: []const u8) void {
+                self.text_layout.addText(text, .{ .color_text = dvui.themeGet().text });
+            }
+            fn brightTextList(self: *@This(), texts: []const []const u8) void {
+                for (texts, 0..) |text, i| {
+                    if (i > 0) {
+                        self.dimText(", ");
+                    }
+                    self.brightText(text);
+                }
+            }
+        };
+
+        var help_text: HelpText = .init(@src());
+        defer help_text.deinit();
+        if (search.query_readonly.len == 0) {
+            help_text.dimText("Search Unicode character names: ");
+            help_text.brightTextList(&.{ "floral", "confused face", "with cedilla" });
+            help_text.dimText("\nSearch Unicode blocks: ");
+            help_text.brightTextList(&.{ "emoticons", "braille" });
+            help_text.dimText("\nGo to code point: ");
+            help_text.brightTextList(&.{ "3a62", "1f643" });
+        } else {
+            help_text.dimText("No results for ");
+            help_text.brightText(search.query_readonly);
+        }
+        return;
+    }
 
     // I spent hours figuring this out and I still don't exactly know why--but the scroll info MUST be inside of this struct type,
     // and you pass around the pointer to the scroll_info field, as opposed to instantiating an actual ScrollInfo and passing around
@@ -150,21 +201,29 @@ pub fn doFrame(app: *App) void {
             defer cell.deinit();
             const clicked = dvui.clicked(&cell.wd, .{});
             switch (search.results()[num]) {
-                .block => {
-                    drawBlockResult(search.results()[num].block);
+                .code_point => |res| {
+                    drawGoToCodePointResult(res);
                     if (clicked) {
                         app.next_state = .{
-                            .CharacterList = .{ .block = search.results()[num].block },
+                            .CharacterList = .{ .block = res.containing_block, .char_to_focus = res.code_point },
                         };
                     }
                 },
-                .character => {
-                    drawCharacterResult(&search.results()[num].character);
+                .block => |block| {
+                    drawBlockResult(block);
+                    if (clicked) {
+                        app.next_state = .{
+                            .CharacterList = .{ .block = block },
+                        };
+                    }
+                },
+                .character => |res| {
+                    drawCharacterResult(res);
                     if (clicked) {
                         app.next_state = .{
                             .CharacterList = .{
-                                .block = search.results()[num].character.containing_block,
-                                .char_to_focus = search.results()[num].character.code_point,
+                                .block = res.containing_block,
+                                .char_to_focus = res.code_point,
                             },
                         };
                     }
@@ -175,6 +234,21 @@ pub fn doFrame(app: *App) void {
                 break :result_loop;
             }
         }
+    }
+}
+fn drawGoToCodePointResult(res: search.CharacterSearchResult) void {
+    dvui.icon(@src(), "go to code point", dvui.entypo.forward, .{}, .{ .gravity_y = 0.5, .margin = .{ .x = 8, .y = 0, .w = 0, .h = 0 } });
+    {
+        var text_layout = dvui.textLayout(@src(), .{ .break_lines = false }, .{ .gravity_y = 0.5, .background = false });
+        defer text_layout.deinit();
+        text_layout.addText("Go to code point ", .{ .color_text = dvui.themeGet().text.opacity(0.4), .gravity_y = 0.5 });
+        text_layout.format("U+{X:0>4} ", .{res.code_point}, .{ .gravity_y = 0.5 });
+    }
+
+    const utf8_encoded = unicode.getUtf8EncodedChar(res.code_point);
+    dvui.labelNoFmt(@src(), utf8_encoded, .{}, .{ .font = dvui.themeGet().font_body.withSize(18).withFamily(res.containing_block.supported_font), .gravity_y = 0.5 });
+    if (res.name.len > 0) {
+        dvui.label(@src(), "\"{s}\"", .{res.name}, .{ .color_text = dvui.themeGet().text.opacity(0.4), .gravity_y = 0.5 });
     }
 }
 fn drawBlockResult(block: *const unicode.Block) void {
@@ -210,7 +284,7 @@ fn drawBlockResult(block: *const unicode.Block) void {
     );
     hbox.deinit();
 }
-fn drawCharacterResult(res: *search.CharacterSearchResult) void {
+fn drawCharacterResult(res: search.CharacterSearchResult) void {
     var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .horizontal });
     defer hbox.deinit();
     const utf8_encoded = unicode.getUtf8EncodedChar(res.code_point);

@@ -54,7 +54,5 @@ pub fn frame(self: *App) void {
     if (self.next_state) |next_state| {
         self.state = next_state;
         self.next_state = null;
-        dvui.refresh(null, @src(), null);
-        std.debug.print("changed state!\n", .{});
     }
 }

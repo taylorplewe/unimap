@@ -37,36 +37,64 @@ pub fn doFrame(app: *App) void {
 
     // search entry at top
     {
-        var search_entry = dvui.textEntry(
-            @src(),
-            .{
-                .text = .{ .buffer = &search.query_buf },
-                .placeholder = "Search blocks & characters...",
-            },
-            .{ .expand = .horizontal },
-        );
-        defer search_entry.deinit();
-        if (search_entry.text_changed) {
-            const search_query = search_entry.textGet();
-            if (search_query.len > 0)
-                search.searchAll(search_query)
-            else
-                search.clearSearchResults();
-        }
-        if (search.should_focus_search_bar) {
-            dvui.focusWidget(search_entry.wd.id, floating_window.wd.id, null);
-            search.should_focus_search_bar = false;
+        var hbox = dvui.box(@src(), .{ .dir = .horizontal }, .{ .expand = .horizontal });
+        defer hbox.deinit();
+        {
+            var search_entry = dvui.textEntry(
+                @src(),
+                .{
+                    .text = .{ .buffer = &search.query_buf },
+                    .placeholder = "Search blocks & characters...",
+                },
+                .{ .expand = .horizontal },
+            );
+            defer search_entry.deinit();
+            if (search_entry.text_changed) {
+                const search_query = search_entry.textGet();
+                if (search_query.len > 0)
+                    search.searchAll(search_query)
+                else
+                    search.clearSearchResults();
+            }
+            if (search.should_focus_search_bar) {
+                dvui.focusWidget(search_entry.wd.id, floating_window.wd.id, null);
+                search.should_focus_search_bar = false;
+            }
+
+            // escape to close window
+            for (dvui.events()) |e| {
+                switch (e.evt) {
+                    .key => if (e.evt.key.code == .escape) {
+                        search_entry.len = 0;
+                        search.clearSearchResultsAndCloseWindow();
+                    },
+                    else => {},
+                }
+            }
         }
 
-        // escape to close window
-        for (dvui.events()) |e| {
-            switch (e.evt) {
-                .key => if (e.evt.key.code == .escape) {
-                    search_entry.len = 0;
-                    search.clearSearchResultsAndCloseWindow();
+        const mSize = dvui.Font.theme(.body).sizeM(1, 1);
+        if (dvui.buttonIcon(
+            @src(),
+            "close search window",
+            dvui.entypo.cross,
+            .{},
+            .{},
+            .{
+                .border = .all(1),
+                .min_size_content = .{
+                    .w = mSize.w + 8,
+                    .h = mSize.w + 8,
                 },
-                else => {},
-            }
+                .margin = .{
+                    .x = 0,
+                    .y = 4,
+                    .w = 4,
+                    .h = 0,
+                },
+            },
+        )) {
+            search.clearSearchResultsAndCloseWindow();
         }
     }
 

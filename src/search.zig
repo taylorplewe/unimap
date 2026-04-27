@@ -3,10 +3,12 @@ const std = @import("std");
 const unicode = @import("unicode/unicode.zig");
 const utils = @import("utils.zig");
 
+pub var show_search_window: bool = false;
+pub var should_focus_search_bar: bool = true;
 pub var results_buf: [256]Result = undefined;
-pub var results_len: ?usize = null;
+pub var results_len: usize = 0;
 pub inline fn results() []Result {
-    return if (results_len) |len| results_buf[0..len] else &.{};
+    return results_buf[0..results_len];
 }
 pub var query_buf: [128]u8 = undefined;
 pub const CharacterSearchResult = struct {
@@ -19,7 +21,22 @@ pub const Result = union(enum) {
     character: CharacterSearchResult,
 };
 
-pub fn searchCharactersByName(query: []u8) void {
+pub fn searchAll(query: []u8) void {
+    results_len = 0;
+    searchBlocksByName(query);
+    if (results_len < results_buf.len)
+        searchCharactersByName(query);
+}
+fn searchBlocksByName(query: []u8) void {
+    for (unicode.blocks) |*block| {
+        if (utils.isNeedleInHaystack(block.name, query, false)) {
+            results_buf[results_len] = .{ .block = block };
+            results_len += 1;
+            if (results_len == results_buf.len) return;
+        }
+    }
+}
+fn searchCharactersByName(query: []u8) void {
     for (unicode.blocks) |*block| {
         if (unicode.char_names.get(block.name)) |bytes| {
             if (bytes.len == 0) continue;
@@ -32,15 +49,15 @@ pub fn searchCharactersByName(query: []u8) void {
                 const name = bytes[name_addr + 1 .. name_addr + name_len + 1];
                 if (utils.isNeedleInHaystack(name, query, true)) {
                     const code_point: unicode.CodePoint = @intCast(i + block.range.start);
-                    results_buf[results_len.?] = .{
+                    results_buf[results_len] = .{
                         .character = .{
                             .code_point = code_point,
                             .name = name,
                             .containing_block = block,
                         },
                     };
-                    results_len.? += 1;
-                    if (results_len.? == results_buf.len) {
+                    results_len += 1;
+                    if (results_len == results_buf.len) {
                         return;
                     }
                 }
@@ -48,7 +65,12 @@ pub fn searchCharactersByName(query: []u8) void {
         }
     }
 }
-pub fn clearSearchResults() void {
-    results_len = null;
+pub fn clearSearchResultsAndCloseWindow() void {
+    clearSearchResults();
+    should_focus_search_bar = true;
+    show_search_window = false;
     @memset(&query_buf, 0);
+}
+pub fn clearSearchResults() void {
+    results_len = 0;
 }

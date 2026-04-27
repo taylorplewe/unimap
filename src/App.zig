@@ -1,10 +1,14 @@
 const std = @import("std");
+const dvui = @import("dvui");
 
 const View = @import("views/View.zig");
 const character_list = @import("views/character_list.zig");
 const block_select = @import("views/block_select.zig");
 const unicode = @import("unicode/unicode.zig");
 const utils = @import("utils.zig");
+const search = @import("search.zig");
+const search_window = @import("views/components/search_window.zig");
+const upper_bar = @import("views/components/upper_bar.zig");
 
 const App = @This();
 
@@ -33,6 +37,19 @@ const views: std.EnumMap(Mode, View) = .init(.{
 });
 
 pub fn frame(self: *App) void {
+    upper_bar.doFrame(self);
+
+    var scroll = dvui.scrollArea(
+        @src(),
+        .{},
+        .{ .expand = .both, .style = .window },
+    );
+    defer scroll.deinit();
+
     views.getAssertContains(self.state).doFrame(self);
+
+    if (search.show_search_window)
+        search_window.doFrame(self);
+
     self.state = self.next_state;
 }

@@ -5,7 +5,7 @@ const search = @import("../../search.zig");
 const unicode = @import("../../unicode/unicode.zig");
 const utils = @import("../../utils.zig");
 
-pub fn drawSearchWindow(app: *App, should_focus_search_bar: bool) void {
+pub fn doFrame(app: *App) void {
     const animator = dvui.animate(
         @src(),
         .{
@@ -41,32 +41,21 @@ pub fn drawSearchWindow(app: *App, should_focus_search_bar: bool) void {
             @src(),
             .{
                 .text = .{ .buffer = &search.query_buf },
+                .placeholder = "Search blocks & characters...",
             },
             .{ .expand = .horizontal },
         );
         defer search_entry.deinit();
         if (search_entry.text_changed) {
             const search_query = search_entry.textGet();
-            if (search_query.len == 0) {
-                search.results_len = null;
-            } else {
-                search: {
-                    search.results_len = 0;
-                    for (unicode.blocks) |*block| {
-                        if (utils.isNeedleInHaystack(block.name, search_query, false)) {
-                            search.results_buf[search.results_len.?] = .{ .block = block };
-                            search.results_len.? += 1;
-                            if (search.results_len.? == search.results_buf.len) break :search;
-                        }
-                    }
-                    search.searchCharactersByName(search_query);
-                }
-            }
+            if (search_query.len > 0)
+                search.searchAll(search_query)
+            else
+                search.clearSearchResults();
         }
-        if (should_focus_search_bar) {
+        if (search.should_focus_search_bar) {
             dvui.focusWidget(search_entry.wd.id, floating_window.wd.id, null);
-            const entered_text = search_entry.textGet();
-            search_entry.textSet(@constCast(entered_text), false);
+            search.should_focus_search_bar = false;
         }
 
         // escape to close window
@@ -74,12 +63,14 @@ pub fn drawSearchWindow(app: *App, should_focus_search_bar: bool) void {
             switch (e.evt) {
                 .key => if (e.evt.key.code == .escape) {
                     search_entry.len = 0;
-                    search.clearSearchResults();
+                    search.clearSearchResultsAndCloseWindow();
                 },
                 else => {},
             }
         }
     }
+
+    if (search.results().len == 0) return;
 
     // I spent hours figuring this out and I still don't exactly know why--but the scroll info MUST be inside of this struct type,
     // and you pass around the pointer to the scroll_info field, as opposed to instantiating an actual ScrollInfo and passing around
@@ -152,7 +143,7 @@ pub fn drawSearchWindow(app: *App, should_focus_search_bar: bool) void {
                 },
             }
             if (clicked) {
-                search.clearSearchResults();
+                search.clearSearchResultsAndCloseWindow();
                 break :result_loop;
             }
         }

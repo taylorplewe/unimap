@@ -4,6 +4,7 @@ const toUpper = std.ascii.toUpper;
 
 /// Optimized substr search. Produces far less machine code than `std.mem.containsAtLeast()`.
 /// Inspired by the optimized (-O3) machine code output from C++'s `std::basic_string_view<char>::contains()`
+/// WARNING: calling this function with an empty haystack or needle will panic
 pub fn isNeedleInHaystack(haystack: []const u8, needle: []const u8, comptime is_upper_haystack: bool) bool {
     // remove some unnecessary checks from the machine code output
     if (haystack.len == 0 or needle.len == 0) unreachable;

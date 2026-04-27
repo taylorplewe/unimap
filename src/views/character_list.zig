@@ -3,18 +3,13 @@ const dvui = @import("dvui");
 
 const App = @import("../App.zig");
 const unicode = @import("../unicode/unicode.zig");
+const search = @import("../search.zig");
+const search_button = @import("components/search_button.zig");
 
 var character_font: dvui.Font = undefined;
 
 pub fn doFrame(app: *App) void {
-    drawUpperBar(app);
-
-    var scroll = dvui.scrollArea(
-        @src(),
-        .{},
-        .{ .expand = .both, .style = .window },
-    );
-    defer scroll.deinit();
+    // drawUpperBar(app);
 
     character_font = dvui.Font.theme(.body)
         .withSize(18)
@@ -74,51 +69,59 @@ pub fn doFrame(app: *App) void {
         //     }
         // }
     }
+
+    // if (search.show_search_window) {
+    //     search_window.doFrame(app);
+    // }
 }
 
 /// Draw the upper bar with the back button and possibly other future controls
 /// Returns `true` if the back button was clicked
-fn drawUpperBar(app: *App) void {
-    var upper_sticky = dvui.box(
-        @src(),
-        .{ .dir = .horizontal },
-        .{ .expand = .horizontal, .background = true },
-    );
-    defer upper_sticky.deinit();
+// fn drawUpperBar(app: *App) void {
+//     var upper_sticky = dvui.box(
+//         @src(),
+//         .{ .dir = .horizontal },
+//         .{ .expand = .horizontal, .background = true },
+//     );
+//     defer upper_sticky.deinit();
 
-    var should_go_back = false;
+//     var should_go_back = false;
 
-    for (dvui.events()) |e| {
-        switch (e.evt) {
-            .mouse => |mouse| {
-                if (mouse.button == .four) should_go_back = true;
-            },
-            else => {},
-        }
-    }
+//     for (dvui.events()) |e| {
+//         switch (e.evt) {
+//             .mouse => |mouse| {
+//                 if (mouse.button == .four) should_go_back = true;
+//             },
+//             else => {},
+//         }
+//     }
 
-    if (dvui.buttonLabelAndIcon(
-        @src(),
-        .{
-            .icon_first = true,
-            .label = "Back to blocks",
-            .tvg_bytes = dvui.entypo.arrow_bold_left,
-            .button_opts = .{},
-        },
-        .{
-            .min_size_content = .{ .w = 128 },
-        },
-    ) or should_go_back) {
-        app.next_state = .{ .BlockSelect = .{ .block_to_focus = app.state.CharacterList.block } };
-    }
+//     if (dvui.buttonLabelAndIcon(
+//         @src(),
+//         .{
+//             .icon_first = true,
+//             .label = "Back to blocks",
+//             .tvg_bytes = dvui.entypo.arrow_bold_left,
+//             .button_opts = .{},
+//         },
+//         .{
+//             .min_size_content = .{ .w = 128 },
+//         },
+//     ) or should_go_back) {
+//         app.next_state = .{ .BlockSelect = .{ .block_to_focus = app.state.CharacterList.block } };
+//     }
 
-    dvui.labelNoFmt(
-        @src(),
-        app.state.CharacterList.block.name,
-        .{},
-        .{ .gravity_x = 0.5, .gravity_y = 0.5 },
-    );
-}
+//     dvui.labelNoFmt(
+//         @src(),
+//         app.state.CharacterList.block.name,
+//         .{},
+//         .{ .gravity_x = 0.5, .gravity_y = 0.5 },
+//     );
+
+//     _ = dvui.spacer(@src(), .{ .expand = .horizontal });
+
+//     search_button.doFrame();
+// }
 
 inline fn drawCharacterButton(code_point: unicode.CodePoint, app: *App) void {
     const utf8_encoded = unicode.getUtf8EncodedChar(code_point);

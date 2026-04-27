@@ -178,7 +178,7 @@ inline fn drawCharacterButton(code_point: unicode.CodePoint, app: *App) void {
             if (char_to_focus == code_point) {
                 dvui.currentWindow().focusWidget(btn.wd.id, null, null);
                 btn.init_options.draw_focus = true;
-                app.next_state.CharacterList.char_to_focus = null;
+                app.state.CharacterList.char_to_focus = null;
             }
         }
     }

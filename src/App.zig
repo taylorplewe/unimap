@@ -14,7 +14,7 @@ const App = @This();
 
 state: State = .{ .BlockSelect = .{} },
 /// The state to switch to at the very end of this frame
-next_state: State = .{ .BlockSelect = .{} },
+next_state: ?State = null,
 
 const Mode = enum {
     BlockSelect,
@@ -51,5 +51,10 @@ pub fn frame(self: *App) void {
     if (search.show_search_window)
         search_window.doFrame(self);
 
-    self.state = self.next_state;
+    if (self.next_state) |next_state| {
+        self.state = next_state;
+        self.next_state = null;
+        dvui.refresh(null, @src(), null);
+        std.debug.print("changed state!\n", .{});
+    }
 }

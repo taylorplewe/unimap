@@ -126,7 +126,7 @@ fn drawBlock(app: *App, block: *const unicode.Block) void {
         if (app.state.BlockSelect.block_to_focus) |block_to_focus| {
             if (block_to_focus == block) {
                 dvui.focusWidget(block_btn.wd.id, null, null);
-                app.next_state.BlockSelect.block_to_focus = null;
+                app.state.BlockSelect.block_to_focus = null;
             }
         }
     }

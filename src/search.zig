@@ -28,7 +28,8 @@ pub fn searchAll(query: []u8) void {
     query_readonly = query;
     results_len = 0;
     code_point: {
-        const possible_code_point = std.fmt.parseInt(u21, query, 16) catch break :code_point;
+        const query_to_check = if (std.mem.startsWith(u8, query, "U+") or std.mem.startsWith(u8, query, "u+")) query[2..] else query;
+        const possible_code_point = std.fmt.parseInt(u21, query_to_check, 16) catch break :code_point;
         if (unicode.getBlockThatContainsCodePoint(possible_code_point)) |block| {
             const name = unicode.getCharName(possible_code_point, block) orelse "";
             addToResults(.{

@@ -143,7 +143,7 @@ pub fn doFrame(app: *App) void {
             help_text.dimText("\nSearch Unicode blocks: ");
             help_text.brightTextList(&.{ "emoticons", "braille" });
             help_text.dimText("\nGo to code point: ");
-            help_text.brightTextList(&.{ "3a62", "1f643" });
+            help_text.brightTextList(&.{ "30db", "1f643" });
         } else {
             help_text.dimText("No results for ");
             help_text.brightText(search.query_readonly);

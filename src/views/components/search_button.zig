@@ -1,6 +1,7 @@
 const dvui = @import("dvui");
 
 const search = @import("../../search.zig");
+const key_label = @import("key_label.zig");
 
 pub fn doFrame() void {
     const text_color = dvui.themeGet().text.opacity(0.5);
@@ -38,8 +39,12 @@ pub fn doFrame() void {
         @src(),
         "Search",
         .{},
-        .{ .color_text = if (btn.hover) text_color_hover else text_color },
+        .{
+            .margin = .{ .x = 0, .y = 0, .w = 4, .h = 0 },
+            .color_text = if (btn.hover) text_color_hover else text_color,
+        },
     );
+    key_label.doFrame("/", if (btn.hover) text_color_hover else text_color);
 
     if (!search.show_search_window) {
         for (dvui.events()) |e| {

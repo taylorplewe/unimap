@@ -138,11 +138,11 @@ pub fn doFrame(app: *App) void {
         var help_text: HelpText = .init(@src());
         defer help_text.deinit();
         if (search.query_readonly.len == 0) {
-            help_text.dimText("Search Unicode character names: ");
+            help_text.dimText("☞ Search Unicode character names: ");
             help_text.brightTextList(&.{ "floral", "confused face", "with cedilla" });
-            help_text.dimText("\nSearch Unicode blocks: ");
+            help_text.dimText("\n☞ Search Unicode blocks: ");
             help_text.brightTextList(&.{ "emoticons", "braille" });
-            help_text.dimText("\nGo to code point: ");
+            help_text.dimText("\n☞ Go to code point: ");
             help_text.brightTextList(&.{ "30db", "1f643" });
         } else {
             help_text.dimText("No results for ");

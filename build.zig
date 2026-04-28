@@ -18,6 +18,7 @@ pub fn build(b: *std.Build) void {
             },
         }),
     });
+    exe.subsystem = .Windows;
 
     b.installArtifact(exe);
 }

@@ -52,7 +52,10 @@ pub fn frame(self: *App) void {
         search_window.doFrame(self);
 
     if (self.next_state) |next_state| {
-        scroll.si.scrollToOffset(.vertical, 0);
+        switch (next_state) {
+            .CharacterList => scroll.si.scrollToOffset(.vertical, 0),
+            else => {},
+        }
         self.state = next_state;
         self.next_state = null;
     }

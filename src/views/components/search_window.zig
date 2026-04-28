@@ -199,7 +199,18 @@ pub fn doFrame(app: *App) void {
         {
             var cell = grid.bodyCell(@src(), cell_num, cell_style.cellOptions(cell_num));
             defer cell.deinit();
-            const clicked = dvui.clicked(&cell.wd, .{});
+            var clicked = dvui.clicked(&cell.wd, .{});
+            if (num == 0) {
+                check_enter: for (dvui.events()) |event| {
+                    switch (event.evt) {
+                        .key => |key_event| {
+                            if (key_event.action != .down) break :check_enter;
+                            if (key_event.code == .enter or key_event.code == .kp_enter) clicked = true;
+                        },
+                        else => {},
+                    }
+                }
+            }
             switch (search.results()[num]) {
                 .code_point => |res| {
                     drawGoToCodePointResult(res);

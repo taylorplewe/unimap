@@ -1343,33 +1343,6 @@
     },
     .{
         .range = .{
-            .start = 0x00D800,
-            .end = 0x00DB7F,
-        },
-        .name = "High Surrogates",
-        .chars_names_bin_filename = "High_Surrogates",
-        .supported_font = "gnu unifont",
-    },
-    .{
-        .range = .{
-            .start = 0x00DB80,
-            .end = 0x00DBFF,
-        },
-        .name = "High Private Use Surrogates",
-        .chars_names_bin_filename = "High_Private_Use_Surrogates",
-        .supported_font = "gnu unifont",
-    },
-    .{
-        .range = .{
-            .start = 0x00DC00,
-            .end = 0x00DFFF,
-        },
-        .name = "Low Surrogates",
-        .chars_names_bin_filename = "Low_Surrogates",
-        .supported_font = "gnu unifont",
-    },
-    .{
-        .range = .{
             .start = 0x00E000,
             .end = 0x00F8FF,
         },

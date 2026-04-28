@@ -3,121 +3,26 @@ const dvui = @import("dvui");
 
 const App = @import("../App.zig");
 const unicode = @import("../unicode/unicode.zig");
+const search = @import("../search.zig");
+const search_button = @import("components/search_button.zig");
 
 var character_font: dvui.Font = undefined;
 
 pub fn doFrame(app: *App) void {
-    drawUpperBar(app);
-
-    var scroll = dvui.scrollArea(
-        @src(),
-        .{},
-        .{ .expand = .both, .style = .window },
-    );
-    defer scroll.deinit();
-
     character_font = dvui.Font.theme(.body)
         .withSize(18)
         .withFamily(app.state.CharacterList.block.supported_font);
 
-    {
-        var flex = dvui.flexbox(@src(), .{}, .{ .expand = .horizontal });
-        defer flex.deinit();
+    var flex = dvui.flexbox(@src(), .{}, .{ .expand = .horizontal, .id_extra = app.state.CharacterList.block.range.start });
+    defer flex.deinit();
 
-        for (app.state.CharacterList.block.range.start..app.state.CharacterList.block.range.end + 1) |code_point| {
-            drawCharacterButton(@intCast(code_point), app);
-        }
-
-        // see the comment above the `local` struct in `block_select.zig` for why this exists
-        // const local = struct {
-        //     var scroll_info: dvui.ScrollInfo = .{ .vertical = .given, .horizontal = .none };
-        // };
-
-        // const NUM_COLUMNS = 10;
-        // const num_rows: usize = @intCast(((app.state.CharacterList.block.range.end - app.state.CharacterList.block.range.start) + 1) / NUM_COLUMNS);
-        // var grid = dvui.grid(
-        //     @src(),
-        //     .numCols(NUM_COLUMNS),
-        //     .{
-        //         .scroll_opts = .{
-        //             .scroll_info = &local.scroll_info,
-        //             .vertical_bar = .auto_overlay,
-        //         },
-        //     },
-        //     .{ .expand = .both, .padding = .all(0) },
-        // );
-        // defer grid.deinit();
-
-        // const col_width = grid.data().contentRect().w / NUM_COLUMNS;
-
-        // // use virtual scrolling to make scrolling thru hundreds of search results performant
-        // const scroller: dvui.GridWidget.VirtualScroller = .init(grid, .{
-        //     .total_rows = num_rows,
-        //     .scroll_info = &local.scroll_info,
-        // });
-
-        // const first = scroller.startRow();
-        // const last = scroller.endRow(); // Note that endRow is exclusive, meaning it can be used as a slice end index.
-        // outer_loop: for (first..last) |row| {
-        //     for (0..NUM_COLUMNS) |col| {
-        //         const index = (row * NUM_COLUMNS) + col;
-        //         if (index >= app.state.CharacterList.block.range.end) break :outer_loop;
-        //         // const code_point = app.state.CharacterList.block.range.start + @as(unicode.CodePoint, @intCast(index));
-
-        //         const cell_num: dvui.GridWidget.Cell = .colRow(col, row);
-        //         {
-        //             var cell = grid.bodyCell(@src(), cell_num, .{ .size = .all(col_width) });
-        //             defer cell.deinit();
-        //             dvui.labelNoFmt(@src(), "test", .{}, .{}); // NOTE: this performs great
-        //             // drawCharacterButton(@intCast(code_point), app);
-        //         }
-        //     }
-        // }
-    }
-}
-
-/// Draw the upper bar with the back button and possibly other future controls
-/// Returns `true` if the back button was clicked
-fn drawUpperBar(app: *App) void {
-    var upper_sticky = dvui.box(
-        @src(),
-        .{ .dir = .horizontal },
-        .{ .expand = .horizontal, .background = true },
-    );
-    defer upper_sticky.deinit();
-
-    var should_go_back = false;
-
-    for (dvui.events()) |e| {
-        switch (e.evt) {
-            .mouse => |mouse| {
-                if (mouse.button == .four) should_go_back = true;
-            },
-            else => {},
-        }
+    for (app.state.CharacterList.block.range.start..app.state.CharacterList.block.range.end + 1) |code_point| {
+        drawCharacterButton(@intCast(code_point), app);
     }
 
-    if (dvui.buttonLabelAndIcon(
-        @src(),
-        .{
-            .icon_first = true,
-            .label = "Back to blocks",
-            .tvg_bytes = dvui.entypo.arrow_bold_left,
-            .button_opts = .{},
-        },
-        .{
-            .min_size_content = .{ .w = 128 },
-        },
-    ) or should_go_back) {
-        app.next_state = .{ .BlockSelect = .{ .block_to_focus = app.state.CharacterList.block } };
-    }
-
-    dvui.labelNoFmt(
-        @src(),
-        app.state.CharacterList.block.name,
-        .{},
-        .{ .gravity_x = 0.5, .gravity_y = 0.5 },
-    );
+    // TODO: improve performance of character list rendering of large blocks, such as the Private Use ones or some of the CJK ones.
+    // I tried implementing a virtual grid scroller like I did in the search results window, but it was very buggy and didn't actually help performance.
+    // View the commit history on this line to see how I implemented it.
 }
 
 inline fn drawCharacterButton(code_point: unicode.CodePoint, app: *App) void {
@@ -175,7 +80,7 @@ inline fn drawCharacterButton(code_point: unicode.CodePoint, app: *App) void {
             if (char_to_focus == code_point) {
                 dvui.currentWindow().focusWidget(btn.wd.id, null, null);
                 btn.init_options.draw_focus = true;
-                app.next_state.CharacterList.char_to_focus = null;
+                app.state.CharacterList.char_to_focus = null;
             }
         }
     }
@@ -260,9 +165,3 @@ inline fn drawCharacterTooltip(
         cell.deinit();
     }
 }
-
-// /// Like `(std.Io.Reader).takeInt()` or `std.mem.readInt()`, but no reader needed. Generates less machine code.
-// /// Unsafe? Very
-// inline fn getIntFromDataAtOffs(comptime T: type, data: []u8, offs: usize) T {
-//     return std.mem.nativeToBig(T, @as(*T, @ptrCast(@alignCast(data[offs..]))).*);
-// }

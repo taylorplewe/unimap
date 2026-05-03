@@ -196,8 +196,13 @@ pub fn doFrame(app: *App) void {
     const last = scroller.endRow(); // Note that endRow is exclusive, meaning it can be used as a slice end index.
     result_loop: for (first..last) |num| {
         const cell_num: dvui.GridWidget.Cell = .colRow(0, num);
+        // highlight first result to indicate if you press Enter it will select that one
+        const final_options = if (num == 0)
+            cell_style.cellOptions(cell_num).override(.{ .color_fill = dvui.themeGet().color(.control, .fill_hover) })
+        else
+            cell_style.cellOptions(cell_num);
         {
-            var cell = grid.bodyCell(@src(), cell_num, cell_style.cellOptions(cell_num));
+            var cell = grid.bodyCell(@src(), cell_num, final_options);
             defer cell.deinit();
             var clicked = dvui.clicked(&cell.wd, .{});
             if (num == 0) {

@@ -3,7 +3,7 @@ A modern take on Character Map, and with the entire Unicode character set
 
 ![screenshot of Unimap](shot.png)
 
-### 👉 [YouTube video showcase](https://youtu.be/5TmZWas_k8s)
+### 👉 [My demo and interview in the jam recap video](https://www.youtube.com/watch?v=kcQN_uYbyjE&t=86s)
 
 ### 👉 [Handmade Network project page](https://handmade.network/p/805/unimap/)
 
